@@ -116,7 +116,7 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 
 
 ## Wireframes
-<img src="https://github.com/MajoBurguete/TuneWiki/blob/main/UI/WireframeT.png" width=600>
+<img src="https://github.com/MajoBurguete/Discoteca/blob/master/UI/WireframeT.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
