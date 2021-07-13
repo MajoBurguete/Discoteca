@@ -14,6 +14,7 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private final int REQUEST_CODE_SIGN = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent sign = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(sign);
+                startActivityForResult(sign, REQUEST_CODE_SIGN);
             }
         });
     }
