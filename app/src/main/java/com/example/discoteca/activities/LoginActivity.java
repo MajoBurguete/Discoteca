@@ -5,17 +5,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 import com.example.discoteca.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private final int REQUEST_CODE_SIGN = 7;
+    private static final int REQUEST_CODE_SIGN = 7;
+    private static final int REQUEST_CODE = 8;
+    private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
+    private static final String REDIRECT_URI = "intent://";
+    private SpotifyAppRemote mSpotifyAppRemote;
+
+    // Set the connection parameters
+    ConnectionParams connectionParams =
+            new ConnectionParams.Builder(CLIENT_ID)
+                    .setRedirectUri(REDIRECT_URI)
+                    .showAuthView(true)
+                    .build();
+
+    AuthenticationRequest.Builder builder =
+            new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         if (ParseUser.getCurrentUser() != null){
             goMainActivity();
         }
-
+        
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
