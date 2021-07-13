@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.discoteca.databinding.ActivityMainBinding;
+import com.example.discoteca.R;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {

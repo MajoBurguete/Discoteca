@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

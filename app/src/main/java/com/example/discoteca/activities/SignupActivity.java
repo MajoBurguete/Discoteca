@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.discoteca.R;
 import com.example.discoteca.databinding.ActivitySignupBinding;
 import com.parse.ParseException;
 import com.parse.ParseUser;
