@@ -49,8 +49,9 @@
             android:id="@+id/rvResults"
             android:layout_width="409dp"
             android:layout_height="609dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="121dp" />
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
