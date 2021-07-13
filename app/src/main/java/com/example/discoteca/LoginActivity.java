@@ -38,6 +38,14 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser(username, password);
             }
         });
+
+        binding.btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sign = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(sign);
+            }
+        });
     }
 
     private void loginUser(String username, String password) {
