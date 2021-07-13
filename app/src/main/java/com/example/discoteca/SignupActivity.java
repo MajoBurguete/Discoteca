@@ -44,7 +44,11 @@ public class SignupActivity extends AppCompatActivity {
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
-
+                        if (e != null) {
+                            Toast.makeText(SignupActivity.this, "Failed to signup, try again!", Toast.LENGTH_LONG).show();
+                            Log.e(TAG, "Failed to signup", e);
+                            return;
+                        }
                     }
                 });
             }
