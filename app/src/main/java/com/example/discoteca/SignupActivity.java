@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.discoteca.databinding.ActivitySignupBinding;
@@ -15,6 +17,10 @@ import com.parse.SignUpCallback;
 public class SignupActivity extends AppCompatActivity {
 
     private String TAG = "SignupActivity";
+    Button btnNewus;
+    EditText etUsersign;
+    EditText etPassign;
+    EditText etEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +28,17 @@ public class SignupActivity extends AppCompatActivity {
         ActivitySignupBinding binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_signup);
 
-        binding.btnNewus.setOnClickListener(new View.OnClickListener() {
+        btnNewus = findViewById(R.id.btnNewus);
+        etUsersign = findViewById(R.id.etUsersign);
+        etPassign = findViewById(R.id.etPassign);
+        etEmail = findViewById(R.id.etEmail);
+
+        btnNewus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = binding.etUsersign.getText().toString();
-                String password = binding.etPassign.getText().toString();
-                String email = binding.etEmail.getText().toString();
+                String username = etUsersign.getText().toString();
+                String password = etPassign.getText().toString();
+                String email = etEmail.getText().toString();
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
                     Toast.makeText(SignupActivity.this, "Make sure not to leave anything blank!", Toast.LENGTH_SHORT).show();
                     return;
@@ -49,6 +60,8 @@ public class SignupActivity extends AppCompatActivity {
                             Log.e(TAG, "Failed to signup", e);
                             return;
                         }
+                        Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 });
             }
