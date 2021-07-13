@@ -2,6 +2,7 @@ package com.example.discoteca;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,6 +62,10 @@ public class SignupActivity extends AppCompatActivity {
                             return;
                         }
                         Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
+                        Intent result = new Intent();
+                        result.putExtra("username", username);
+                        result.putExtra("password", password);
+                        setResult(RESULT_OK, result);
                         finish();
                     }
                 });
