@@ -19,6 +19,13 @@ public class SignupActivity extends AppCompatActivity {
         binding.btnNewus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String username = binding.etUsersign.getText().toString();
+                String password = binding.etPassign.getText().toString();
+                String email = binding.etEmail.getText().toString();
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+                    Toast.makeText(SignupActivity.this, "Make sure not to leave anything blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
     }
