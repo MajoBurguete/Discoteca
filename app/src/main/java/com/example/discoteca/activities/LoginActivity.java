@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
     private static final String REDIRECT_URI = "intent://";
     private SpotifyAppRemote mSpotifyAppRemote;
+    AuthenticationResponse TOKEN;
 
     // Set the connection parameters
     ConnectionParams connectionParams =
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (ParseUser.getCurrentUser() != null){
+        if (ParseUser.getCurrentUser() != null && TOKEN != null){
             goMainActivity();
         }
 
@@ -62,6 +63,10 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TOKEN == null){
+                    Toast.makeText(LoginActivity.this, "Remember to login to your spotify account!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String username = binding.etUsername.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 if ( username.isEmpty() || password.isEmpty()){
@@ -92,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (requestCode == REQUEST_CODE ){
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode,data);
+            TOKEN = response;
             if (response.getType() == AuthenticationResponse.Type.TOKEN){
                 SpotifyAppRemote.connect(LoginActivity.this, connectionParams, new Connector.ConnectionListener() {
                     @Override
