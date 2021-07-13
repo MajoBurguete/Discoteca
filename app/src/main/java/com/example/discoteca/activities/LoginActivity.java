@@ -49,7 +49,16 @@ public class LoginActivity extends AppCompatActivity {
         if (ParseUser.getCurrentUser() != null){
             goMainActivity();
         }
-        
+
+        binding.btnSpotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder.setScopes(new String[]{"streaming"});
+                AuthenticationRequest request = builder.build();
+                AuthenticationClient.openLoginActivity(LoginActivity.this, REQUEST_CODE, request);
+            }
+        });
+
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
