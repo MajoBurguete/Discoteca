@@ -90,6 +90,26 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
             loginUser(username, password);
         }
+        if (requestCode == REQUEST_CODE ){
+            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode,data);
+            if (response.getType() == AuthenticationResponse.Type.TOKEN){
+                SpotifyAppRemote.connect(LoginActivity.this, connectionParams, new Connector.ConnectionListener() {
+                    @Override
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        Log.d("MainActivity", "Connected! Yay!");
+                    }
+
+                    @Override
+                    public void onFailure(Throwable error) {
+                        Log.e("MainActivity", error.getMessage(), error);
+                    }
+                });
+            }
+            if (response.getType() == AuthenticationResponse.Type.ERROR){
+                Log.e("API call", response.getError());
+            }
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
