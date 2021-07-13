@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.discoteca.databinding.ActivityLoginBinding;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,6 +30,22 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 // Method to login
+                loginUser(username, password);
+            }
+        });
+    }
+
+    private void loginUser(String username, String password) {
+        // Navigate to the main activity if the user has logged in properly
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(e != null){
+                    Toast.makeText(LoginActivity.this, "Failed to login, username or password incorrect", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // Go to main activity
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }
