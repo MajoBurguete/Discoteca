@@ -8,15 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
 import com.example.discoteca.R;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the toolbar inside the layout
         Toolbar toolbar = findViewById(R.id.Toolbar);
         setSupportActionBar(toolbar);
+
     }
 
     @Override
@@ -37,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.btnLogout){
-
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            Intent login = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(login);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
 }
-
