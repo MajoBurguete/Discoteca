@@ -1,10 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="false"
     tools:context=".activities.ComposeActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        app:cardCornerRadius="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="18dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="13dp"
+            android:paddingBottom="40dp">
+
+            <ImageView
+                android:id="@+id/ivComposeAlbum"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvAlbumName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSongName"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/ivComposeAlbum"
+                tools:text="SOUR" />
+
+            <TextView
+                android:id="@+id/tvArtistName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSongName"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/tvAlbumName"
+                tools:text="Olivia Rodrigo" />
+
+            <TextView
+                android:id="@+id/tvSongName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_toEndOf="@+id/ivComposeAlbum"
+                tools:text="Traitor" />
+
+            <Button
+                android:id="@+id/btnPick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSongName"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/tvArtistName"
+                android:text="Pick a song"
+                android:textSize="10sp" />
+
+            <EditText
+                android:id="@+id/etDescriptionFact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivComposeAlbum"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="0dp"
+                android:layout_toStartOf="@+id/btnPick"
+                android:ems="10"
+                android:hint="Did you know ..."
+                android:inputType="textMultiLine|textPersonName"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btnAddFact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardFact"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="5dp"
+        android:text="Add Fact" />
 
 </RelativeLayout>
