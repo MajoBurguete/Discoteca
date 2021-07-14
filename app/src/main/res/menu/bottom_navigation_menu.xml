@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnHome"
+        android:icon="@drawable/ic_feed"
+        android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnCompose"
+        android:icon="@drawable/ic_add"
+        android:title="Compose"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnSearch"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnProfile"
+        android:icon="@drawable/ic_user"
+        android:title="Profile"
+        app:showAsAction="always" />
+</menu>
