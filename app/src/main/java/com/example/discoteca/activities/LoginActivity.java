@@ -17,6 +17,8 @@ import com.example.discoteca.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -28,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
     private static final String REDIRECT_URI = "intent://";
     private SpotifyAppRemote mSpotifyAppRemote;
-    AuthenticationResponse TOKEN;
+    public String accessToken = "";
 
     // Set the connection parameters
     ConnectionParams connectionParams =
@@ -37,9 +39,6 @@ public class LoginActivity extends AppCompatActivity {
                     .showAuthView(true)
                     .build();
 
-    AuthenticationRequest.Builder builder =
-            new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,23 +46,22 @@ public class LoginActivity extends AppCompatActivity {
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (ParseUser.getCurrentUser() != null && TOKEN != null){
+        if (ParseUser.getCurrentUser() != null && !accessToken.isEmpty()){
             goMainActivity();
         }
 
         binding.btnSpotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setScopes(new String[]{"streaming"});
-                AuthenticationRequest request = builder.build();
-                AuthenticationClient.openLoginActivity(LoginActivity.this, REQUEST_CODE, request);
+                authorizeUser();
             }
         });
+
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TOKEN == null){
+                if (accessToken.isEmpty()){
                     Toast.makeText(LoginActivity.this, "Remember to login to your spotify account!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -87,6 +85,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void authorizeUser(){
+        AuthenticationRequest.Builder builder =
+                new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
+        builder.setScopes(new String[]{"streaming"});
+        AuthenticationRequest request = builder.build();
+        AuthenticationClient.openLoginActivity(LoginActivity.this, REQUEST_CODE, request);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_SIGN && resultCode == RESULT_OK){
@@ -97,26 +103,22 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (requestCode == REQUEST_CODE ){
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode,data);
-            TOKEN = response;
-            if (response.getType() == AuthenticationResponse.Type.TOKEN){
-                SpotifyAppRemote.connect(LoginActivity.this, connectionParams, new Connector.ConnectionListener() {
-                    @Override
-                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
-                        mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected! Yay!");
-                    }
 
-                    @Override
-                    public void onFailure(Throwable error) {
-                        Log.e("MainActivity", error.getMessage(), error);
-                    }
-                });
-            }
-            if (response.getType() == AuthenticationResponse.Type.ERROR){
-                Log.e("API call", response.getError());
+            switch (response.getType()){
+                case TOKEN:
+                    Log.d("API Call", "Connected! Yay!");
+                    accessToken = response.getAccessToken();
+                    break;
+                case ERROR:
+                    Log.e("API call", response.getError());
+                    break;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public String getAccessToken(){
+        return accessToken;
     }
 
     private void loginUser(String username, String password) {
@@ -137,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("token", accessToken);
         startActivity(i);
         finish();
     }
