@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.discoteca.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    BottomNavigationView bottomNav;
 
 
     @Override
@@ -24,7 +26,31 @@ public class MainActivity extends AppCompatActivity {
         // Find the toolbar inside the layout
         Toolbar toolbar = findViewById(R.id.Toolbar);
         setSupportActionBar(toolbar);
+         // Bottom navigation is defined
+        bottomNav = findViewById(R.id.bottomNav);
+        bottomItemSelected();
 
+    }
+
+    private void bottomItemSelected() {
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.btnHome){
+
+                }
+                if (item.getItemId() == R.id.btnCompose){
+
+                }
+                if (item.getItemId() == R.id.btnSearch){
+
+                }
+                if (item.getItemId() == R.id.btnProfile){
+
+                }
+                return true;
+            }
+        });
     }
 
     @Override
