@@ -58,6 +58,14 @@ public class Song<type> {
         this.imageUrl = imageUrl;
     }
 
+    public void setArtistName(String artist){
+        artistName = artist;
+    }
+
+    public String getArtistName(){
+        return artistName;
+    }
+
     public String getType() {
         return "song";
     }
