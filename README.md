@@ -148,8 +148,6 @@ Discoteca is an app that allows you to add facts about a song or about the artis
    | user          | Pointer to User| author of the fact |
    | description   | String   | Fact about the song or artist |
    | songId        | String   | Song id gotten from the spotify API |
-   | albumId       | String   | Album id gotten from the spotify API |
-   | artistId      | String   | Artist id gotten from the spotify API |
    | likesCount    | Number   | number of likes for the post |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
