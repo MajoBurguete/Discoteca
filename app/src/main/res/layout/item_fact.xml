@@ -44,7 +44,7 @@
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSongInfo"
+                android:layout_below="@+id/tvSearchInfo"
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="7dp"
                 android:layout_toEndOf="@+id/ivAlbum"
@@ -52,7 +52,7 @@
                 tools:text="Did you know that Olivia wrote this song for someone who bla bla and also she mentioned once that bla bla" />
 
             <TextView
-                android:id="@+id/tvSongInfo"
+                android:id="@+id/tvSearchInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSongT"
