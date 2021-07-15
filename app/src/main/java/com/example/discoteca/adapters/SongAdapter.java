@@ -32,7 +32,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SongAdapter.ViewHolder holder, int position) {
-
+        Song song = rvSongs.get(position);
+        holder.bind(song);
     }
 
     @Override
@@ -43,6 +44,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        public void bind(Song song) {
+            
         }
     }
 }
