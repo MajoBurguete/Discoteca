@@ -49,6 +49,14 @@ public class Album {
         this.imageUrl = imageUrl;
     }
 
+    public void setArtistName(String artist){
+        artistName = artist;
+    }
+
+    public String getArtistName(){
+        return artistName;
+    }
+
     public String getType() {
         return "album";
     }
