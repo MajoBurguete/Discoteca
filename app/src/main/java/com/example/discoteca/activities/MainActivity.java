@@ -3,6 +3,7 @@ package com.example.discoteca.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     BottomNavigationView bottomNav;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
 
     @Override
