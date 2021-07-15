@@ -42,12 +42,15 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         public void bind(Song song) {
-            
+
         }
     }
 }
