@@ -3,6 +3,7 @@ package com.example.discoteca.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
@@ -10,6 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.discoteca.R;
+import com.example.discoteca.fragments.HomeFragment;
+import com.example.discoteca.fragments.ProfileFragment;
+import com.example.discoteca.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
@@ -38,18 +42,20 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = new HomeFragment();
                 if (item.getItemId() == R.id.btnHome){
-
+                    fragment = new HomeFragment();
                 }
                 if (item.getItemId() == R.id.btnCompose){
 
                 }
                 if (item.getItemId() == R.id.btnSearch){
-
+                    fragment = new SearchFragment();
                 }
                 if (item.getItemId() == R.id.btnProfile){
-
+                    fragment = new ProfileFragment();
                 }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
