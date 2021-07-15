@@ -1,6 +1,6 @@
 package com.example.discoteca.models;
 
-public class Song {
+public class Song<type> {
 
     public String songId;
     public String songName;
@@ -8,7 +8,6 @@ public class Song {
     public String releaseDate;
     public double duration;
     public String imageUrl;
-    public String type;
 
     public String getSongId() {
         return songId;
@@ -59,11 +58,7 @@ public class Song {
     }
 
     public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        return "song";
     }
 
 }
