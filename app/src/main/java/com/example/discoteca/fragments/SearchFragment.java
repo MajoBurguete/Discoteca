@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
+import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.google.android.material.tabs.TabLayout;
@@ -22,6 +23,7 @@ import java.util.List;
 public class SearchFragment extends Fragment {
 
     RecyclerView rvSearch;
+    SongAdapter songAdapter;
     List<Song> songs;
     List<Album> albums;
 
@@ -42,14 +44,23 @@ public class SearchFragment extends Fragment {
 
         // Tab layout functionality
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+
+        // Recycler view is defined
+        rvSearch = view.findViewById(R.id.rvResults);
+
+        // Adapter is created for each possible result
+        songAdapter = new SongAdapter(getContext(), songs);
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
                     Toast.makeText(getContext(), "Tab " + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
+                    // Adapter is defined
+                    rvSearch.setAdapter(songAdapter);
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
-                    Toast.makeText(getContext(), "Tab 2" + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Tab 2 " + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -63,11 +74,6 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
-        // Recycler view is defined
-        rvSearch = view.findViewById(R.id.rvResults);
-
-        // Adapter is defined
 
 
     }
