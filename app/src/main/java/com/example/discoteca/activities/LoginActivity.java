@@ -46,7 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (ParseUser.getCurrentUser() != null && !accessToken.isEmpty()){
+        if (ParseUser.getCurrentUser() != null){
+            if (!accessToken.isEmpty()){
+                authorizeUser();
+            }
             goMainActivity();
         }
 
