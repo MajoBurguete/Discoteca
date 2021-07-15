@@ -16,7 +16,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvSearchSong"
+        android:id="@+id/tvSearchTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -25,10 +25,10 @@
         tools:text="One Step Forward, Three Steps Back" />
 
     <TextView
-        android:id="@+id/tvSongInfo"
+        android:id="@+id/tvSearchInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvSearchSong"
+        android:layout_below="@+id/tvSearchTitle"
         android:layout_marginStart="22dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivSearchAlbum"
