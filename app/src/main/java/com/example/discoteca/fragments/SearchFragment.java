@@ -39,6 +39,8 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Tab layout functionality
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -62,5 +64,12 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        // Recycler view is defined
+        rvSearch = view.findViewById(R.id.rvResults);
+
+        // Adapter is defined
+
+
     }
+
 }
