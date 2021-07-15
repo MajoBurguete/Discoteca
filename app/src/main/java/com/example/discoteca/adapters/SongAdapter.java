@@ -1,13 +1,26 @@
 package com.example.discoteca.adapters;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.discoteca.models.Song;
+
+import java.util.List;
+
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
-    
+
+    private Context context;
+    List<Song> rvSongs;
+
+    public SongAdapter(Context context, List<Song> rvSongs) {
+        this.context = context;
+        this.rvSongs = rvSongs;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
