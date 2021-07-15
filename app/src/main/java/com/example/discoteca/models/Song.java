@@ -2,12 +2,13 @@ package com.example.discoteca.models;
 
 public class Song<type> {
 
-    public String songId;
-    public String songName;
-    public String albumName;
-    public String releaseDate;
-    public double duration;
-    public String imageUrl;
+    private String songId;
+    private String artistName;
+    private String songName;
+    private String albumName;
+    private String releaseDate;
+    private double duration;
+    private String imageUrl;
 
     public String getSongId() {
         return songId;
