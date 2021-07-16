@@ -84,6 +84,9 @@ public class SearchFragment extends Fragment {
         // Getting the access token from main activity
         accessToken = this.getArguments().getString("token");
 
+        //The default tab is the song tab
+        songTab();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -151,8 +154,29 @@ public class SearchFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
+                    songAdapter.clearAll(false);
+                    List<Song> results = new ArrayList<>();
                     JSONObject jsonObject = new JSONObject(response.body().string());
-                    Log.i(TAG, "onResponse: " + jsonObject.toString());
+                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+                    for (int i = 0; i < jsonArray.length()-1; i++){
+                        Song song = new Song();
+                        JSONObject track = jsonArray.getJSONObject(i);
+                        song.setSongId(track.getString("id"));
+                        song.setSongName(track.getString("name"));
+                        song.setReleaseDate(track.getJSONObject("album").getString("release_date"));
+                        song.setImageUrl(track.getJSONObject("album").getJSONArray("images").getJSONObject(1).getString("url"));
+                        song.setDuration(track.getLong("duration_ms"));
+                        song.setArtistName(track.getJSONArray("artists").getJSONObject(0).getString("name"));
+                        song.setAlbumName(track.getJSONObject("album").getString("name"));
+                        results.add(song);
+                    }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            songAdapter.addAll(results);
+                        }
+                    });
+
                 } catch (JSONException e) {
                     Log.e(TAG, "Failed to parse data: " + e);
                 }
