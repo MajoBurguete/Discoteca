@@ -7,7 +7,7 @@ public class Song<type> {
     private String songName;
     private String albumName;
     private String releaseDate;
-    private double duration;
+    private long duration;
     private String imageUrl;
 
     public String getSongId() {
@@ -46,7 +46,7 @@ public class Song<type> {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
