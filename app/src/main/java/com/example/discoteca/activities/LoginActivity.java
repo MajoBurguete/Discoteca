@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
     private static final String REDIRECT_URI = "intent://";
     private SpotifyAppRemote mSpotifyAppRemote;
-    public String accessToken = "";
+    private String accessToken = "";
 
     // Set the connection parameters
     ConnectionParams connectionParams =
@@ -47,10 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         if (ParseUser.getCurrentUser() != null){
-            if (!accessToken.isEmpty()){
+            if (accessToken.isEmpty()){
                 authorizeUser();
+                goMainActivity();
             }
-            goMainActivity();
         }
 
         binding.btnSpotify.setOnClickListener(new View.OnClickListener() {
