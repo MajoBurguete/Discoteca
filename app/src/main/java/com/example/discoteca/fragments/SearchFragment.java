@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,7 @@ public class SearchFragment extends Fragment {
     SongAdapter songAdapter;
     List<Song> songs;
     List<Album> albums;
+    SearchView searchBar;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -45,17 +47,22 @@ public class SearchFragment extends Fragment {
         // Tab layout functionality
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
 
+        searchBar = view.findViewById(R.id.searchBar);
+
         // Recycler view is defined
         rvSearch = view.findViewById(R.id.rvResults);
-
-        // Adapter is created for each possible result
-        songAdapter = new SongAdapter(getContext(), songs);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
-                    Toast.makeText(getContext(), "Tab " + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
+
+                    String query = String.valueOf(searchBar.getQuery());
+
+                    Toast.makeText(getContext(), "Tab " + query, Toast.LENGTH_LONG).show();
+
+                    // Adapter is created for each possible result
+                    songAdapter = new SongAdapter(getContext(), songs);
                     // Adapter is defined
                     rvSearch.setAdapter(songAdapter);
                 }
@@ -74,7 +81,6 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
 
     }
 
