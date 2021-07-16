@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,20 @@ import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SearchFragment extends Fragment {
 
@@ -102,7 +113,7 @@ public class SearchFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getContext(), "Tab " + query, Toast.LENGTH_LONG).show();
+                makeRequest(query);
                 return true;
             }
 
@@ -112,6 +123,50 @@ public class SearchFragment extends Fragment {
             }
         });
 
+    }
+
+    private void makeRequest(String query){
+
+        if (accessToken == null){
+            Log.e(TAG, "No token");
+            return;
+        }
+        String url = getUrl(query);
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        call(request);
+    }
+
+    private void call(Request request) {
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    Log.i(TAG, "onResponse: " + jsonObject.toString());
+                } catch (JSONException e) {
+                    Log.e(TAG, "Failed to parse data: " + e);
+                }
+            }
+        });
+
+    }
+
+    private String getUrl(String query){
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
+        urlBuilder.addQueryParameter("q", query);
+        urlBuilder.addQueryParameter("type", "track");
+        String url = urlBuilder.build().toString();
+        return url;
     }
 
 
