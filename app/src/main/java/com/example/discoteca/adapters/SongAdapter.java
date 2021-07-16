@@ -39,6 +39,18 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         holder.bind(song);
     }
 
+    public void clearAll(boolean notify){
+        rvSongs.clear();
+        if (notify){
+            notifyDataSetChanged();
+        }
+    }
+
+    public void addAll(List<Song> songs){
+        rvSongs.addAll(songs);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return rvSongs.size();
