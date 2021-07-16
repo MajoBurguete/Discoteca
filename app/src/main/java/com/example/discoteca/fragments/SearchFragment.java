@@ -77,10 +77,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
-
-                    String query = String.valueOf(searchBar.getQuery());
-
-                    Toast.makeText(getContext(), "Tab " + query, Toast.LENGTH_LONG).show();
+                   songTab();
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
                     Toast.makeText(getContext(), "Tab 2 " + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
@@ -99,5 +96,23 @@ public class SearchFragment extends Fragment {
         });
 
     }
+
+    private void songTab(){
+
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getContext(), "Tab " + query, Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+
+    }
+
 
 }
