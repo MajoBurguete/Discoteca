@@ -70,6 +70,9 @@ public class SearchFragment extends Fragment {
         rvSearch.setAdapter(songAdapter);
         rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Getting the access token from main activity
+        accessToken = this.getArguments().getString("token");
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
