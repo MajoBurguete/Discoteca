@@ -94,7 +94,8 @@ public class SearchFragment extends Fragment {
                    songTab();
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
-                    Toast.makeText(getContext(), "Tab 2 " + tabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
+                    songAdapter.clearAll(true);
+                    searchBar.setQuery("",false);
                 }
             }
 
