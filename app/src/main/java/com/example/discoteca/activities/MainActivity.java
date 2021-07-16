@@ -22,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     BottomNavigationView bottomNav;
     final FragmentManager fragmentManager = getSupportFragmentManager();
+    private String accessToken;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        accessToken = getIntent().getStringExtra("token");
 
         // Find the toolbar inside the layout
         Toolbar toolbar = findViewById(R.id.Toolbar);
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.btnSearch){
                     fragment = new SearchFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("token", accessToken);
+                    fragment.setArguments(bundle);
                 }
                 if (item.getItemId() == R.id.btnProfile){
                     fragment = new ProfileFragment();
