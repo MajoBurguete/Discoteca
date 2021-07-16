@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:configChanges="orientation|screenSize"
         android:theme="@style/Theme.Discoteca">
         <activity android:name=".activities.SettingsActivity"></activity>
         <activity android:name=".activities.ComposeActivity" />
