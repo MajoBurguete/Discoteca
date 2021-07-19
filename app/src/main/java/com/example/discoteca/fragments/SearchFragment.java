@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
+import com.example.discoteca.adapters.AlbumAdapter;
 import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
@@ -41,6 +42,7 @@ public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
     RecyclerView rvSearch;
     SongAdapter songAdapter;
+    AlbumAdapter albumAdapter;
     List<Song> songs;
     List<Album> albums;
     SearchView searchBar;
@@ -76,6 +78,7 @@ public class SearchFragment extends Fragment {
 
         // Adapter is created for each possible result
         songAdapter = new SongAdapter(getContext(), songs);
+        albumAdapter = new AlbumAdapter(getContext(), albums);
 
         // Adapter and layout manager is defined
         rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
