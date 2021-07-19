@@ -137,6 +137,19 @@ public class SearchFragment extends Fragment {
 
     private void albumTab(){
         rvSearch.setAdapter(albumAdapter);
+
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                makeRequest(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
         
     }
 
