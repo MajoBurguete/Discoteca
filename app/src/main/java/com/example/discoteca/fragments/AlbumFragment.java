@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
+import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 
@@ -36,7 +37,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class AlbumFragment extends Fragment {
+public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickListener{
 
     public static final String TAG = "AlbumFragment";
     ImageView ivAlbumDet;
@@ -47,6 +48,7 @@ public class AlbumFragment extends Fragment {
     RecyclerView rvAlbumSongs;
     String accessToken;
     Album album;
+    SongAdapter adapter;
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
 
     public AlbumFragment() {
@@ -80,6 +82,9 @@ public class AlbumFragment extends Fragment {
 
         // Initialize song list
         songList = new ArrayList<>();
+
+        // Adapter is initialized
+        adapter = new SongAdapter(getContext(), songList, this);
 
         makeRequest(album.getAlbumId());
 
@@ -141,4 +146,8 @@ public class AlbumFragment extends Fragment {
         return url;
     }
 
+    @Override
+    public void onSongClick(int position) {
+
+    }
 }
