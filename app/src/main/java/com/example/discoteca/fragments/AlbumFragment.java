@@ -115,6 +115,19 @@ public class AlbumFragment extends Fragment {
                 try {
                     jsonObject = new JSONObject(response.body().string());
                     JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+                    for (int i = 0 ; i < jsonArray.length(); i++){
+                        Song song = new Song();
+                        JSONObject responseObject = jsonArray.getJSONObject(i);
+                        song.setAlbumName(album.getAlbumName());
+                        song.setArtistName(album.getArtistName());
+                        song.setImageUrl(album.getImageUrl());
+                        song.setReleaseDate(album.getReleaseDate());
+                        song.setSongName(responseObject.getString("name"));
+                        song.setSongId(responseObject.getString("id"));
+                        song.setDuration(responseObject.getLong("duration_ms"));
+
+                        songList.add(song);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
