@@ -75,6 +75,7 @@ public class SearchFragment extends Fragment {
 
         // Arrays are initialized
         songs = new ArrayList<>();
+        albums = new ArrayList<>();
 
         // Adapter is created for each possible result
         songAdapter = new SongAdapter(getContext(), songs);
