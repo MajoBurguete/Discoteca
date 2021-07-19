@@ -40,7 +40,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClickListener{
+public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClickListener, SongAdapter.OnSongClickListener{
 
     private static final String TAG = "SearchFragment";
     FrameLayout flChild;
@@ -86,7 +86,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         albums = new ArrayList<>();
 
         // Adapter is created for each possible result
-        songAdapter = new SongAdapter(getContext(), songs);
+        songAdapter = new SongAdapter(getContext(), songs, this);
         albumAdapter = new AlbumAdapter(getContext(), albums, this);
 
         // Adapter and layout manager is defined
@@ -288,4 +288,8 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
 
     }
 
+    @Override
+    public void onSongClick(int position) {
+        Toast.makeText(getContext(), "Song clickedd", Toast.LENGTH_SHORT).show();
+    }
 }
