@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.example.discoteca.models.Album;
 
 public class AlbumFragment extends Fragment {
 
@@ -22,6 +24,7 @@ public class AlbumFragment extends Fragment {
     TextView tvArtistAlbum;
     TextView tvAlbumYear;
     RecyclerView rvAlbumSongs;
+    Album album;
 
     public AlbumFragment() {
         // Required empty public constructor
@@ -43,6 +46,8 @@ public class AlbumFragment extends Fragment {
         tvArtistAlbum = view.findViewById(R.id.tvArtistAlbum);
         tvAlbumYear = view.findViewById(R.id.tvAlbumYear);
         rvAlbumSongs = view.findViewById(R.id.rvAlbumSongs);
+
+        album = this.getArguments().getParcelable("album");
 
     }
 }
