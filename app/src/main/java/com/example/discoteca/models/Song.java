@@ -1,5 +1,8 @@
 package com.example.discoteca.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Song<type> {
 
     private String songId;
