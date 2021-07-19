@@ -14,8 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Album;
+
+import org.parceler.Parcels;
 
 public class AlbumFragment extends Fragment {
 
@@ -47,7 +50,13 @@ public class AlbumFragment extends Fragment {
         tvAlbumYear = view.findViewById(R.id.tvAlbumYear);
         rvAlbumSongs = view.findViewById(R.id.rvAlbumSongs);
 
-        album = this.getArguments().getParcelable("album");
+        album = Parcels.unwrap(this.getArguments().getParcelable("album"));
+
+        Glide.with(getContext()).load(album.getImageUrl()).transform(new RoundedCorners(10)).into(ivAlbumDet);
+        tvAlbumNameD.setText(album.getAlbumName());
+        tvArtistAlbum.setText(album.getArtistName());
+        tvAlbumYear.setText(album.getReleaseDate());
+
 
     }
 }
