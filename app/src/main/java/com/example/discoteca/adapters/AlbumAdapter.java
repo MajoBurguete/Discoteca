@@ -83,6 +83,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
             Glide.with(context).load(album.getImageUrl()).into(ivSearchAlbum);
             tvSearchSong.setText(album.getAlbumName());
             tvSongInfo.setText(album.getArtistName());
+            rlSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onAlbumClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
