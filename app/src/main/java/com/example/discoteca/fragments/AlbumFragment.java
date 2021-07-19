@@ -138,8 +138,14 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
 
                         songList.add(song);
                     }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Failed to parse data: " + e);
                 }
             }
         });
