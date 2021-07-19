@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -85,6 +86,10 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
 
         // Adapter is initialized
         adapter = new SongAdapter(getContext(), songList, this);
+
+        // Recycler view adapter and layout manager
+        rvAlbumSongs.setAdapter(adapter);
+        rvAlbumSongs.setLayoutManager(new LinearLayoutManager(getContext()));
 
         makeRequest(album.getAlbumId());
 
