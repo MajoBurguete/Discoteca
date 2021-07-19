@@ -213,7 +213,12 @@ public class SearchFragment extends Fragment {
     private String getUrl(String query, String type){
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
         urlBuilder.addQueryParameter("q", query);
-        urlBuilder.addQueryParameter("type", "track");
+        if (type == "song"){
+            urlBuilder.addQueryParameter("type", "track");
+        }
+        if (type == "album"){
+            urlBuilder.addQueryParameter("type", "album");
+        }
         String url = urlBuilder.build().toString();
         return url;
     }
