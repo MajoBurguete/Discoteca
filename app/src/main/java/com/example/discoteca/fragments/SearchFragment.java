@@ -166,10 +166,15 @@ public class SearchFragment extends Fragment {
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .build();
 
-        call(request);
+        if (type == "song") {
+            callSong(request);
+        }
+        if (type == "album"){
+            
+        }
     }
 
-    private void call(Request request) {
+    private void callSong(Request request) {
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
