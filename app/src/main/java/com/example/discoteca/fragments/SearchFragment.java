@@ -123,7 +123,7 @@ public class SearchFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                makeRequest(query);
+                makeRequest(query, "song");
                 return true;
             }
 
@@ -141,7 +141,7 @@ public class SearchFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                makeRequest(query);
+                makeRequest(query, "album");
                 return true;
             }
 
@@ -150,16 +150,16 @@ public class SearchFragment extends Fragment {
                 return true;
             }
         });
-        
+
     }
 
-    private void makeRequest(String query){
+    private void makeRequest(String query, String type){
 
         if (accessToken == null){
             Log.e(TAG, "No token");
             return;
         }
-        String url = getUrl(query);
+        String url = getUrl(query, type);
 
         final Request request = new Request.Builder()
                 .url(url)
@@ -210,7 +210,7 @@ public class SearchFragment extends Fragment {
 
     }
 
-    private String getUrl(String query){
+    private String getUrl(String query, String type){
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
         urlBuilder.addQueryParameter("q", query);
         urlBuilder.addQueryParameter("type", "track");
