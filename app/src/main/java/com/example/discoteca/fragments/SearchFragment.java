@@ -78,7 +78,6 @@ public class SearchFragment extends Fragment {
         songAdapter = new SongAdapter(getContext(), songs);
 
         // Adapter and layout manager is defined
-        rvSearch.setAdapter(songAdapter);
         rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Getting the access token from main activity
@@ -115,6 +114,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void songTab(){
+        rvSearch.setAdapter(songAdapter);
 
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
