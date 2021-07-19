@@ -28,6 +28,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -292,7 +293,12 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     public void onSongClick(int position) {
         Toast.makeText(getContext(), "Song clickedd", Toast.LENGTH_SHORT).show();
         Fragment fragment = new SongFragment();
+
+        // Pass song data to the detail fragment
         Bundle bundle = new Bundle();
+        bundle.putParcelable("song", Parcels.wrap(songs.get(position)));
+        fragment.setArguments(bundle);
+        
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.flChild, fragment).commit();
         flChild.setVisibility(View.VISIBLE);
