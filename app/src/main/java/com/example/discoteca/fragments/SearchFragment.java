@@ -283,6 +283,12 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     public void onAlbumClick(int position) {
         Toast.makeText(getContext(), "ALbum clickedd", Toast.LENGTH_SHORT).show();
         Fragment fragment = new AlbumFragment();
+
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("album", Parcels.wrap(albums.get(position)));
+        fragment.setArguments(bundle);
+
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.flChild, fragment).commit();
         flChild.setVisibility(View.VISIBLE);
@@ -298,7 +304,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         Bundle bundle = new Bundle();
         bundle.putParcelable("song", Parcels.wrap(songs.get(position)));
         fragment.setArguments(bundle);
-        
+
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.flChild, fragment).commit();
         flChild.setVisibility(View.VISIBLE);
