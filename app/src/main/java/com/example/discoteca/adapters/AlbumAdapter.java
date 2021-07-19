@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Album;
+import com.example.discoteca.models.Song;
 
 import java.util.List;
 
@@ -37,6 +38,18 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull AlbumAdapter.ViewHolder holder, int position) {
         Album album = rvAlbums.get(position);
         holder.bind(album);
+    }
+
+    public void clearAll(boolean notify){
+        rvAlbums.clear();
+        if (notify){
+            notifyDataSetChanged();
+        }
+    }
+
+    public void addAll(List<Album> albums){
+        rvAlbums.addAll(albums);
+        notifyDataSetChanged();
     }
 
     @Override
