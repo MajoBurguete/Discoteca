@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Album;
+import com.example.discoteca.models.Song;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +26,8 @@ import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,6 +43,7 @@ public class AlbumFragment extends Fragment {
     TextView tvAlbumNameD;
     TextView tvArtistAlbum;
     TextView tvAlbumYear;
+    List<Song> songList;
     RecyclerView rvAlbumSongs;
     String accessToken;
     Album album;
@@ -73,6 +77,9 @@ public class AlbumFragment extends Fragment {
         tvAlbumNameD.setText(album.getAlbumName());
         tvArtistAlbum.setText(album.getArtistName());
         tvAlbumYear.setText(album.getReleaseDate());
+
+        // Initialize song list
+        songList = new ArrayList<>();
 
         makeRequest(album.getAlbumId());
 
@@ -108,7 +115,6 @@ public class AlbumFragment extends Fragment {
                 try {
                     jsonObject = new JSONObject(response.body().string());
                     JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
-                    Log.i(TAG, "onResponse: " + jsonArray.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
