@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,15 +21,17 @@ import java.util.List;
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
 
     private Context context;
+    OnAlbumClickListener clickListener;
     List<Album> rvAlbums;
 
     public interface OnAlbumClickListener{
         void onAlbumClick(int position);
     }
 
-    public AlbumAdapter(Context context, List<Album> rvAlbums) {
+    public AlbumAdapter(Context context, List<Album> rvAlbums, OnAlbumClickListener albumListener) {
         this.context = context;
         this.rvAlbums = rvAlbums;
+        this.clickListener = albumListener;
     }
 
     @NonNull
@@ -63,12 +66,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout rlSearch;
         ImageView ivSearchAlbum;
         TextView tvSearchSong;
         TextView tvSongInfo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            rlSearch = itemView.findViewById(R.id.rlSearch);
             ivSearchAlbum = itemView.findViewById(R.id.ivSearchAlbum);
             tvSearchSong =itemView.findViewById(R.id.tvSearchTitle);
             tvSongInfo = itemView.findViewById(R.id.tvSearchInfo);
