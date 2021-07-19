@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
@@ -99,7 +102,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                     songTab();
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
-                    songAdapter.clearAll(true);
+                    albumAdapter.clearAll(true);
                     searchBar.setQuery("",false);
                     albumTab();
                 }
