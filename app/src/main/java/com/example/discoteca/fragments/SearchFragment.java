@@ -69,7 +69,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Frame layout is initialized 
+        // Frame layout is initialized
         flChild = view.findViewById(R.id.flChild);
         flChild.setVisibility(View.GONE);
 
@@ -281,7 +281,10 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     @Override
     public void onAlbumClick(int position) {
         Toast.makeText(getContext(), "ALbum clickedd", Toast.LENGTH_SHORT).show();
-
+        Fragment fragment = new AlbumFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.flChild, fragment).commit();
+        flChild.setVisibility(View.VISIBLE);
 
     }
 
