@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Album;
 
@@ -57,6 +58,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
         }
 
         public void bind(Album album) {
+            Glide.with(context).load(album.getImageUrl()).into(ivSearchAlbum);
+            tvSearchSong.setText(album.getAlbumName());
+            tvSongInfo.setText(album.getArtistName());
         }
     }
 }
