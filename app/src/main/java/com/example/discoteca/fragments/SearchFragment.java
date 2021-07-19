@@ -37,7 +37,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClickListener{
 
     private static final String TAG = "SearchFragment";
     RecyclerView rvSearch;
@@ -79,7 +79,7 @@ public class SearchFragment extends Fragment {
 
         // Adapter is created for each possible result
         songAdapter = new SongAdapter(getContext(), songs);
-        albumAdapter = new AlbumAdapter(getContext(), albums);
+        albumAdapter = new AlbumAdapter(getContext(), albums, this);
 
         // Adapter and layout manager is defined
         rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -269,5 +269,11 @@ public class SearchFragment extends Fragment {
         return url;
     }
 
+
+    @Override
+    public void onAlbumClick(int position) {
+        Toast.makeText(getContext(), "ALbum clickedd", Toast.LENGTH_SHORT).show();
+
+    }
 
 }
