@@ -27,6 +27,7 @@ public class AlbumFragment extends Fragment {
     TextView tvArtistAlbum;
     TextView tvAlbumYear;
     RecyclerView rvAlbumSongs;
+    String accessToken;
     Album album;
 
     public AlbumFragment() {
@@ -51,6 +52,7 @@ public class AlbumFragment extends Fragment {
         rvAlbumSongs = view.findViewById(R.id.rvAlbumSongs);
 
         album = Parcels.unwrap(this.getArguments().getParcelable("album"));
+        accessToken = this.getArguments().getString("token");
 
         Glide.with(getContext()).load(album.getImageUrl()).transform(new RoundedCorners(10)).into(ivAlbumDet);
         tvAlbumNameD.setText(album.getAlbumName());
@@ -59,4 +61,5 @@ public class AlbumFragment extends Fragment {
 
 
     }
+
 }

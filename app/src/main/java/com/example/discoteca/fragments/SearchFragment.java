@@ -287,6 +287,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         // Pass song data to the detail fragment
         Bundle bundle = new Bundle();
         bundle.putParcelable("album", Parcels.wrap(albums.get(position)));
+        bundle.putString("token", accessToken);
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
