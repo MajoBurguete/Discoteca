@@ -91,7 +91,9 @@ public class SearchFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
-                   songTab();
+                    songAdapter.clearAll(true);
+                    searchBar.setQuery("",false);
+                    songTab();
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
                     songAdapter.clearAll(true);
