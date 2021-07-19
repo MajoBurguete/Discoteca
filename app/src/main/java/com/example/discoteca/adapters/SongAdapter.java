@@ -20,14 +20,16 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     private Context context;
     List<Song> rvSongs;
+    OnSongClickListener clickListener;
 
     public interface OnSongClickListener{
         void onSongClick(int position);
     }
 
-    public SongAdapter(Context context, List<Song> rvSongs) {
+    public SongAdapter(Context context, List<Song> rvSongs, OnSongClickListener songListener) {
         this.context = context;
         this.rvSongs = rvSongs;
+        this.clickListener = songListener;
     }
 
     @NonNull
