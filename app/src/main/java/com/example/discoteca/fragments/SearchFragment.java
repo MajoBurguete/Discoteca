@@ -101,6 +101,7 @@ public class SearchFragment extends Fragment {
                 if (tabLayout.getSelectedTabPosition() == 1){
                     songAdapter.clearAll(true);
                     searchBar.setQuery("",false);
+                    albumTab();
                 }
             }
 
@@ -170,8 +171,48 @@ public class SearchFragment extends Fragment {
             callSong(request);
         }
         if (type == "album"){
-            
+            callAlbum(request);
         }
+    }
+
+    private void callAlbum(Request request) {
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    albumAdapter.clearAll(false);
+                    List<Album> results = new ArrayList<>();
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
+                    for (int i = 0; i < jsonArray.length()-1; i++){
+                        Album albumR = new Album();
+                        JSONObject album = jsonArray.getJSONObject(i);
+                        albumR.setAlbumId(album.getString("id"));
+                        albumR.setAlbumName(album.getString("name"));
+                        albumR.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
+                        albumR.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
+                        albumR.setNoTracks(album.getInt("total_tracks"));
+                        albumR.setReleaseDate(album.getString("release_date"));
+                        results.add(albumR);
+                    }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            albumAdapter.addAll(results);
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    Log.e(TAG, "Failed to parse data: " + e);
+                }
+
+            }
+        });
     }
 
     private void callSong(Request request) {
