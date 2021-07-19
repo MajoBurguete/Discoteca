@@ -43,6 +43,7 @@ import okhttp3.Response;
 public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClickListener{
 
     private static final String TAG = "SearchFragment";
+    FrameLayout flChild;
     RecyclerView rvSearch;
     SongAdapter songAdapter;
     AlbumAdapter albumAdapter;
@@ -67,6 +68,10 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Frame layout is initialized 
+        flChild = view.findViewById(R.id.flChild);
+        flChild.setVisibility(View.GONE);
 
         // Tab layout functionality
         tabLayout = view.findViewById(R.id.tabLayout);
@@ -276,6 +281,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     @Override
     public void onAlbumClick(int position) {
         Toast.makeText(getContext(), "ALbum clickedd", Toast.LENGTH_SHORT).show();
+
 
     }
 
