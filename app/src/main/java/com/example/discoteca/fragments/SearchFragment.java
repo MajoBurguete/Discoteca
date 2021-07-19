@@ -135,6 +135,11 @@ public class SearchFragment extends Fragment {
 
     }
 
+    private void albumTab(){
+        rvSearch.setAdapter(albumAdapter);
+        
+    }
+
     private void makeRequest(String query){
 
         if (accessToken == null){
