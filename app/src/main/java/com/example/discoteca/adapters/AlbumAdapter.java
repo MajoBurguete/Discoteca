@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,8 +44,16 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView ivSearchAlbum;
+        TextView tvSearchSong;
+        TextView tvSongInfo;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivSearchAlbum = itemView.findViewById(R.id.ivSearchAlbum);
+            tvSearchSong =itemView.findViewById(R.id.tvSearchTitle);
+            tvSongInfo = itemView.findViewById(R.id.tvSearchInfo);
         }
 
         public void bind(Album album) {
