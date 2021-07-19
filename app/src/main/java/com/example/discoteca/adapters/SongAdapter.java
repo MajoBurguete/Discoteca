@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +68,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         ImageView ivSearchAlbum;
         TextView tvSearchSong;
         TextView tvSongInfo;
+        RelativeLayout rlSearch;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -74,6 +76,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             ivSearchAlbum = itemView.findViewById(R.id.ivSearchAlbum);
             tvSearchSong =itemView.findViewById(R.id.tvSearchTitle);
             tvSongInfo = itemView.findViewById(R.id.tvSearchInfo);
+            rlSearch = itemView.findViewById(R.id.rlSearch);
         }
 
         public void bind(Song song) {
