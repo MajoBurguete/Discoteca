@@ -16,7 +16,7 @@
             android:layout_height="140dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="63dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="38dp"
             tools:src="@tools:sample/avatars" />
 
@@ -24,9 +24,9 @@
             android:id="@+id/tvArtistAlbum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/tvAlbumNameD"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="17dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="18sp"
             tools:text="Olivia Rodrigo" />
@@ -35,9 +35,9 @@
             android:id="@+id/tvAlbumYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/tvArtistAlbum"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="134dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="14sp"
             tools:text="2021" />
