@@ -83,6 +83,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             Glide.with(context).load(song.getImageUrl()).into(ivSearchAlbum);
             tvSearchSong.setText(song.getSongName());
             tvSongInfo.setText(song.getAlbumName() + " - " + song.getArtistName());
+            rlSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onSongClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
