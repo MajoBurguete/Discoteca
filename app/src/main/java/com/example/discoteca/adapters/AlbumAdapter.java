@@ -22,6 +22,10 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     private Context context;
     List<Album> rvAlbums;
 
+    public interface OnAlbumClickListener{
+        void onAlbumClick(int position);
+    }
+
     public AlbumAdapter(Context context, List<Album> rvAlbums) {
         this.context = context;
         this.rvAlbums = rvAlbums;
