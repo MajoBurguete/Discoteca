@@ -32,7 +32,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull AlbumAdapter.ViewHolder holder, int position) {
-
+        Album album = rvAlbums.get(position);
+        holder.bind(album);
     }
 
     @Override
@@ -43,6 +44,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        public void bind(Album album) {
         }
     }
 }
