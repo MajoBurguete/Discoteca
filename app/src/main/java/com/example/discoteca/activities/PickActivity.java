@@ -1,6 +1,7 @@
 package com.example.discoteca.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -38,11 +39,15 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         // Initialize song adapter
         adapter = new SongAdapter(PickActivity.this, songs, this);
 
+        // Song adapter and layout manager
+        rvPickSongs.setAdapter(adapter);
+        rvPickSongs.setLayoutManager(new LinearLayoutManager(this));
+
 
     }
 
     @Override
     public void onSongClick(int position) {
-        
+
     }
 }
