@@ -63,5 +63,12 @@ public class SongFragment extends Fragment {
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
 
+        // Bind song data into the layout
+        Glide.with(getContext()).load(song.getImageUrl()).transform(new RoundedCorners(10)).into(ivSongDetail);
+        tvNameDetail.setText(song.getSongName());
+        tvArtistSong.setText(song.getArtistName());
+        tvSongAlbum.setText(song.getAlbumName());
+
+
     }
 }
