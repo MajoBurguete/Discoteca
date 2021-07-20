@@ -198,7 +198,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                     List<Album> results = new ArrayList<>();
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length()-1; i++){
+                    for (int i = 0; i < jsonArray.length(); i++){
                         Album albumR = new Album();
                         JSONObject album = jsonArray.getJSONObject(i);
                         albumR.setAlbumId(album.getString("id"));
@@ -238,7 +238,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                     List<Song> results = new ArrayList<>();
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length()-1; i++){
+                    for (int i = 0; i < jsonArray.length(); i++){
                         Song song = new Song();
                         JSONObject track = jsonArray.getJSONObject(i);
                         song.setSongId(track.getString("id"));
