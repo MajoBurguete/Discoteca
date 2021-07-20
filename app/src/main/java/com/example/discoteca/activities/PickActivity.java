@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.discoteca.R;
@@ -63,6 +64,13 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         // Song adapter and layout manager
         rvPickSongs.setAdapter(adapter);
         rvPickSongs.setLayoutManager(new LinearLayoutManager(this));
+
+        ibBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Default tab
         songTab();
