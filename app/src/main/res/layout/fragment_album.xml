@@ -19,7 +19,7 @@
             android:layout_height="140dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="22dp"
             android:layout_marginTop="38dp"
             tools:src="@tools:sample/avatars" />
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="41dp"
             android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="18sp"
