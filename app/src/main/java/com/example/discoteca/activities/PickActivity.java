@@ -10,6 +10,7 @@ import com.example.discoteca.R;
 import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PickActivity extends AppCompatActivity {
@@ -30,5 +31,10 @@ public class PickActivity extends AppCompatActivity {
         // Components references from the pick activity layout
         searchBar = findViewById(R.id.svPickSong);
         rvPickSongs = findViewById(R.id.rvPickSongs);
+
+        // Initialize list of objects
+        songs = new ArrayList<>();
+
+        
     }
 }
