@@ -53,7 +53,16 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
+                if (tabLayout.getSelectedTabPosition() == 0){
+                    adapter.clearAll(true);
+                    searchBar.setQuery("",false);
+                    songTab();
+                }
+                if (tabLayout.getSelectedTabPosition() == 1){
+                    adapter.clearAll(true);
+                    searchBar.setQuery("",false);
+                    albumTab();
+                }
             }
 
             @Override
@@ -81,6 +90,12 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         });
 
 
+    }
+
+    private void songTab() {
+    }
+
+    private void albumTab() {
     }
 
     @Override
