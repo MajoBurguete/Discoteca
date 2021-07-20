@@ -25,11 +25,12 @@
 
         <TextView
             android:id="@+id/tvArtistAlbum"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="80dp"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="18sp"
             tools:text="Olivia Rodrigo" />
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvArtistAlbum"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="14sp"
             tools:text="2021" />
