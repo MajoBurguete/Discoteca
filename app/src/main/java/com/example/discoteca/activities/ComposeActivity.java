@@ -46,10 +46,19 @@ public class ComposeActivity extends AppCompatActivity {
         btnAddFact = findViewById(R.id.btnAddFact);
 
         if (song != null){
+            updateSong();
         }
 
         onPickClick();
 
+    }
+
+    private void updateSong(){
+        Toast.makeText(this, "aiudaaa", Toast.LENGTH_SHORT).show();
+        Glide.with(this).load(song.getImageUrl()).into(ivComposeAlbum);
+        tvAlbumName.setText(song.getAlbumName());
+        tvArtistName.setText(song.getArtistName());
+        tvSongName.setText(song.getSongName());
     }
 
     private void onPickClick() {
