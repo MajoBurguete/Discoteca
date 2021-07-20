@@ -64,6 +64,9 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         rvPickSongs.setAdapter(adapter);
         rvPickSongs.setLayoutManager(new LinearLayoutManager(this));
 
+        // Default tab
+        songTab();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
