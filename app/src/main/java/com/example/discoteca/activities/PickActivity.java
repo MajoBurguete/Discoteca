@@ -192,6 +192,58 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         });
     }
 
+    private void getAlbumSongs(Album album){
+        if (accessToken == null){
+            Log.e(TAG, "No token");
+            return;
+        }
+        // URL builder
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/albums/"+album.getAlbumId()).newBuilder();
+        String url = urlBuilder.build().toString();
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(response.body().string());
+                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+                    for (int i = 0 ; i < jsonArray.length(); i++){
+                        Song song = new Song();
+                        JSONObject responseObject = jsonArray.getJSONObject(i);
+                        song.setAlbumName(album.getAlbumName());
+                        song.setArtistName(album.getArtistName());
+                        song.setImageUrl(album.getImageUrl());
+                        song.setReleaseDate(album.getReleaseDate());
+                        song.setSongName(responseObject.getString("name"));
+                        song.setSongId(responseObject.getString("id"));
+                        song.setDuration(responseObject.getLong("duration_ms"));
+                        albumList.add(song);
+                    }
+                    PickActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.clearAll(false);
+                            adapter.addAll(albumList);
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
     private void callSong(Request request) {
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
