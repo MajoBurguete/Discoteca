@@ -9,19 +9,21 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardFact"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="190dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="10dp"
         app:cardCornerRadius="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="5dp"
+            android:paddingStart="18dp"
             android:paddingTop="15dp"
-            android:paddingEnd="5dp"
+            android:paddingEnd="13dp"
             android:paddingBottom="40dp">
 
             <ImageView
@@ -37,6 +39,8 @@
                 android:layout_below="@+id/tvSongName"
                 android:layout_marginStart="7dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/btnPick"
                 android:layout_toEndOf="@+id/ivComposeAlbum"
                 tools:text="SOUR" />
 
@@ -44,10 +48,12 @@
                 android:id="@+id/tvArtistName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSongName"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="7dp"
-                android:layout_toEndOf="@+id/tvAlbumName"
+                android:layout_below="@+id/tvAlbumName"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/btnPick"
+                android:layout_toEndOf="@+id/ivComposeAlbum"
                 tools:text="Olivia Rodrigo" />
 
             <TextView
@@ -63,9 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSongName"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="0dp"
-                android:layout_toEndOf="@+id/tvArtistName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-4dp"
+                android:layout_marginEnd="24dp"
                 android:text="Pick a song"
                 android:textSize="10sp" />
 
@@ -73,8 +79,8 @@
                 android:id="@+id/etDescriptionFact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ivComposeAlbum"
-                android:layout_marginTop="18dp"
+                android:layout_below="@+id/tvArtistName"
+                android:layout_marginTop="17dp"
                 android:layout_marginEnd="0dp"
                 android:layout_toStartOf="@+id/btnPick"
                 android:ems="10"
