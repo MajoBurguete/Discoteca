@@ -108,6 +108,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Request call
+                makeRequest(query, "song");
                 return true;
             }
 
@@ -123,6 +124,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Request call
+                makeRequest(query, "album");
                 return true;
             }
 
