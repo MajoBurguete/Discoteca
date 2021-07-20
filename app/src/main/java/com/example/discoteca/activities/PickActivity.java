@@ -76,6 +76,9 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             }
         });
 
+    }
+
+    private void songTab() {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -88,14 +91,21 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                 return false;
             }
         });
-
-
-    }
-
-    private void songTab() {
     }
 
     private void albumTab() {
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Request call
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     @Override
