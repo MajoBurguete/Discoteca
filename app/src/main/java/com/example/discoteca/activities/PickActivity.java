@@ -43,6 +43,19 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         rvPickSongs.setAdapter(adapter);
         rvPickSongs.setLayoutManager(new LinearLayoutManager(this));
 
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Request call
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
 
     }
 
