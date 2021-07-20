@@ -15,7 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.discoteca.R;
+import com.example.discoteca.models.Song;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.parceler.Parcels;
 
 public class SongFragment extends Fragment {
 
@@ -26,6 +29,7 @@ public class SongFragment extends Fragment {
     RecyclerView rvSongsFacts;
     FloatingActionButton fabAdd;
     RelativeLayout rlSong;
+    Song song;
 
     public SongFragment() {
         // Required empty public constructor
@@ -49,6 +53,8 @@ public class SongFragment extends Fragment {
         rvSongsFacts = view.findViewById(R.id.rvSongFacts);
         fabAdd = view.findViewById(R.id.fabAdd);
         rlSong = view.findViewById(R.id.rlSong);
+
+        song = Parcels.unwrap(this.getArguments().getParcelable("song"));
 
     }
 }
