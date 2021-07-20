@@ -1,5 +1,6 @@
 package com.example.discoteca.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.example.discoteca.models.Song;
+
+import org.parceler.Parcels;
 
 public class ComposeActivity extends AppCompatActivity {
 
@@ -23,6 +29,7 @@ public class ComposeActivity extends AppCompatActivity {
     Button btnPick;
     EditText etDescription;
     Button btnAddFact;
+    Song song;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,9 @@ public class ComposeActivity extends AppCompatActivity {
         btnPick = findViewById(R.id.btnPick);
         etDescription = findViewById(R.id.etDescriptionFact);
         btnAddFact = findViewById(R.id.btnAddFact);
+
+        if (song != null){
+        }
 
         onPickClick();
 
