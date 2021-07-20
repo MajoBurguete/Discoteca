@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new HomeFragment();
                 }
                 if (item.getItemId() == R.id.btnCompose){
-
+                    Intent compose = new Intent(MainActivity.this, ComposeActivity.class);
+                    compose.putExtra("token", accessToken);
+                    startActivity(compose);
                 }
                 if (item.getItemId() == R.id.btnSearch){
                     fragment = new SearchFragment();
