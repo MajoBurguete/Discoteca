@@ -63,12 +63,20 @@ public class SongFragment extends Fragment {
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
 
+        // Close button
+        ibClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rlSong.setClickable(false);
+                getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
+            }
+        });
+
         // Bind song data into the layout
         Glide.with(getContext()).load(song.getImageUrl()).transform(new RoundedCorners(10)).into(ivSongDetail);
         tvNameDetail.setText(song.getSongName());
         tvArtistSong.setText(song.getArtistName());
         tvSongAlbum.setText(song.getAlbumName());
-
-
+        
     }
 }
