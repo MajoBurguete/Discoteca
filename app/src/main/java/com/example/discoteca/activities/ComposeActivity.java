@@ -47,6 +47,8 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pick = new Intent(ComposeActivity.this, PickActivity.class);
+                String accessToken = getIntent().getStringExtra("token");
+                pick.putExtra("token", accessToken);
                 startActivityForResult(pick, REQUEST_CODE);
             }
         });
