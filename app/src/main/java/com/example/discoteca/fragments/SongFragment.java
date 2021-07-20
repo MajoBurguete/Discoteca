@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Song;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,6 +29,8 @@ public class SongFragment extends Fragment {
     ImageView ivSongDetail;
     TextView tvNameDetail;
     TextView tvArtistSong;
+    TextView tvSongAlbum;
+    ImageButton ibClose;
     RecyclerView rvSongsFacts;
     FloatingActionButton fabAdd;
     RelativeLayout rlSong;
@@ -50,6 +55,8 @@ public class SongFragment extends Fragment {
         ivSongDetail = view.findViewById(R.id.ivSongDetail);
         tvNameDetail = view.findViewById(R.id.tvNameDetail);
         tvArtistSong  = view.findViewById(R.id.tvArtistSong);
+        tvSongAlbum = view.findViewById(R.id.tvSongAlbum);
+        ibClose = view.findViewById(R.id.ibCloseSong);
         rvSongsFacts = view.findViewById(R.id.rvSongFacts);
         fabAdd = view.findViewById(R.id.fabAdd);
         rlSong = view.findViewById(R.id.rlSong);
