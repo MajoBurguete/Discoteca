@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.SongAdapter;
+import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.google.android.material.tabs.TabLayout;
 
@@ -38,6 +40,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
     ImageButton ibBack;
     RecyclerView rvPickSongs;
     List<Song> songs;
+    List<Song> albumList;
     SongAdapter adapter;
     TabLayout tabLayout;
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
@@ -166,7 +169,20 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
+                    albumList = new ArrayList<>();
                     JSONObject jsonObject = new JSONObject(response.body().string());
+                    JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        Album albumR = new Album();
+                        JSONObject album = jsonArray.getJSONObject(i);
+                        albumR.setAlbumId(album.getString("id"));
+                        albumR.setAlbumName(album.getString("name"));
+                        albumR.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
+                        albumR.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
+                        albumR.setNoTracks(album.getInt("total_tracks"));
+                        albumR.setReleaseDate(album.getString("release_date"));
+                        getAlbumSongs(albumR);
+                    }
 
                 } catch (JSONException e) {
                     Log.e(TAG, "Failed to parse data: " + e);
