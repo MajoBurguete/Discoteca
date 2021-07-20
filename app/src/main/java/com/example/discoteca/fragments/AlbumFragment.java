@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -172,6 +173,14 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
 
     @Override
     public void onSongClick(int position) {
+        Fragment fragment = new SongFragment();
 
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("song", Parcels.wrap(songList.get(position)));
+        fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.flChild, fragment).commit();
     }
 }
