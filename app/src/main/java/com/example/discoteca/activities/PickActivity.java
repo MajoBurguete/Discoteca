@@ -20,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -299,6 +300,9 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
 
     @Override
     public void onSongClick(int position) {
-
+        Intent result = new Intent();
+        result.putExtra("song", Parcels.wrap(songs.get(position)));
+        setResult(RESULT_OK, result);
+        finish();
     }
 }
