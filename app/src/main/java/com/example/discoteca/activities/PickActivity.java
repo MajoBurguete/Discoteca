@@ -1,16 +1,16 @@
 package com.example.discoteca.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.SearchView;
+import android.widget.ImageButton;
 
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.SongAdapter;
-import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.google.android.material.tabs.TabLayout;
 
@@ -34,6 +34,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
     public static final String TAG = "PickActivity";
     private String accessToken;
     SearchView searchBar;
+    ImageButton ibBack;
     RecyclerView rvPickSongs;
     List<Song> songs;
     SongAdapter adapter;
@@ -51,6 +52,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         searchBar = findViewById(R.id.svPickSong);
         rvPickSongs = findViewById(R.id.rvPickSongs);
         tabLayout = findViewById(R.id.tabPick);
+        ibBack = findViewById(R.id.ibBack);
 
         // Initialize list of objects
         songs = new ArrayList<>();
