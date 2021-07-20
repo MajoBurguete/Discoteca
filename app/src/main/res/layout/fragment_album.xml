@@ -7,8 +7,11 @@
     tools:context=".fragments.AlbumFragment">
 
     <RelativeLayout
+        android:id="@+id/rlAlbum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:clickable="true">
 
         <ImageView
             android:id="@+id/ivAlbumDet"
@@ -24,9 +27,9 @@
             android:id="@+id/tvArtistAlbum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvAlbumNameD"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="80dp"
             android:layout_toEndOf="@+id/ivAlbumDet"
             android:textSize="18sp"
             tools:text="Olivia Rodrigo" />
@@ -44,23 +47,34 @@
 
         <TextView
             android:id="@+id/tvAlbumNameD"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="43dp"
-            android:layout_toEndOf="@+id/ivAlbumDet"
-            android:textSize="22sp"
+            android:layout_below="@+id/ivAlbumDet"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="20sp"
             tools:text="Sour" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAlbumSongs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ivAlbumDet"
+            android:layout_below="@+id/tvAlbumNameD"
             android:layout_alignParentStart="true"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="18dp" />
+            android:layout_marginTop="15dp" />
+
+        <ImageButton
+            android:id="@+id/ibCloseAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:src="@android:drawable/btn_dialog" />
     </RelativeLayout>
 
 </FrameLayout>
