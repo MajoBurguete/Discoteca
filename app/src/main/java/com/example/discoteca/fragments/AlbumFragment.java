@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -45,6 +47,8 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
     TextView tvAlbumNameD;
     TextView tvArtistAlbum;
     TextView tvAlbumYear;
+    ImageButton ibClose;
+    RelativeLayout rlAlbum;
     List<Song> songList;
     RecyclerView rvAlbumSongs;
     String accessToken;
@@ -72,6 +76,8 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
         tvArtistAlbum = view.findViewById(R.id.tvArtistAlbum);
         tvAlbumYear = view.findViewById(R.id.tvAlbumYear);
         rvAlbumSongs = view.findViewById(R.id.rvAlbumSongs);
+        ibClose = view.findViewById(R.id.ibCloseAlbum);
+        rlAlbum = view.findViewById(R.id.rlAlbum);
 
         album = Parcels.unwrap(this.getArguments().getParcelable("album"));
         accessToken = this.getArguments().getString("token");
@@ -80,6 +86,13 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
         tvAlbumNameD.setText(album.getAlbumName());
         tvArtistAlbum.setText(album.getArtistName());
         tvAlbumYear.setText(album.getReleaseDate());
+        ibClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rlAlbum.setClickable(false);
+                getParentFragment().getChildFragmentManager().beginTransaction().remove(AlbumFragment.this).commit();
+            }
+        });
 
         // Initialize song list
         songList = new ArrayList<>();
