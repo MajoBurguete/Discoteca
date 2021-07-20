@@ -13,7 +13,7 @@ import com.example.discoteca.models.Song;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PickActivity extends AppCompatActivity {
+public class PickActivity extends AppCompatActivity implements SongAdapter.OnSongClickListener{
 
     private String accessToken;
     SearchView searchBar;
@@ -35,6 +35,14 @@ public class PickActivity extends AppCompatActivity {
         // Initialize list of objects
         songs = new ArrayList<>();
 
+        // Initialize song adapter
+        adapter = new SongAdapter(PickActivity.this, songs, this);
+
+
+    }
+
+    @Override
+    public void onSongClick(int position) {
         
     }
 }
