@@ -200,17 +200,15 @@ public class Spotify {
             }
         };
 
-        // Creates a new thread to wait for the API response
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(runnable);
+
         try {
-            executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
+            executorService.awaitTermination(1000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        //Once the thread is finished, the list is returned
-        return songList;
         return albumSongs;
     }
 
