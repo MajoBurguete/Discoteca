@@ -1,7 +1,6 @@
 package com.example.discoteca;
 
 import android.util.Log;
-
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 
@@ -36,7 +35,7 @@ public class Spotify {
         this.accessToken = accessToken;
     }
 
-    public List<Song> makeSearchSongRequest(String query){
+    public Call makeSearchSongRequest(String query){
 
         if (accessToken == null){
             Log.e(TAG, "No token");
@@ -48,23 +47,21 @@ public class Spotify {
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .build();
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                callSong(request);
-            }
-        };
+        return callSong(request);
+    }
 
-        // Creates a new thread to wait for the API response
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(runnable);
+    private Call callSong(Request request) {
+        return mOkHttpClient.newCall(request);
+
+    }
+
         try {
             executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        return songList;
+        return results;
     }
 
     public List<Album> makeSearchAlbumRequest(String query){
