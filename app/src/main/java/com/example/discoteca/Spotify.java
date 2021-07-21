@@ -156,10 +156,30 @@ public class Spotify {
         return callAlbumSongs(request);
     }
 
+    public List<Song> createAlbumForSongs(Response response, List<Album> results){
+        List<Song> albumSongs = new ArrayList<>();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                callAlbumSongs(request);
+                try {
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response.body().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        Album albumR = new Album();
+                        JSONObject album = jsonArray.getJSONObject(i);
+                        albumR.setAlbumId(album.getString("id"));
+                        albumR.setAlbumName(album.getString("name"));
+                        albumR.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
+                        albumR.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
+                        albumR.setNoTracks(album.getInt("total_tracks"));
+                        albumR.setReleaseDate(album.getString("release_date"));
+                        results.add(albumR);
+                    }
             }
         };
 
