@@ -5,14 +5,84 @@ import android.util.Log;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Spotify {
 
     public static final String TAG = "SpotifyClient";
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
     String accessToken;
+    Album album;
+    List<Song> songList = new ArrayList<>();
 
     public Spotify(String accessToken) {
         this.accessToken = accessToken;
     }
 
+    public List<Song> makeAlbumRequest(Album album){
+        this.album = album;
+        if (accessToken == null){
+            Log.e(TAG, "No token");
+        }
+        String url = getAlbumUrl(album.getAlbumId());
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        return songList;
+    }
+
+    private void callAlbum(Request request) {
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(response.body().string());
+                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+                    for (int i = 0 ; i < jsonArray.length(); i++){
+                        Song song = new Song();
+                        JSONObject responseObject = jsonArray.getJSONObject(i);
+                        song.setAlbumName(album.getAlbumName());
+                        song.setArtistName(album.getArtistName());
+                        song.setImageUrl(album.getImageUrl());
+                        song.setReleaseDate(album.getReleaseDate());
+                        song.setSongName(responseObject.getString("name"));
+                        song.setSongId(responseObject.getString("id"));
+                        song.setDuration(responseObject.getLong("duration_ms"));
+
+                        songList.add(song);
+                    }
+                } catch (JSONException e) {
+                    Log.e(TAG, "Failed to parse data: " + e);
+                }
+            }
+        });
+    }
+
+    private String getAlbumUrl(String id){
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/albums/"+id).newBuilder();
+        String url = urlBuilder.build().toString();
+        return url;
+    }
+}
