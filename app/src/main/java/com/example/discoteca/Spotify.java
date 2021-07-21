@@ -200,30 +200,33 @@ public class Spotify {
         return mOkHttpClient.newCall(request);
     }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(response.body().string());
-                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
-                    for (int i = 0 ; i < jsonArray.length(); i++){
-                        Song song = new Song();
-                        JSONObject responseObject = jsonArray.getJSONObject(i);
-                        song.setAlbumName(album.getAlbumName());
-                        song.setArtistName(album.getArtistName());
-                        song.setImageUrl(album.getImageUrl());
-                        song.setReleaseDate(album.getReleaseDate());
-                        song.setSongName(responseObject.getString("name"));
-                        song.setSongId(responseObject.getString("id"));
-                        song.setDuration(responseObject.getLong("duration_ms"));
-
-                        songList.add(song);
-                    }
-                } catch (JSONException e) {
-                    Log.e(TAG, "Failed to parse data: " + e);
-                }
+    public List<Song> createAlbumSongs(Response response, List<Song> songs, Album album){
+        JSONObject jsonObject = null;
+        try {
+            try {
+                jsonObject = new JSONObject(response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+            JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+            for (int i = 0 ; i < jsonArray.length(); i++){
+                Song song = new Song();
+                JSONObject responseObject = jsonArray.getJSONObject(i);
+                song.setAlbumName(album.getAlbumName());
+                song.setArtistName(album.getArtistName());
+                song.setImageUrl(album.getImageUrl());
+                song.setReleaseDate(album.getReleaseDate());
+                song.setSongName(responseObject.getString("name"));
+                song.setSongId(responseObject.getString("id"));
+                song.setDuration(responseObject.getLong("duration_ms"));
+
+                songs.add(song);
+            }
+        } catch (JSONException e) {
+            Log.e(TAG, "Failed to parse data: " + e);
+        }
+
+        return songs;
     }
 
     private String getAlbumUrl(String id){
