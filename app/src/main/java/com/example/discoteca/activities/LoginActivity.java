@@ -47,19 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         if (ParseUser.getCurrentUser() != null){
-            if (accessToken.isEmpty()){
-                authorizeUser();
-                goMainActivity();
-            }
         }
-
-        binding.btnSpotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                authorizeUser();
-            }
-        });
-
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
