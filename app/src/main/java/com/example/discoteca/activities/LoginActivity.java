@@ -46,7 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         if (ParseUser.getCurrentUser() != null){
+            goMainActivity();
         }
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(sign, REQUEST_CODE_SIGN);
             }
         });
+
+        authorizeUser();
     }
 
     private void authorizeUser(){
