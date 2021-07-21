@@ -27,9 +27,6 @@ public class Spotify {
     public static final String TAG = "SpotifyClient";
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
     String accessToken;
-    Album album;
-    List<Song> songList = new ArrayList<>();
-    List<Album> albumList = new ArrayList<>();
 
     public Spotify(String accessToken) {
         this.accessToken = accessToken;
@@ -180,6 +177,26 @@ public class Spotify {
                         albumR.setReleaseDate(album.getString("release_date"));
                         results.add(albumR);
                     }
+                    for (int i = 0; i < results.size(); i++){
+                        int count = i;
+                        List<Song> songsRes = new ArrayList<>();
+                        Album album = results.get(i);
+                        makeAlbumRequest(album).enqueue(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.e(TAG, "Failed to fetch data: " + e);
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                songsRes.clear();
+                                albumSongs.addAll(createAlbumSongs(response, songsRes, album));
+                            }
+                        });;
+                    }
+                } catch (JSONException e) {
+                    Log.e(TAG, "Failed to parse data: " + e);
+                }
             }
         };
 
@@ -194,6 +211,7 @@ public class Spotify {
 
         //Once the thread is finished, the list is returned
         return songList;
+        return albumSongs;
     }
 
     private Call callAlbumSongs(Request request) {
