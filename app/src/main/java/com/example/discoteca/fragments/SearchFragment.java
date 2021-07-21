@@ -136,9 +136,25 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                List<Song> results = client.makeSearchSongRequest(query);
-                songAdapter.clearAll(false);
-                songAdapter.addAll(results);
+                client.makeSearchSongRequest(query).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e(TAG, "Failed to fetch data: " + e);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        List<Song> results = new ArrayList<>();
+                        results.addAll(client.createSongs(response, results));
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                songAdapter.clearAll(false);
+                                songAdapter.addAll(results);
+                            }
+                        });
+                    }
+                });;;
                 return true;
             }
 
