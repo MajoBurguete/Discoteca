@@ -146,17 +146,6 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Request call
-                makeRequest(query, "album");
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-    }
-
     private void makeRequest(String query, String type){
 
         if (accessToken == null){
@@ -201,6 +190,12 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                         albumR.setNoTracks(album.getInt("total_tracks"));
                         albumR.setReleaseDate(album.getString("release_date"));
                         getAlbumSongs(albumR);
+                List<Album> results = new ArrayList<>();
+                List<Song> albumSongs = new ArrayList<>();
+                client.makeSearchAlbumRequest(query).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e(TAG, "Failed to fetch data: " + e);
                     }
 
                 } catch (JSONException e) {
@@ -248,17 +243,19 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                         song.setSongId(responseObject.getString("id"));
                         song.setDuration(responseObject.getLong("duration_ms"));
                         albumList.add(song);
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        albumSongs.addAll(client.createAlbumForSongs(response,results));
+                        PickActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.clearAll(false);
+                                adapter.addAll(albumSongs);
+                            }
+                        });
                     }
-                    PickActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter.clearAll(false);
-                            adapter.addAll(albumList);
-                        }
-                    });
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                });
+                return true;
             }
         });
     }
@@ -298,6 +295,8 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                 } catch (JSONException e) {
                     Log.e(TAG, "Failed to parse data: " + e);
                 }
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
 
