@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
+import com.example.discoteca.Spotify;
 import com.example.discoteca.adapters.AlbumAdapter;
 import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
@@ -53,6 +54,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     SearchView searchBar;
     private String accessToken;
     TabLayout tabLayout;
+    Spotify client;
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
 
     public SearchFragment() {
@@ -95,6 +97,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
 
         // Getting the access token from main activity
         accessToken = this.getArguments().getString("token");
+        client = new Spotify(accessToken);
 
         //The default tab is the song tab
         songTab();
@@ -133,7 +136,9 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                makeRequest(query, "song");
+                List<Song> results = client.makeSearchSongRequest(query);
+                songAdapter.clearAll(false);
+                songAdapter.addAll(results);
                 return true;
             }
 
@@ -151,7 +156,9 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                makeRequest(query, "album");
+                List<Album> results = client.makeSearchAlbumRequest(query);
+                albumAdapter.clearAll(false);
+                albumAdapter.addAll(results);
                 return true;
             }
 
@@ -161,121 +168,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             }
         });
 
-    }
-
-    private void makeRequest(String query, String type){
-
-        if (accessToken == null){
-            Log.e(TAG, "No token");
-            return;
-        }
-        String url = getUrl(query, type);
-
-        final Request request = new Request.Builder()
-                .url(url)
-                .addHeader("Authorization", "Bearer " + accessToken)
-                .build();
-
-        if (type == "song") {
-            callSong(request);
-        }
-        if (type == "album"){
-            callAlbum(request);
-        }
-    }
-
-    private void callAlbum(Request request) {
-        mOkHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Failed to fetch data: " + e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    albumAdapter.clearAll(false);
-                    List<Album> results = new ArrayList<>();
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length(); i++){
-                        Album albumR = new Album();
-                        JSONObject album = jsonArray.getJSONObject(i);
-                        albumR.setAlbumId(album.getString("id"));
-                        albumR.setAlbumName(album.getString("name"));
-                        albumR.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
-                        albumR.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
-                        albumR.setNoTracks(album.getInt("total_tracks"));
-                        albumR.setReleaseDate(album.getString("release_date"));
-                        results.add(albumR);
-                    }
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            albumAdapter.addAll(results);
-                        }
-                    });
-
-                } catch (JSONException e) {
-                    Log.e(TAG, "Failed to parse data: " + e);
-                }
-
-            }
-        });
-    }
-
-    private void callSong(Request request) {
-        mOkHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Failed to fetch data: " + e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    songAdapter.clearAll(false);
-                    List<Song> results = new ArrayList<>();
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length(); i++){
-                        Song song = new Song();
-                        JSONObject track = jsonArray.getJSONObject(i);
-                        song.setSongId(track.getString("id"));
-                        song.setSongName(track.getString("name"));
-                        song.setReleaseDate(track.getJSONObject("album").getString("release_date"));
-                        song.setImageUrl(track.getJSONObject("album").getJSONArray("images").getJSONObject(1).getString("url"));
-                        song.setDuration(track.getLong("duration_ms"));
-                        song.setArtistName(track.getJSONArray("artists").getJSONObject(0).getString("name"));
-                        song.setAlbumName(track.getJSONObject("album").getString("name"));
-                        results.add(song);
-                    }
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            songAdapter.addAll(results);
-                        }
-                    });
-
-                } catch (JSONException e) {
-                    Log.e(TAG, "Failed to parse data: " + e);
-                }
-            }
-        });
-
-    }
-
-    private String getUrl(String query, String type){
-        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
-        urlBuilder.addQueryParameter("q", query);
-        if (type == "song"){
-            urlBuilder.addQueryParameter("type", "track");
-        }
-        if (type == "album"){
-            urlBuilder.addQueryParameter("type", "album");
-        }
-        String url = urlBuilder.build().toString();
-        return url;
     }
 
 
