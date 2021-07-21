@@ -111,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 case TOKEN:
                     Log.d("API Call", "Connected! Yay!");
                     accessToken = response.getAccessToken();
+                    storeAccessToken(accessToken);
                     break;
                 case ERROR:
                     Log.e("API call", response.getError());
@@ -122,6 +123,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public String getAccessToken(){
         return accessToken;
+    }
+
+    private void storeAccessToken(String token){
+        Context context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("token", token);
+        editor.apply();
+
     }
 
     private void loginUser(String username, String password) {
