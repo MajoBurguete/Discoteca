@@ -12,6 +12,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -44,6 +47,23 @@ public class Spotify {
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .build();
 
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                callAlbum(request);
+            }
+        };
+
+        // Creates a new thread to wait for the API response
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(runnable);
+        try {
+            executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //Once the thread is finished, the list is returned
         return songList;
     }
 
