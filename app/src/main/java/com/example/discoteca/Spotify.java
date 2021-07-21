@@ -35,6 +35,85 @@ public class Spotify {
         this.accessToken = accessToken;
     }
 
+    public List<Song> makeSearchSongRequest(String query){
+
+        if (accessToken == null){
+            Log.e(TAG, "No token");
+        }
+        String url = getSearchUrl(query, "song");
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                callSong(request);
+            }
+        };
+
+        // Creates a new thread to wait for the API response
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(runnable);
+        try {
+            executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return songList;
+    }
+
+
+    private void callSong(Request request) {
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    songList.clear();
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    JSONArray jsonArray = jsonObject.getJSONObject("tracks").getJSONArray("items");
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        Song song = new Song();
+                        JSONObject track = jsonArray.getJSONObject(i);
+                        song.setSongId(track.getString("id"));
+                        song.setSongName(track.getString("name"));
+                        song.setReleaseDate(track.getJSONObject("album").getString("release_date"));
+                        song.setImageUrl(track.getJSONObject("album").getJSONArray("images").getJSONObject(1).getString("url"));
+                        song.setDuration(track.getLong("duration_ms"));
+                        song.setArtistName(track.getJSONArray("artists").getJSONObject(0).getString("name"));
+                        song.setAlbumName(track.getJSONObject("album").getString("name"));
+                        songList.add(song);
+                    }
+
+                } catch (JSONException e) {
+                    Log.e(TAG, "Failed to parse data: " + e);
+                }
+            }
+        });
+
+    }
+
+    private String getSearchUrl(String query, String type){
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
+        urlBuilder.addQueryParameter("q", query);
+        if (type == "song"){
+            urlBuilder.addQueryParameter("type", "track");
+        }
+        if (type == "album"){
+            urlBuilder.addQueryParameter("type", "album");
+        }
+        String url = urlBuilder.build().toString();
+        return url;
+    }
+
     public List<Song> makeAlbumRequest(Album album){
         this.album = album;
         if (accessToken == null){
