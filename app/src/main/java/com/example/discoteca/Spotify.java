@@ -142,8 +142,7 @@ public class Spotify {
         return url;
     }
 
-    public List<Song> makeAlbumRequest(Album album){
-        this.album = album;
+    public Call makeAlbumRequest(Album album){
         if (accessToken == null){
             Log.e(TAG, "No token");
         }
@@ -153,6 +152,9 @@ public class Spotify {
                 .url(url)
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .build();
+
+        return callAlbumSongs(request);
+    }
 
         Runnable runnable = new Runnable() {
             @Override
@@ -174,12 +176,9 @@ public class Spotify {
         return songList;
     }
 
-    private void callAlbumSongs(Request request) {
-        mOkHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Failed to fetch data: " + e);
-            }
+    private Call callAlbumSongs(Request request) {
+        return mOkHttpClient.newCall(request);
+    }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
