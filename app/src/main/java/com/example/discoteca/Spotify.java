@@ -129,7 +129,7 @@ public class Spotify {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                callAlbum(request);
+                callAlbumSongs(request);
             }
         };
 
@@ -146,7 +146,7 @@ public class Spotify {
         return songList;
     }
 
-    private void callAlbum(Request request) {
+    private void callAlbumSongs(Request request) {
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
