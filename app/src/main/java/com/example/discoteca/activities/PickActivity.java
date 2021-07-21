@@ -112,7 +112,25 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Request call
-                makeRequest(query, "song");
+                client.makeSearchSongRequest(query).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e(TAG, "Failed to fetch data: " + e);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        List<Song> results = new ArrayList<>();
+                        results.addAll(client.createSongs(response, results));
+                        PickActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.clearAll(false);
+                                adapter.addAll(results);
+                            }
+                        });
+                    }
+                });;
                 return true;
             }
 
