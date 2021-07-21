@@ -83,7 +83,7 @@ public class Spotify {
         return results;
     }
 
-    public List<Album> makeSearchAlbumRequest(String query){
+    public Call makeSearchAlbumRequest(String query){
 
         if (accessToken == null){
             Log.e(TAG, "No token");
@@ -95,55 +95,11 @@ public class Spotify {
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .build();
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                callAlbum(request);
-            }
-        };
-
-        // Creates a new thread to wait for the API response
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(runnable);
-        try {
-            executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return albumList;
+        return callAlbum(request);
     }
 
-    private void callAlbum(Request request) {
-        mOkHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Failed to fetch data: " + e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    JSONArray jsonArray = jsonObject.getJSONObject("albums").getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length(); i++){
-                        Album albumR = new Album();
-                        JSONObject album = jsonArray.getJSONObject(i);
-                        albumR.setAlbumId(album.getString("id"));
-                        albumR.setAlbumName(album.getString("name"));
-                        albumR.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
-                        albumR.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
-                        albumR.setNoTracks(album.getInt("total_tracks"));
-                        albumR.setReleaseDate(album.getString("release_date"));
-                        albumList.add(albumR);
-                    }
-
-                } catch (JSONException e) {
-                    Log.e(TAG, "Failed to parse data: " + e);
-                }
-
-            }
-        });
+    private Call callAlbum(Request request) {
+        return mOkHttpClient.newCall(request);
     }
 
     private void callSong(Request request) {
