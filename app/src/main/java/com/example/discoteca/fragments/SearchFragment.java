@@ -1,5 +1,7 @@
 package com.example.discoteca.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -88,8 +90,11 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         // Adapter and layout manager is defined
         rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Getting the access token from main activity
-        accessToken = this.getArguments().getString("token");
+        // Getting the access token from shared preferences
+        Context context = getActivity();
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        accessToken = sharedPref.getString("token",null);
         client = new Spotify(accessToken);
 
         //The default tab is the song tab
