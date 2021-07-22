@@ -43,6 +43,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+        return rvFact.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
