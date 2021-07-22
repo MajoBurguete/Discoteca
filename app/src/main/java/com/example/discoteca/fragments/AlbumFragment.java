@@ -1,5 +1,7 @@
 package com.example.discoteca.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickListener{
@@ -71,9 +74,15 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
         rlAlbum = view.findViewById(R.id.rlAlbum);
 
         album = Parcels.unwrap(this.getArguments().getParcelable("album"));
-        accessToken = this.getArguments().getString("token");
+
+        // Access Token
+        Context context = getActivity();
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        accessToken = sharedPref.getString("token",null);
         client = new Spotify(accessToken);
 
+        // Bind album data
         Glide.with(getContext()).load(album.getImageUrl()).transform(new RoundedCorners(10)).into(ivAlbumDet);
         tvAlbumNameD.setText(album.getAlbumName());
         tvArtistAlbum.setText(album.getArtistName());
