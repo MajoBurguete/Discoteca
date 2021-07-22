@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
 import com.example.discoteca.models.Fact;
@@ -86,6 +87,19 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+                    song = client.createSong(response, songResp);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Glide.with(context).load(song.getImageUrl()).into(ivAlbum);
+                            tvSongT.setText(song.getSongName());
+                            String info = song.getAlbumName() + " - " + song.getArtistName();
+                            tvSearchInfo.setText(info);
+                            tvDescription.setText(fact.getDescription());
+                            String user = "@" + fact.getUser().getUsername();
+                            tvUserFact.setText(user);
+                        }
+                    });
                 }
             });
 
