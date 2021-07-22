@@ -36,6 +36,11 @@ public class ComposeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
 
+        Song intentSong = Parcels.unwrap(getIntent().getParcelableExtra("song"));
+        if (intentSong != null){
+            song = intentSong;
+        }
+
         // Components references from compose layout
         ivComposeAlbum = findViewById(R.id.ivComposeAlbum);
         tvAlbumName = findViewById(R.id.tvAlbumName);
