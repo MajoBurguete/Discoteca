@@ -5,7 +5,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +47,11 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick);
 
-        accessToken = getIntent().getStringExtra("token");
+        // Get access token from shared preferences
+        Context context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        accessToken = sharedPref.getString("token",null);
         client = new Spotify(accessToken);
 
         // Components references from the pick activity layout
