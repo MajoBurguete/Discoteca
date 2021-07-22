@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,8 +51,20 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
+        ImageView ivAlbum;
+        TextView tvSongT;
+        TextView tvDescription;
+        TextView tvSearchInfo;
+        TextView tvUserFact;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivAlbum  = itemView.findViewById(R.id.ivAlbum);
+            tvSongT = itemView.findViewById(R.id.tvSongT);
+            tvSearchInfo = itemView.findViewById(R.id.tvSearchInfo);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvUserFact = itemView.findViewById(R.id.tvUserFact);
         }
     }
 }
