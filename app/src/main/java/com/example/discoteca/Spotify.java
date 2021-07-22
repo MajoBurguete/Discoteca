@@ -49,6 +49,7 @@ public class Spotify {
         return callSong(request);
     }
 
+
     private Call callSong(Request request) {
         return mOkHttpClient.newCall(request);
 
@@ -278,6 +279,30 @@ public class Spotify {
     private Call callSongId(Request request) {
         return mOkHttpClient.newCall(request);
     }
+
+    public Song createSong(Response response, Song song){
+        JSONObject songResponse = null;
+        try {
+            try {
+                songResponse = new JSONObject(response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            };
+            JSONObject album = songResponse.getJSONObject("album");
+            song.setAlbumName(album.getString("name"));
+            song.setArtistName(album.getJSONArray("artists").getJSONObject(0).getString("name"));
+            song.setImageUrl(album.getJSONArray("images").getJSONObject(1).getString("url"));
+            song.setReleaseDate(album.getString("release_date"));
+            song.setSongName(songResponse.getString("name"));
+            song.setSongId(songResponse.getString("id"));
+            song.setDuration(songResponse.getLong("duration_ms"));
+        } catch (JSONException e) {
+            Log.e(TAG, "Failed to parse data: " + e);
+        }
+
+        return song;
+    };
+
     private String getSongUrl(String id) {
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/tracks/"+id).newBuilder();
         String url = urlBuilder.build().toString();
