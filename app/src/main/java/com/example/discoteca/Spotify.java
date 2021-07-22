@@ -32,6 +32,8 @@ public class Spotify {
         this.accessToken = accessToken;
     }
 
+    // Search Song Request
+
     public Call makeSearchSongRequest(String query){
 
         if (accessToken == null){
@@ -79,6 +81,8 @@ public class Spotify {
 
         return results;
     }
+
+    // Search Album Request
 
     public Call makeSearchAlbumRequest(String query){
 
@@ -139,6 +143,8 @@ public class Spotify {
         return url;
     }
 
+    // Search album by id request
+
     public Call makeAlbumRequest(Album album){
         if (accessToken == null){
             Log.e(TAG, "No token");
@@ -152,6 +158,8 @@ public class Spotify {
 
         return callAlbumSongs(request);
     }
+
+    // Songs of an album
 
     public List<Song> createAlbumForSongs(Response response, List<Album> results){
         List<Song> albumSongs = new ArrayList<>();
