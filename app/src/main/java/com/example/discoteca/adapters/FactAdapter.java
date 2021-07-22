@@ -2,6 +2,7 @@ package com.example.discoteca.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,14 @@ import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
+
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     private static final String TAG = "FactAdapter";
@@ -66,5 +74,22 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUserFact = itemView.findViewById(R.id.tvUserFact);
         }
+
+        public void bind(Fact fact) {
+            String id = fact.getSong();
+            Song songResp = new Song();
+            client.makeSongRequest(id).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Failed to fetch data: " + e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                }
+            });
+
+        }
+
     }
 }
