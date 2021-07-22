@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Fact;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -38,6 +39,10 @@ public class HomeFragment extends Fragment {
 
         // Get references
         rvFacts = view.findViewById(R.id.rvFacts);
+
+        // Initialize fact list
+        facts = new ArrayList<>();
+
 
     }
 }
