@@ -1,5 +1,6 @@
 package com.example.discoteca.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
+import com.example.discoteca.activities.ComposeActivity;
 import com.example.discoteca.models.Song;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -69,6 +71,15 @@ public class SongFragment extends Fragment {
             public void onClick(View v) {
                 rlSong.setClickable(false);
                 getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
+            }
+        });
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent fact = new Intent(getActivity(), ComposeActivity.class);
+                fact.putExtra("song", Parcels.wrap(song));
+                startActivity(fact);
             }
         });
 
