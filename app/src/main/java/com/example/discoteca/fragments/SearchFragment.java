@@ -134,6 +134,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                songAdapter.clearAll(true);
                 client.makeSearchSongRequest(query).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -170,6 +171,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                albumAdapter.clearAll(true);
                 client.makeSearchAlbumRequest(query).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
