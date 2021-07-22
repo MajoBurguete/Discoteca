@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,13 @@ import com.example.discoteca.models.Song;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickListener{
@@ -111,7 +116,25 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
     }
 
     private void makeRequest() {
-        List<Song> spotifyResp = client.makeAlbumRequest(album);
+        List<Song> spotifyResp = new ArrayList<>();
+        client.makeAlbumRequest(album).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Failed to fetch data: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                spotifyResp.addAll(client.createAlbumSongs(response, spotifyResp, album));
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.clearAll(false);
+                        adapter.addAll(spotifyResp);
+                    }
+                });
+            }
+        });
         adapter.addAll(spotifyResp);
     }
 
