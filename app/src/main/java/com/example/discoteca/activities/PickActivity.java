@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
@@ -36,6 +37,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
     private String accessToken;
     SearchView searchBar;
     ImageButton ibBack;
+    ProgressBar progressBar;
     RecyclerView rvPickSongs;
     List<Song> songs;
     SongAdapter adapter;
@@ -59,6 +61,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         rvPickSongs = findViewById(R.id.rvPickSongs);
         tabLayout = findViewById(R.id.tabPick);
         ibBack = findViewById(R.id.ibBack);
+        progressBar = findViewById(R.id.loadSongs);
 
         // Initialize list of objects
         songs = new ArrayList<>();
@@ -112,6 +115,8 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.clearAll(true);
+                progressBar.setVisibility(View.VISIBLE);
                 // Request call
                 client.makeSearchSongRequest(query).enqueue(new Callback() {
                     @Override
@@ -128,6 +133,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                             public void run() {
                                 adapter.clearAll(false);
                                 adapter.addAll(results);
+                                progressBar.setVisibility(View.GONE);
                             }
                         });
                     }
@@ -146,6 +152,8 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.clearAll(true);
+                progressBar.setVisibility(View.VISIBLE);
                 // Request call
                 List<Album> results = new ArrayList<>();
                 List<Song> albumSongs = new ArrayList<>();
@@ -163,6 +171,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                             public void run() {
                                 adapter.clearAll(false);
                                 adapter.addAll(albumSongs);
+                                progressBar.setVisibility(View.INVISIBLE);
                             }
                         });
                     }
