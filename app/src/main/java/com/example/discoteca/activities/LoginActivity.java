@@ -13,15 +13,11 @@ import android.widget.Toast;
 
 import com.example.discoteca.R;
 import com.spotify.android.appremote.api.ConnectionParams;
-import com.spotify.android.appremote.api.Connector;
-import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 import com.example.discoteca.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.spotify.android.appremote.api.ConnectionParams;
-import com.spotify.android.appremote.api.SpotifyAppRemote;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -32,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 8;
     private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
     private static final String REDIRECT_URI = "intent://";
-    private SpotifyAppRemote mSpotifyAppRemote;
     private String accessToken = "";
 
     // Set the connection parameters
@@ -148,7 +143,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("token", accessToken);
         startActivity(i);
         finish();
     }
