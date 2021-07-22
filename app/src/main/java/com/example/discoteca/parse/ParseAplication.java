@@ -2,7 +2,9 @@ package com.example.discoteca.parse;
 
 import android.app.Application;
 
+import com.example.discoteca.models.Fact;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 public class ParseAplication extends Application {
 
@@ -10,6 +12,9 @@ public class ParseAplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Register your parse models
+        ParseObject.registerSubclass(Fact.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("hxXJbnrjYSxmhGpdDo748j4TT86dCJTJ1KT7i8Bz")
