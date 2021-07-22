@@ -258,4 +258,29 @@ public class Spotify {
         String url = urlBuilder.build().toString();
         return url;
     }
+
+    // Song by id request
+
+    public Call makeSongRequest(String id){
+        if (accessToken == null){
+            Log.e(TAG, "No token");
+        }
+        String url = getSongUrl(id);
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        return callSongId(request);
+    }
+
+    private Call callSongId(Request request) {
+        return mOkHttpClient.newCall(request);
+    }
+    private String getSongUrl(String id) {
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/tracks/"+id).newBuilder();
+        String url = urlBuilder.build().toString();
+        return url;
+    }
 }
