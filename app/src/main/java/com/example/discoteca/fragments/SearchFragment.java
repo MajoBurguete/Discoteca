@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
@@ -35,7 +36,6 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
 import okhttp3.Response;
 
 public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClickListener, SongAdapter.OnSongClickListener{
@@ -45,6 +45,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     RecyclerView rvSearch;
     SongAdapter songAdapter;
     AlbumAdapter albumAdapter;
+    ProgressBar searchProgress;
     List<Song> songs;
     List<Album> albums;
     SearchView searchBar;
@@ -66,6 +67,9 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Progress bar
+        searchProgress = view.findViewById(R.id.searchProgress);
 
         // Frame layout is initialized
         flChild = view.findViewById(R.id.flChild);
@@ -134,6 +138,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                searchProgress.setVisibility(View.VISIBLE);
                 songAdapter.clearAll(true);
                 client.makeSearchSongRequest(query).enqueue(new Callback() {
                     @Override
@@ -150,6 +155,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                             public void run() {
                                 songAdapter.clearAll(false);
                                 songAdapter.addAll(results);
+                                searchProgress.setVisibility(View.GONE);
                             }
                         });
                     }
@@ -171,6 +177,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                searchProgress.setVisibility(View.VISIBLE);
                 albumAdapter.clearAll(true);
                 client.makeSearchAlbumRequest(query).enqueue(new Callback() {
                     @Override
@@ -187,6 +194,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                             public void run() {
                                 albumAdapter.clearAll(false);
                                 albumAdapter.addAll(results);
+                                searchProgress.setVisibility(View.GONE);
                             }
                         });
                     }
