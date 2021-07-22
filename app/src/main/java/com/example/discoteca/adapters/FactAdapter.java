@@ -2,12 +2,14 @@ package com.example.discoteca.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
@@ -31,6 +33,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_fact, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
