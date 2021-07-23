@@ -77,5 +77,11 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+        fabImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 }
