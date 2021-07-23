@@ -93,6 +93,9 @@ public class ProfileFragment extends Fragment {
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
+                adapter.clearAll(true);
+                adapter.addAll(facts);
+
 
             }
         });
