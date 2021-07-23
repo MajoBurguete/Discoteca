@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
 
     RecyclerView rvFacts;
     List<Fact> facts;
+    Spotify client;
     private String accessToken;
 
     public HomeFragment() {
