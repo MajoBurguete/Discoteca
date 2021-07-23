@@ -51,7 +51,21 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ParseUser currUser = ParseUser.getCurrentUser();
                 String newUsername = etNameEdit.getText().toString();
+                saveUser(newUsername, currUser);
 
+            }
+        });
+
+    private void saveUser(String newUsername, ParseUser currentUser) {
+        currentUser.put(KEY_USERNAME, newUsername);
+        currentUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "Error while saving description", e);
+                    Toast.makeText(SettingsActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(SettingsActivity.this, "Your username was save successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
