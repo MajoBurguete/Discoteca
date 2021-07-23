@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -33,6 +34,7 @@ public class ProfileFragment extends Fragment {
     TextView tvNameP;
     TextView tvNumber;
     RecyclerView rvUserFacts;
+    FactAdapter adapter;
     List<Fact> userFacts;
     public static final String KEY_PROFILE = "profile";
 
@@ -65,6 +67,9 @@ public class ProfileFragment extends Fragment {
 
         // Array initialized
         userFacts = new ArrayList<>();
+
+        // Adapter initialized
+        adapter = new FactAdapter(getContext(), userFacts);
 
         queryFacts();
 
