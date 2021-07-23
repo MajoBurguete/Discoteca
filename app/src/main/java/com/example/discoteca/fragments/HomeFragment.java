@@ -48,10 +48,8 @@ public class HomeFragment extends Fragment {
 
         // Initialize fact list
         factsL = new ArrayList<>();
-        songList = new ArrayList<>();
 
         // Initialize fact adapter
-        adapter = new FactAdapter(getContext(), factsL, songList);
 
         // Assign adapter nd layout manager to the recycler view
         rvFacts.setAdapter(adapter);
@@ -74,11 +72,7 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                factsNew.clear();
-                songNew.clear();
             }
         });
-    }
-
     }
 }
