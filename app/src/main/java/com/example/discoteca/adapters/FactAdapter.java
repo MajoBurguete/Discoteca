@@ -49,6 +49,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FactAdapter.ViewHolder holder, int position) {
+        song = songs.get(position);
         Fact fact = rvFact.get(position);
         holder.bind(fact);
     }
