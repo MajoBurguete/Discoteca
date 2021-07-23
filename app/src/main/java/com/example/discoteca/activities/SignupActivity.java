@@ -8,10 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
-import com.example.discoteca.databinding.ActivitySignupBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -23,17 +24,20 @@ public class SignupActivity extends AppCompatActivity {
     EditText etUsersign;
     EditText etPassign;
     EditText etEmail;
+    ImageView ivSignPicture;
+    FloatingActionButton fabImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivitySignupBinding binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_signup);
 
         btnNewus = findViewById(R.id.btnNewus);
         etUsersign = findViewById(R.id.etUsersign);
         etPassign = findViewById(R.id.etPassign);
         etEmail = findViewById(R.id.etEmail);
+        ivSignPicture = findViewById(R.id.ivSignPicture);
+        fabImage = findViewById(R.id.fabImage);
 
         btnNewus.setOnClickListener(new View.OnClickListener() {
             @Override
