@@ -14,6 +14,7 @@
         android:layout_below="@+id/ibClose"
         android:layout_alignParentStart="false"
         android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibClose"
@@ -27,7 +28,7 @@
         android:layout_below="@+id/ivUserPict"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="60dp"
         android:ems="10"
         android:hint="Name"
@@ -37,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivUserPict" />
+        app:layout_constraintTop_toBottomOf="@+id/fabEditImage" />
 
     <Button
         android:id="@+id/btnSaveProf"
@@ -77,5 +78,16 @@
         app:layout_constraintTop_toBottomOf="@+id/etNameEdit"
         app:layout_constraintVertical_bias="0.0"
         tools:text="doreb@gmail.com" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivUserPict"
+        app:srcCompat="@drawable/ic_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
