@@ -22,8 +22,10 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+    private static final String TAG = "HomeFragment";
     RecyclerView rvFacts;
     List<Fact> factsL;
+    FactAdapter adapter;
     Spotify client;
     List<Song> songList;
     private String accessToken;
@@ -58,6 +60,9 @@ public class HomeFragment extends Fragment {
         // Initialize fact list
         factsL = new ArrayList<>();
         songList = new ArrayList<>();
+
+        // Initialize fact adapter
+        adapter = new FactAdapter(getContext(), factsL, songList);
 
 
     }
