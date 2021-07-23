@@ -19,7 +19,9 @@ import android.widget.Toast;
 import com.example.discoteca.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 import java.io.ByteArrayOutputStream;
@@ -77,14 +79,22 @@ public class SignupActivity extends AppCompatActivity {
                             Log.e(TAG, "Failed to signup", e);
                             return;
                         }
-                        Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
-                        Intent result = new Intent();
-                        result.putExtra("username", username);
-                        result.putExtra("password", password);
-                        setResult(RESULT_OK, result);
-                        finish();
+                        ParseUser user = ParseUser.getCurrentUser();
+                        user.put(KEY_PROFILE, photoFile);
+                        user.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
+                                Intent result = new Intent();
+                                result.putExtra("username", username);
+                                result.putExtra("password", password);
+                                setResult(RESULT_OK, result);
+                                finish();
+                            }
+                        });
                     }
                 });
+
             }
 
         });
