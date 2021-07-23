@@ -77,31 +77,13 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         }
 
         public void bind(Fact fact) {
-            String id = fact.getSong();
-            Song songResp = new Song();
-            client.makeSongRequest(id).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    Log.e(TAG, "Failed to fetch data: " + e);
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    song = client.createSong(response, songResp);
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Glide.with(context).load(song.getImageUrl()).into(ivAlbum);
-                            tvSongT.setText(song.getSongName());
-                            String info = song.getAlbumName() + " - " + song.getArtistName();
-                            tvSearchInfo.setText(info);
-                            tvDescription.setText(fact.getDescription());
-                            String user = "@" + fact.getUser().getUsername();
-                            tvUserFact.setText(user);
-                        }
-                    });
-                }
-            });
+            Glide.with(context).load(song.getImageUrl()).into(ivAlbum);
+            tvSongT.setText(song.getSongName());
+            String info = song.getAlbumName() + " - " + song.getArtistName();
+            tvSearchInfo.setText(info);
+            tvDescription.setText(fact.getDescription());
+            String user = "@" + fact.getUser().getUsername();
+            tvUserFact.setText(user);
 
         }
 
