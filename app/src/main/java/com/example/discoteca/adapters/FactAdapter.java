@@ -1,8 +1,6 @@
 package com.example.discoteca.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,30 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
-import com.example.discoteca.Spotify;
-import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Fact;
-import com.example.discoteca.models.Song;
 
-import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     private static final String TAG = "FactAdapter";
     private Context context;
     List<Fact> rvFact;
-    Song song;
-    List<Song> songs;
 
-    public FactAdapter(Context context, List<Fact> rvFact, List<Song> songs){
+    public FactAdapter(Context context, List<Fact> rvFact){
         this.context = context;
         this.rvFact = rvFact;
-        this.songs = songs;
     }
 
     @NonNull
@@ -49,21 +36,18 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FactAdapter.ViewHolder holder, int position) {
-        song = songs.get(position);
         Fact fact = rvFact.get(position);
         holder.bind(fact);
     }
 
     public void clearAll(boolean notify){
-        songs.clear();
         rvFact.clear();
         if (notify){
             notifyDataSetChanged();
         }
     }
 
-    public void addAll(List<Fact> facts, List<Song> songList){
-        songs.addAll(songList);
+    public void addAll(List<Fact> facts){
         rvFact.addAll(facts);
         notifyDataSetChanged();
     }
@@ -91,9 +75,9 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         }
 
         public void bind(Fact fact) {
-            Glide.with(context).load(song.getImageUrl()).into(ivAlbum);
-            tvSongT.setText(song.getSongName());
-            String info = song.getAlbumName() + " - " + song.getArtistName();
+            Glide.with(context).load(fact.getUrl()).into(ivAlbum);
+            tvSongT.setText(fact.getSong());
+            String info = fact.getAlbum() + " - " + fact.getArtist();
             tvSearchInfo.setText(info);
             tvDescription.setText(fact.getDescription());
             String user = "@" + fact.getUser().getUsername();
