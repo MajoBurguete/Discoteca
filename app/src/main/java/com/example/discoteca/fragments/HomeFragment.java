@@ -1,5 +1,7 @@
 package com.example.discoteca.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ public class HomeFragment extends Fragment {
 
     RecyclerView rvFacts;
     List<Fact> facts;
+    private String accessToken;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,6 +39,13 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Access Token and create spotify object
+        Context context = getActivity();
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        accessToken = sharedPref.getString("token",null);
+        client = new Spotify(accessToken);
 
         // Get references
         rvFacts = view.findViewById(R.id.rvFacts);
