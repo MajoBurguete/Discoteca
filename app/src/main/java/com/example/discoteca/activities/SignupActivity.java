@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,9 @@ import com.parse.SignUpCallback;
 public class SignupActivity extends AppCompatActivity {
 
     private String TAG = "SignupActivity";
+    public static final String KEY_PROFILE = "profile";
+    public final static int PICK_PHOTO_CODE = 27;
+    private ParseFile photoFile;
     Button btnNewus;
     EditText etUsersign;
     EditText etPassign;
@@ -81,7 +85,22 @@ public class SignupActivity extends AppCompatActivity {
         fabImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onClickPhoto(v);
             }
         });
+    }
+
+    // Trigger gallery selection for a photo
+    private void onClickPhoto(View v) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
     }
 }
