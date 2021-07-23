@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -15,7 +16,9 @@ import android.view.ViewGroup;
 
 import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
+import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.example.discoteca.models.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +66,10 @@ public class HomeFragment extends Fragment {
 
         // Initialize fact adapter
         adapter = new FactAdapter(getContext(), factsL, songList);
+
+        // Assign adapter nd layout manager to the recycler view
+        rvFacts.setAdapter(adapter);
+        rvFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
     }
