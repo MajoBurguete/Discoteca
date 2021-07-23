@@ -26,5 +26,12 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         // Gets current user data
         ParseUser user = ParseUser.getCurrentUser();
+
+        // Get references
+        ivUserPict = findViewById(R.id.ivUserPict);
+        etNameEdit = findViewById(R.id.etNameEdit);
+        tvEmail = findViewById(R.id.tvEmail);
+        btnSaveProf = findViewById(R.id.btnSaveProf);
+        ibClose = findViewById(R.id.ibClose);
     }
 }
