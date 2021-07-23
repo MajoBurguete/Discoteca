@@ -2,6 +2,7 @@ package com.example.discoteca.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -38,6 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         ParseUser user = ParseUser.getCurrentUser();
 
         context = this;
+
         // Get references
         ivUserPict = findViewById(R.id.ivUserPict);
         etNameEdit = findViewById(R.id.etNameEdit);
@@ -49,6 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Bind data
         etNameEdit.setText(user.getUsername());
         tvEmail.setText(user.getEmail());
+        Glide.with(context).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPict);
 
         btnSaveProf.setOnClickListener(new View.OnClickListener() {
             @Override
