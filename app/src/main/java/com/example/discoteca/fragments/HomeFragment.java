@@ -74,6 +74,9 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
+                adapter.clearAll(false);
+                adapter.addAll(facts);
+
             }
         });
     }
