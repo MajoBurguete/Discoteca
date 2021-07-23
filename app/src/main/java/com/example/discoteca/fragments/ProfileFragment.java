@@ -96,6 +96,9 @@ public class ProfileFragment extends Fragment {
                 adapter.clearAll(true);
                 adapter.addAll(facts);
 
+                // Set number of facts
+                int value  = adapter.getItemCount();
+                tvNumber.setText(String.valueOf(value));
 
             }
         });
