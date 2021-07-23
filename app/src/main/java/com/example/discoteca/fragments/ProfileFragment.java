@@ -57,7 +57,8 @@ public class ProfileFragment extends Fragment {
 
         ParseUser user = ParseUser.getCurrentUser();
 
-        Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE)).circleCrop().into(ivProfPict);
+        // Bind data
+        Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfPict);
         tvNameP.setText(user.getUsername());
 
         queryFacts();
