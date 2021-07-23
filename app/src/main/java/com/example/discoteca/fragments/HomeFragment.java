@@ -71,6 +71,26 @@ public class HomeFragment extends Fragment {
         rvFacts.setAdapter(adapter);
         rvFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Query facts from database
+        queryFacts();
+
+    }
+
+    private void queryFacts() {
+        ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
+        query.include(Fact.KEY_USER);
+        query.setLimit(20);
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<Fact>() {
+            @Override
+            public void done(List<Fact> facts, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+            }
+        });
+    }
 
     }
 }
