@@ -19,6 +19,8 @@ import com.example.discoteca.Spotify;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +90,8 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
+                factsNew.clear();
+                songNew.clear();
             }
         });
     }
