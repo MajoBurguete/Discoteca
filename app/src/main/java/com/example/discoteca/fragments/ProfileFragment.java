@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.discoteca.R;
+import com.parse.ParseUser;
 
 
 public class ProfileFragment extends Fragment {
@@ -46,4 +47,5 @@ public class ProfileFragment extends Fragment {
         tvNumber = view.findViewById(R.id.tvNumber);
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
 
+        ParseUser user = ParseUser.getCurrentUser();
 }
