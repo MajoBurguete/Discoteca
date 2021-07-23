@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.parse.ParseUser;
 
@@ -48,4 +49,7 @@ public class ProfileFragment extends Fragment {
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
 
         ParseUser user = ParseUser.getCurrentUser();
+
+        Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE)).circleCrop().into(ivProfPict);
+        tvNameP.setText(user.getUsername());
 }
