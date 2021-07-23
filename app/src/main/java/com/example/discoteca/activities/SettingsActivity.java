@@ -27,6 +27,8 @@ public class SettingsActivity extends AppCompatActivity {
     TextView tvEmail;
     Button btnSaveProf;
     ImageButton ibClose;
+    FloatingActionButton fabEditImage;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,14 @@ public class SettingsActivity extends AppCompatActivity {
         // Gets current user data
         ParseUser user = ParseUser.getCurrentUser();
 
+        context = this;
         // Get references
         ivUserPict = findViewById(R.id.ivUserPict);
         etNameEdit = findViewById(R.id.etNameEdit);
         tvEmail = findViewById(R.id.tvEmail);
         btnSaveProf = findViewById(R.id.btnSaveProf);
         ibClose = findViewById(R.id.ibClose);
+        fabEditImage = findViewById(R.id.fabEditImage);
 
         // Bind data
         etNameEdit.setText(user.getUsername());
