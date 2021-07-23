@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        bottomNav.setSelectedItemId(R.id.btnHome);
     }
 
     @Override
