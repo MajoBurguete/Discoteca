@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment {
         factsL = new ArrayList<>();
 
         // Initialize fact adapter
+        adapter = new FactAdapter(getContext(), factsL);
 
         // Assign adapter nd layout manager to the recycler view
         rvFacts.setAdapter(adapter);
