@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ public class HomeFragment extends Fragment {
     RecyclerView rvFacts;
     List<Fact> factsL;
     FactAdapter adapter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +49,16 @@ public class HomeFragment extends Fragment {
 
         // Get references
         rvFacts = view.findViewById(R.id.rvFacts);
+        swipeRefreshLayout = view.findViewById(R.id.refreshFeed);
+
+        // Setting the listener for the swipe container
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryFacts();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         // Initialize fact list
         factsL = new ArrayList<>();
