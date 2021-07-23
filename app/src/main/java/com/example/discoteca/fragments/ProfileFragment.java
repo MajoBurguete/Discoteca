@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.example.discoteca.models.Fact;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class ProfileFragment extends Fragment {
@@ -52,4 +59,26 @@ public class ProfileFragment extends Fragment {
 
         Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE)).circleCrop().into(ivProfPict);
         tvNameP.setText(user.getUsername());
+
+        queryFacts();
+
+    }
+
+    private void queryFacts() {
+        ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
+        query.include(Fact.KEY_USER);
+        query.whereEqualTo(Fact.KEY_USER, ParseUser.getCurrentUser());
+        query.setLimit(20);
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<Fact>() {
+            @Override
+            public void done(List<Fact> facts, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+
+            }
+        });
+    }
 }
