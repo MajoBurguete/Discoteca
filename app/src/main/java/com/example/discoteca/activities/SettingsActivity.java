@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.discoteca.R;
+import com.parse.ParseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -23,5 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        // Gets current user data
+        ParseUser user = ParseUser.getCurrentUser();
     }
 }
