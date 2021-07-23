@@ -3,7 +3,9 @@ package com.example.discoteca.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,9 @@ import com.parse.SaveCallback;
 public class SettingsActivity extends AppCompatActivity {
 
     public static final String KEY_USERNAME = "username";
+    public static final String KEY_PROFILE = "profile";
+    public final static int PICK_PHOTO_CODE = 27;
+    private ParseFile photoFile;
     private String TAG = "SettingsActivity";
     ImageView ivUserPict;
     EditText etNameEdit;
@@ -75,11 +80,24 @@ public class SettingsActivity extends AppCompatActivity {
         fabEditImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onClickPhoto(v);
             }
         });
 
     }
 
+    private void onClickPhoto(View v) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+    }
     }
 
     private void saveUser(String newUsername, ParseUser currentUser) {
