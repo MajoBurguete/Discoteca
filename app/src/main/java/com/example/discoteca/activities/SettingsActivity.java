@@ -56,6 +56,16 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        ibClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+    }
+
     private void saveUser(String newUsername, ParseUser currentUser) {
         currentUser.put(KEY_USERNAME, newUsername);
         currentUser.saveInBackground(new SaveCallback() {
