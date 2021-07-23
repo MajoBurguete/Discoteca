@@ -54,6 +54,20 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         holder.bind(fact);
     }
 
+    public void clearAll(boolean notify){
+        songs.clear();
+        rvFact.clear();
+        if (notify){
+            notifyDataSetChanged();
+        }
+    }
+
+    public void addAll(List<Fact> facts, List<Song> songList){
+        songs.addAll(songList);
+        rvFact.addAll(facts);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return rvFact.size();
