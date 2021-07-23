@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.Spotify;
+import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
 
@@ -29,16 +30,14 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     private static final String TAG = "FactAdapter";
     private Context context;
-    private Activity activity;
     List<Fact> rvFact;
-    Spotify client;
     Song song;
+    List<Song> songs;
 
-    public FactAdapter(Context context, List<Fact> rvFact, Spotify client, Activity activity){
+    public FactAdapter(Context context, List<Fact> rvFact, List<Song> songs){
         this.context = context;
         this.rvFact = rvFact;
-        this.client = client;
-        this.activity = activity;
+        this.songs = songs;
     }
 
     @NonNull
