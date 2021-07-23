@@ -22,6 +22,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,6 +33,7 @@ public class ProfileFragment extends Fragment {
     TextView tvNameP;
     TextView tvNumber;
     RecyclerView rvUserFacts;
+    List<Fact> userFacts;
     public static final String KEY_PROFILE = "profile";
 
     public ProfileFragment() {
@@ -60,6 +62,9 @@ public class ProfileFragment extends Fragment {
         // Bind data
         Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfPict);
         tvNameP.setText(user.getUsername());
+
+        // Array initialized
+        userFacts = new ArrayList<>();
 
         queryFacts();
 
