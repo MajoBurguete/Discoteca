@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.discoteca.R;
+import com.example.discoteca.Spotify;
 import com.example.discoteca.models.Fact;
 
 import java.util.ArrayList;
@@ -22,9 +23,12 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView rvFacts;
-    List<Fact> facts;
+    List<Fact> factsL;
     Spotify client;
+    List<Song> songList;
     private String accessToken;
+    List<Fact> factsNew = new ArrayList<>();
+    List<Song> songNew = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,7 +56,8 @@ public class HomeFragment extends Fragment {
         rvFacts = view.findViewById(R.id.rvFacts);
 
         // Initialize fact list
-        facts = new ArrayList<>();
+        factsL = new ArrayList<>();
+        songList = new ArrayList<>();
 
 
     }
