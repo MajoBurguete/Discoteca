@@ -33,5 +33,11 @@ public class SettingsActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
         btnSaveProf = findViewById(R.id.btnSaveProf);
         ibClose = findViewById(R.id.ibClose);
+
+        // Bind data
+        etNameEdit.setText(user.getUsername());
+        tvEmail.setText(user.getEmail());
+
+
     }
 }
