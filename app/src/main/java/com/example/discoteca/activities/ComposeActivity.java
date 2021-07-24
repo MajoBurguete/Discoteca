@@ -14,7 +14,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.parceler.Parcels;
 
@@ -53,6 +57,12 @@ public class ComposeActivity extends AppCompatActivity {
         if (song != null){
             updateSong();
         }
+
+        btnAddFact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         onPickClick();
 
