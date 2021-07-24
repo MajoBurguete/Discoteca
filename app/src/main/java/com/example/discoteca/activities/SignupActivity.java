@@ -80,18 +80,27 @@ public class SignupActivity extends AppCompatActivity {
                             return;
                         }
                         ParseUser user = ParseUser.getCurrentUser();
-                        user.put(KEY_PROFILE, photoFile);
-                        user.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
-                                Intent result = new Intent();
-                                result.putExtra("username", username);
-                                result.putExtra("password", password);
-                                setResult(RESULT_OK, result);
-                                finish();
-                            }
-                        });
+                        if (photoFile != null){
+                            user.put(KEY_PROFILE, photoFile);
+                            user.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
+                                    Intent result = new Intent();
+                                    result.putExtra("username", username);
+                                    result.putExtra("password", password);
+                                    setResult(RESULT_OK, result);
+                                    finish();
+                                }
+                            });
+                        } else{
+                            Toast.makeText(SignupActivity.this, "Signup successfully!", Toast.LENGTH_LONG).show();
+                            Intent result = new Intent();
+                            result.putExtra("username", username);
+                            result.putExtra("password", password);
+                            setResult(RESULT_OK, result);
+                            finish();
+                        }
                     }
                 });
 
