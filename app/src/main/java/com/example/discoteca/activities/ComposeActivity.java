@@ -61,6 +61,11 @@ public class ComposeActivity extends AppCompatActivity {
         btnAddFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String description = etDescription.getText().toString();
+                if (description.isEmpty()){
+                    Toast.makeText(ComposeActivity.this, "Make sure not to leave anything blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
 
