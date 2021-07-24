@@ -75,6 +75,17 @@ public class ComposeActivity extends AppCompatActivity {
                 fact.setDescription(description);
                 fact.setUser(ParseUser.getCurrentUser());
 
+                fact.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null){
+                            Toast.makeText(ComposeActivity.this, "There was an issue posting the fact, try again!", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        finish();
+
+                    }
+                });
             }
         });
 
