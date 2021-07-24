@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.spotify;
 
 import android.util.Log;
 import com.example.discoteca.models.Album;

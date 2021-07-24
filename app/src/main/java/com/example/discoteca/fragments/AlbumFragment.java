@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
-import com.example.discoteca.Spotify;
+import com.example.discoteca.spotify.Spotify;
 import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;

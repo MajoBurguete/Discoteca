@@ -21,7 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.discoteca.R;
-import com.example.discoteca.Spotify;
+import com.example.discoteca.spotify.Spotify;
 import com.example.discoteca.adapters.AlbumAdapter;
 import com.example.discoteca.adapters.SongAdapter;
 import com.example.discoteca.models.Album;
