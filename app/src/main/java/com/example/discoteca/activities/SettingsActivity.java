@@ -155,8 +155,8 @@ public class SettingsActivity extends AppCompatActivity {
                     Log.e(TAG, "Error while saving description", e);
                     Toast.makeText(SettingsActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
-                currentUser.put(KEY_PROFILE, photoFile);
                 if (photoFile != null){
+                    currentUser.put(KEY_PROFILE, photoFile);
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
