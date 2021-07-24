@@ -25,30 +25,31 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 
 **Required Must-have Stories**
 
-- [ ] User can login and logout
-- [ ] User can sign up
-- [ ] User can search for any song/album that's on Spotify.
-- [ ] User can see the songs on the album chosed 
-- [ ] User can choose the song they want to write a fact about.
+- [x] User can login and logout
+- [x] User can sign up
+- [x] User can search for any song/album that's on Spotify.
+- [x] User can see the songs on the album chosed 
+- [x] User can choose the song they want to write a fact about.
 - [ ] User can choose a song and see all of the facts that's ever got.
-- [ ] User can see different facts about random songs in their home screen.
-- [ ] User can refresh their home screen to see if any other fact was published.
+- [x] User can publish a fact.
+- [x] User can see different facts about random songs in their home screen.
+- [x] User can refresh their home screen to see if any other fact was published.
 - [ ] The app uses animations
-- [ ] The user session stays open until the user logs out (even if th app was closed).
-- [ ] User can update their username
-- [ ] User can see the number of posts they have made
-- [ ] User can see the posts they have made
+- [x] The user session stays open until the user logs out (even if th app was closed).
+- [x] User can update their username
+- [x] User can see the number of posts they have made
+- [x] User can see the posts they have made
 - [ ] User can delete a fact made by them
 
 **Optional Nice-to-have Stories**
 
 - [ ] User can update their email
+- [x] User can signup with a profile picture
+- [x] User can update their profile picture
 - [ ] User can search for any artist and see their albums
 - [ ] User can like a fact
 - [ ] User can see all of the facts liked by them in their profile
-- [ ] User can add a song that's not on spotify and give facts about it.
 - [ ] User can see the song's lyrics.
-- [ ] User can play the song inside the app. 
 - [ ] User can customize their home screen by choosing the albums/songs it likes displaying facts just about those
 
 ### 2. Screen Archetypes
