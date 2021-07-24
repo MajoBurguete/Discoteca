@@ -66,6 +66,15 @@ public class ComposeActivity extends AppCompatActivity {
                     Toast.makeText(ComposeActivity.this, "Make sure not to leave anything blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Fact fact = new Fact();
+                fact.setId(song.getSongId());
+                fact.setSong(song.getSongName());
+                fact.setAlbum(song.getAlbumName());
+                fact.setArtist(song.getArtistName());
+                fact.setUrl(song.getImageUrl());
+                fact.setDescription(description);
+                fact.setUser(ParseUser.getCurrentUser());
+
             }
         });
 
