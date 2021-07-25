@@ -87,6 +87,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         // Recycler view is defined
         rvSearch = view.findViewById(R.id.rvResults);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         // Arrays are initialized
         songs = new ArrayList<>();
         albums = new ArrayList<>();
@@ -96,7 +97,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         albumAdapter = new AlbumAdapter(getContext(), albums, this);
 
         // Adapter and layout manager is defined
-        rvSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvSearch.setLayoutManager(linearLayoutManager);
 
         // Getting the access token from shared preferences
         Context context = getActivity();
