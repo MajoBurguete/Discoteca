@@ -34,12 +34,12 @@ public class Spotify {
 
     // Search Song Request
 
-    public Call makeSearchSongRequest(String query){
+    public Call makeSearchSongRequest(String query, int page){
 
         if (accessToken == null){
             Log.e(TAG, "No token");
         }
-        String url = getSearchUrl(query, "song");
+        String url = getSearchUrl(query, "song", page);
 
         final Request request = new Request.Builder()
                 .url(url)
@@ -85,12 +85,12 @@ public class Spotify {
 
     // Search Album Request
 
-    public Call makeSearchAlbumRequest(String query){
+    public Call makeSearchAlbumRequest(String query, int page){
 
         if (accessToken == null){
             Log.e(TAG, "No token");
         }
-        String url = getSearchUrl(query, "album");
+        String url = getSearchUrl(query, "album", page);
 
         final Request request = new Request.Builder()
                 .url(url)
@@ -131,9 +131,10 @@ public class Spotify {
         return results;
     }
 
-    private String getSearchUrl(String query, String type){
+    private String getSearchUrl(String query, String type, int page){
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.spotify.com/v1/search").newBuilder();
         urlBuilder.addQueryParameter("q", query);
+        urlBuilder.addQueryParameter("offset", String.valueOf(page));
         if (type == "song"){
             urlBuilder.addQueryParameter("type", "track");
         }
