@@ -201,6 +201,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                queryS = query;
                 searchProgress.setVisibility(View.VISIBLE);
                 songAdapter.clearAll(true);
                 client.makeSearchSongRequest(query).enqueue(new Callback() {
