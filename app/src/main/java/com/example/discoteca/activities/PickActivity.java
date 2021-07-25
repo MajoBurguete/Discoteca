@@ -178,6 +178,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                queryS = query;
                 adapter.clearAll(true);
                 progressBar.setVisibility(View.VISIBLE);
                 // Request call
@@ -215,6 +216,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                queryS = query;
                 adapter.clearAll(true);
                 progressBar.setVisibility(View.VISIBLE);
                 // Request call
