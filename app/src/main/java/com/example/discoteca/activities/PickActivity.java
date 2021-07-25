@@ -128,6 +128,52 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
 
     }
 
+    private void loadNextDataFromApi(int page) {
+        if (tabLayout.getSelectedTabPosition() == 0){
+            Toast.makeText(this, "PAGE: "  + page, Toast.LENGTH_SHORT).show();
+            client.makeSearchSongRequest(queryS, page).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Failed to fetch data: " + e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    List<Song> results = new ArrayList<>();
+                    results.addAll(client.createSongs(response, results));
+                    PickActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.addAll(results);
+                        }
+                    });
+                }
+            });
+        }
+        if (tabLayout.getSelectedTabPosition() == 1){
+            Toast.makeText(this, "PAGE: "  + page, Toast.LENGTH_SHORT).show();
+            List<Album> results = new ArrayList<>();
+            List<Song> albumSongs = new ArrayList<>();
+            client.makeSearchAlbumRequest(queryS, page).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Failed to fetch data: " + e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    albumSongs.addAll(client.createAlbumForSongs(response,results));
+                    PickActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.addAll(albumSongs);
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     private void songTab() {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
