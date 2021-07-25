@@ -54,7 +54,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     TabLayout tabLayout;
     Spotify client;
     private EndlessScrolling scrollListener;
-    int pageO;
     String queryS;
 
     public SearchFragment() {
@@ -94,7 +93,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
-                pageO = page;
                 loadNextDataFromApi(page);
             }
         };
@@ -204,7 +202,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
                 queryS = query;
                 searchProgress.setVisibility(View.VISIBLE);
                 songAdapter.clearAll(true);
-                client.makeSearchSongRequest(query).enqueue(new Callback() {
+                client.makeSearchSongRequest(query, 0).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e(TAG, "Failed to fetch data: " + e);
@@ -243,7 +241,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             public boolean onQueryTextSubmit(String query) {
                 searchProgress.setVisibility(View.VISIBLE);
                 albumAdapter.clearAll(true);
-                client.makeSearchAlbumRequest(query).enqueue(new Callback() {
+                client.makeSearchAlbumRequest(query, 0).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e(TAG, "Failed to fetch data: " + e);
