@@ -68,6 +68,18 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         progressBar = findViewById(R.id.loadSongs);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        scrollListener = new EndlessScrolling (linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                loadNextDataFromApi(page);
+            }
+        };
+        // Adds the scroll listener to RecyclerView
+        rvPickSongs.addOnScrollListener(scrollListener);
+
         // Initialize list of objects
         songs = new ArrayList<>();
 
