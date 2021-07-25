@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.spotify.Spotify;
 import com.example.discoteca.adapters.AlbumAdapter;
@@ -52,6 +53,9 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     private String accessToken;
     TabLayout tabLayout;
     Spotify client;
+    private EndlessScrolling scrollListener;
+    int pageO;
+    String queryS;
 
     public SearchFragment() {
         // Required empty public constructor
