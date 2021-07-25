@@ -67,6 +67,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         ibBack = findViewById(R.id.ibBack);
         progressBar = findViewById(R.id.loadSongs);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         // Initialize list of objects
         songs = new ArrayList<>();
 
@@ -75,7 +76,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
 
         // Song adapter and layout manager
         rvPickSongs.setAdapter(adapter);
-        rvPickSongs.setLayoutManager(new LinearLayoutManager(this));
+        rvPickSongs.setLayoutManager(linearLayoutManager);
 
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
