@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.spotify.Spotify;
 import com.example.discoteca.adapters.SongAdapter;
@@ -43,6 +45,8 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
     SongAdapter adapter;
     TabLayout tabLayout;
     Spotify client;
+    private EndlessScrolling scrollListener;
+    String queryS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
