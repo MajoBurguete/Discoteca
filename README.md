@@ -44,6 +44,7 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 **Optional Nice-to-have Stories**
 
 - [ ] User can update their email
+- [x] Infinite scrolling is implemented on those activities that make requests
 - [x] User can signup with a profile picture
 - [x] User can update their profile picture
 - [ ] User can search for any artist and see their albums
