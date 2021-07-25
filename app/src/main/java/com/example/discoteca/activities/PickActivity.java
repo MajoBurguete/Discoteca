@@ -118,7 +118,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                 adapter.clearAll(true);
                 progressBar.setVisibility(View.VISIBLE);
                 // Request call
-                client.makeSearchSongRequest(query).enqueue(new Callback() {
+                client.makeSearchSongRequest(query,0).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e(TAG, "Failed to fetch data: " + e);
@@ -157,7 +157,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
                 // Request call
                 List<Album> results = new ArrayList<>();
                 List<Song> albumSongs = new ArrayList<>();
-                client.makeSearchAlbumRequest(query).enqueue(new Callback() {
+                client.makeSearchAlbumRequest(query,0).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e(TAG, "Failed to fetch data: " + e);
