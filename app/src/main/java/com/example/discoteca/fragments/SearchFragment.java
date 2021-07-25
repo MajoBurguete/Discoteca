@@ -148,6 +148,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
 
     }
 
+    // Infinite scroll, loads more data into the recycler view
     private void loadNextDataFromApi(int page) {
         if (tabLayout.getSelectedTabPosition() == 0){
             Toast.makeText(getContext(), "PAGE: "  + page, Toast.LENGTH_SHORT).show();
