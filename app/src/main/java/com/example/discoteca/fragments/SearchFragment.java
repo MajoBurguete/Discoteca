@@ -88,6 +88,15 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         rvSearch = view.findViewById(R.id.rvResults);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
+        scrollListener = new EndlessScrolling (linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
+        // Adds the scroll listener to RecyclerView
+        rvSearch.addOnScrollListener(scrollListener);
+
         // Arrays are initialized
         songs = new ArrayList<>();
         albums = new ArrayList<>();
