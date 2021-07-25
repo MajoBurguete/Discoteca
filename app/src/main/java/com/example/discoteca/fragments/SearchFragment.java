@@ -92,6 +92,10 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         scrollListener = new EndlessScrolling (linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                pageO = page;
+                loadNextDataFromApi(page);
             }
         };
         // Adds the scroll listener to RecyclerView
@@ -144,6 +148,51 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             }
         });
 
+    }
+
+    private void loadNextDataFromApi(int page) {
+        if (tabLayout.getSelectedTabPosition() == 0){
+            Toast.makeText(getContext(), "PAGE: "  + page, Toast.LENGTH_SHORT).show();
+            client.makeSearchSongRequest(queryS, page).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Failed to fetch data: " + e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    List<Song> results = new ArrayList<>();
+                    results.addAll(client.createSongs(response, results));
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            songAdapter.addAll(results);
+                        }
+                    });
+                }
+            });
+        }
+        if (tabLayout.getSelectedTabPosition() == 1){
+            Toast.makeText(getContext(), "PAGE: "  + page, Toast.LENGTH_SHORT).show();
+            client.makeSearchAlbumRequest(queryS, page).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Failed to fetch data: " + e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    List<Album> results = new ArrayList<>();
+                    results.addAll(client.createAlbum(response,results));
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            albumAdapter.addAll(results);
+                        }
+                    });
+                }
+            });
+        }
     }
 
     private void songTab(){
