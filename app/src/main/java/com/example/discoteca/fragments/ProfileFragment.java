@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -106,6 +107,33 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     @Override
     public void onDeleteClick(int position) {
+        deleteFact(position);
+    }
+
+    private void deleteFact(int position) {
+        ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
+        query.whereEqualTo(Fact.KEY_OBJECT_ID, userFacts.get(position).getObjectId());
+        query.findInBackground(new FindCallback<Fact>() {
+            @Override
+            public void done(List<Fact> objects, ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+                objects.get(0).deleteInBackground(new DeleteCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if(e != null){
+                            Log.e(TAG, "Issue with deleting fact", e);
+                            return;
+                        }
+                        userFacts.remove(position);
+                        adapter.notifyDataSetChanged();
+                        rvUserFacts.smoothScrollToPosition(0);
+                    }
+                });
+            }
+        });
     }
 
 }
