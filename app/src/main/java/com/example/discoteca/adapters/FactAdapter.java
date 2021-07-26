@@ -22,19 +22,18 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     private static final String TAG = "FactAdapter";
     private Context context;
     List<Fact> rvFact;
-    boolean user;
+    boolean delete;
     OnFactClickListener onFactClickListener;
 
-    public FactAdapter(Context context, List<Fact> rvFact){
     public interface OnFactClickListener{
         void onDeleteClick(int position);
     }
 
 
-    public FactAdapter(Context context, List<Fact> rvFact, boolean user, OnFactClickListener clickListener){
+    public FactAdapter(Context context, List<Fact> rvFact, boolean delete, OnFactClickListener clickListener){
         this.context = context;
         this.rvFact = rvFact;
-        this.user = user;
+        this.delete = delete;
         this.onFactClickListener = clickListener;
     }
 
