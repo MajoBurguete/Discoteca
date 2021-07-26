@@ -6,8 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +79,10 @@ public class SongFragment extends Fragment {
 
         // Initialize adapter
         adapter = new FactAdapter(getContext(), songFacts);
+
+        // Assign adapter and layout manager
+        rvSongsFacts.setAdapter(adapter);
+        rvSongsFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Close button
         ibClose.setOnClickListener(new View.OnClickListener() {
