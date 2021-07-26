@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +75,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         TextView tvDescription;
         TextView tvSearchInfo;
         TextView tvUserFact;
+        ImageButton ibDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +84,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             tvSearchInfo = itemView.findViewById(R.id.tvSearchInfo);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUserFact = itemView.findViewById(R.id.tvUserFact);
+            ibDelete = itemView.findViewById(R.id.ibDelete);
         }
 
         public void bind(Fact fact) {
