@@ -27,7 +27,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
+
 public class SongFragment extends Fragment {
 
     public static final String TAG = "SongFragment";
@@ -69,6 +71,12 @@ public class SongFragment extends Fragment {
         rlSong = view.findViewById(R.id.rlSong);
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
+
+        // Initialize fact array
+        songFacts = new ArrayList<>();
+
+        // Initialize adapter
+        adapter = new FactAdapter(getContext(), songFacts);
 
         // Close button
         ibClose.setOnClickListener(new View.OnClickListener() {
