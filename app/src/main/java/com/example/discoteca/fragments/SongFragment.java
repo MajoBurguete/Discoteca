@@ -26,6 +26,9 @@ import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import org.parceler.Parcels;
 
@@ -107,6 +110,28 @@ public class SongFragment extends Fragment {
         tvNameDetail.setText(song.getSongName());
         tvArtistSong.setText(song.getArtistName());
         tvSongAlbum.setText(song.getAlbumName());
+
+        queryFacts();
         
+    }
+
+    private void queryFacts() {
+        ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
+        query.include(Fact.KEY_USER);
+        query.whereEqualTo(Fact.KEY_ID, song.getSongId());
+        query.setLimit(20);
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<Fact>() {
+            @Override
+            public void done(List<Fact> facts, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+                adapter.clearAll(true);
+                adapter.addAll(facts);
+
+            }
+        });
     }
 }
