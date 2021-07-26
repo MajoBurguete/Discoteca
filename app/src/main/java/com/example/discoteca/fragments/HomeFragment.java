@@ -24,7 +24,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
     private static final String TAG = "HomeFragment";
     RecyclerView rvFacts;
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         factsL = new ArrayList<>();
 
         // Initialize fact adapter
-        adapter = new FactAdapter(getContext(), factsL);
+        adapter = new FactAdapter(getContext(), factsL, false, this);
 
         // Assign adapter nd layout manager to the recycler view
         rvFacts.setAdapter(adapter);
@@ -92,5 +92,9 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
     }
 }

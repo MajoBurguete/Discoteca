@@ -35,7 +35,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongFragment extends Fragment {
+public class SongFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
     public static final String TAG = "SongFragment";
     ImageView ivSongDetail;
@@ -81,7 +81,7 @@ public class SongFragment extends Fragment {
         songFacts = new ArrayList<>();
 
         // Initialize adapter
-        adapter = new FactAdapter(getContext(), songFacts);
+        adapter = new FactAdapter(getContext(), songFacts, false, this);
 
         // Assign adapter and layout manager
         rvSongsFacts.setAdapter(adapter);
@@ -133,5 +133,9 @@ public class SongFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
     }
 }
