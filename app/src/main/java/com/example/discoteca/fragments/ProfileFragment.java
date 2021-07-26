@@ -29,6 +29,7 @@ import java.util.List;
 
 
 public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
     private String TAG = "ProfileFragment";
     ImageView ivProfPict;
@@ -71,6 +72,7 @@ public class ProfileFragment extends Fragment {
 
         // Adapter initialized
         adapter = new FactAdapter(getContext(), userFacts);
+        adapter = new FactAdapter(getContext(), userFacts, true, this);
 
         // Assign adapter and layout manager
         rvUserFacts.setAdapter(adapter);
