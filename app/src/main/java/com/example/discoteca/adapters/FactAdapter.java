@@ -23,6 +23,11 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     List<Fact> rvFact;
 
     public FactAdapter(Context context, List<Fact> rvFact){
+    public interface OnFactClickListener{
+        void onDeleteClick(int position);
+    }
+
+
         this.context = context;
         this.rvFact = rvFact;
     }
