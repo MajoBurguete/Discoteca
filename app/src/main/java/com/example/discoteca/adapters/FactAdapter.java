@@ -87,6 +87,9 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         }
 
         public void bind(Fact fact) {
+            if (delete){
+                ibDelete.setVisibility(View.VISIBLE);
+            }
             Glide.with(context).load(fact.getUrl()).into(ivAlbum);
             tvSongT.setText(fact.getSong());
             String info = fact.getAlbum() + " - " + fact.getArtist();
