@@ -20,11 +20,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
 import com.example.discoteca.activities.ComposeActivity;
+import com.example.discoteca.adapters.FactAdapter;
+import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.parceler.Parcels;
 
+import java.util.List;
 public class SongFragment extends Fragment {
 
     public static final String TAG = "SongFragment";
@@ -34,6 +37,8 @@ public class SongFragment extends Fragment {
     TextView tvSongAlbum;
     ImageButton ibClose;
     RecyclerView rvSongsFacts;
+    FactAdapter adapter;
+    List<Fact> songFacts;
     FloatingActionButton fabAdd;
     RelativeLayout rlSong;
     Song song;
