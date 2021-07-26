@@ -21,6 +21,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     private static final String TAG = "FactAdapter";
     private Context context;
     List<Fact> rvFact;
+    boolean user;
+    OnFactClickListener onFactClickListener;
 
     public FactAdapter(Context context, List<Fact> rvFact){
     public interface OnFactClickListener{
@@ -28,8 +30,11 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     }
 
 
+    public FactAdapter(Context context, List<Fact> rvFact, boolean user, OnFactClickListener clickListener){
         this.context = context;
         this.rvFact = rvFact;
+        this.user = user;
+        this.onFactClickListener = clickListener;
     }
 
     @NonNull
