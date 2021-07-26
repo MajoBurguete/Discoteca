@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProfileFragment extends Fragment {
 public class ProfileFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
     private String TAG = "ProfileFragment";
@@ -71,7 +70,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         userFacts = new ArrayList<>();
 
         // Adapter initialized
-        adapter = new FactAdapter(getContext(), userFacts);
         adapter = new FactAdapter(getContext(), userFacts, true, this);
 
         // Assign adapter and layout manager
@@ -105,4 +103,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             }
         });
     }
+
+    @Override
+    public void onDeleteClick(int position) {
+    }
+
 }
