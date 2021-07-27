@@ -75,6 +75,14 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         srProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                if (tabLayout.getSelectedTabPosition() == 0){
+                    queryMyFacts();
+                    srProfile.setRefreshing(false);
+                }
+                if (tabLayout.getSelectedTabPosition() == 1){
+                    queryLikedFacts();
+                    srProfile.setRefreshing(false);
+                }
             }
         });
 
