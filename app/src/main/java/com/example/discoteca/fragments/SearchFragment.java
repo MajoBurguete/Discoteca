@@ -93,6 +93,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
+                page = page * 20;
                 loadNextDataFromApi(page);
             }
         };
