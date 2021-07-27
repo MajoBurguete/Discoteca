@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class ComposeActivity extends AppCompatActivity {
     Button btnPick;
     EditText etDescription;
     Button btnAddFact;
+    ImageButton ibReturn;
     Song song;
 
     @Override
@@ -53,6 +55,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnPick = findViewById(R.id.btnPick);
         etDescription = findViewById(R.id.etDescriptionFact);
         btnAddFact = findViewById(R.id.btnAddFact);
+        ibReturn = findViewById(R.id.ibReturn);
 
         if (song != null){
             updateSong();
