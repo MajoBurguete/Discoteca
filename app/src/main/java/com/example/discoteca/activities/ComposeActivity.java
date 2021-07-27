@@ -61,6 +61,13 @@ public class ComposeActivity extends AppCompatActivity {
             updateSong();
         }
 
+        ibReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         btnAddFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
