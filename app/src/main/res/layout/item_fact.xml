@@ -100,7 +100,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="7dp"
                 android:backgroundTint="@android:color/transparent"
-                android:src="@android:drawable/btn_star" />
+                android:src="@drawable/ic_music_disliked" />
 
         </RelativeLayout>
 
