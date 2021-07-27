@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +45,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     List<Fact> userFacts;
     List<Fact> likedFacts;
     TabLayout tabLayout;
+    SwipeRefreshLayout srProfile;
     public static final String KEY_PROFILE = "profile";
     public static final String KEY_LIST = "factsLiked";
 
@@ -68,6 +70,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         tvNumber = view.findViewById(R.id.tvNumber);
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
         tabLayout = view.findViewById(R.id.tabProfile);
+        srProfile = view.findViewById(R.id.srProfile);
+
 
         ParseUser user = ParseUser.getCurrentUser();
 
