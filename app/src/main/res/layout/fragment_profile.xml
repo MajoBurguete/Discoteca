@@ -32,12 +32,19 @@
             android:layout_marginTop="18dp"
             tools:src="@tools:sample/avatars" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUserFacts"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/tabProfile"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUserFacts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <TextView
             android:id="@+id/tvNumber"
