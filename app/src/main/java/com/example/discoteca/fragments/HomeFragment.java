@@ -22,6 +22,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +114,16 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
                 Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
                 likeFacts.remove(i);
                 user.put(KEY_LIST, likeFacts);
-                user.saveInBackground();
+                user.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null){
+                            Log.e(TAG, "Issue with disliking facts", e);
+                            return;
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
                 break;
             } else if (i == likeFacts.size()-1){
                 Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
