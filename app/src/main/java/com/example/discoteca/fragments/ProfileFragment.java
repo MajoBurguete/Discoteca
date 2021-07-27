@@ -84,6 +84,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
+                    queryMyFacts();
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
                 }
@@ -102,7 +103,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     }
 
-    private void queryFacts() {
+    private void queryMyFacts() {
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         query.whereEqualTo(Fact.KEY_USER, ParseUser.getCurrentUser());
