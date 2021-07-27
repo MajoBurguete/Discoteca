@@ -112,8 +112,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             String info = fact.getAlbum() + " - " + fact.getArtist();
             tvSearchInfo.setText(info);
             tvDescription.setText(fact.getDescription());
-            String user = "@" + fact.getUser().getUsername();
-            tvUserFact.setText(user);
+            String userSt = "@" + fact.getUser().getUsername();
+            tvUserFact.setText(userSt);
 
             ibDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
