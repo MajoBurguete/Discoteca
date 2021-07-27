@@ -192,7 +192,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     @Override
     public void onLikeClick(int position) {
-
+        ParseUser user = ParseUser.getCurrentUser();
+        List<String> likeFacts= user.getList(KEY_LIST);
     }
 
 }
