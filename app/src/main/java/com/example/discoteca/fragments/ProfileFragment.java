@@ -102,6 +102,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             }
         });
 
+        // Default tab
+        queryMyFacts();
+
+    }
 
     private void queryLikedFacts() {
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
