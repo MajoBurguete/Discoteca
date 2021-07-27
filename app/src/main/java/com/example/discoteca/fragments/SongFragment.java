@@ -82,6 +82,11 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         rlSong = view.findViewById(R.id.rlSong);
         srSongFacts = view.findViewById(R.id.srSongFacts);
 
+        srSongFacts.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+            }
+        });
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
 
