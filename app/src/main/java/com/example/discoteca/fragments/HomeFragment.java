@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
@@ -20,6 +21,7 @@ import com.example.discoteca.models.Fact;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     List<Fact> factsL;
     FactAdapter adapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    public static final String KEY_LIST = "factsLiked";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -100,6 +103,26 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     @Override
     public void onLikeClick(int position) {
+        ParseUser user = ParseUser.getCurrentUser();
+        List<String> likeFacts= user.getList(KEY_LIST);
+        Fact fact = factsL.get(position);
+        String objectID = fact.getObjectId();
+
+        for (int i = 0; i < likeFacts.size(); i++){
+            if (likeFacts.get(i).equals(objectID)){
+                Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                likeFacts.remove(i);
+                user.put(KEY_LIST, likeFacts);
+                user.saveInBackground();
+                break;
+            } else if (i == likeFacts.size()-1){
+                Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+                likeFacts.add(0, fact.getObjectId());
+                user.put(KEY_LIST, likeFacts);
+                user.saveInBackground();
+                break;
+            }
+        }
 
     }
 }
