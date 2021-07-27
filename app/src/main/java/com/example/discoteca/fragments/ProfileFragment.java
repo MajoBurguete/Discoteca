@@ -194,6 +194,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     public void onLikeClick(int position) {
         ParseUser user = ParseUser.getCurrentUser();
         List<String> likeFacts= user.getList(KEY_LIST);
+
+        if (tabLayout.getSelectedTabPosition() == 0){
+        }
+        if (tabLayout.getSelectedTabPosition() == 1){
+        }
     }
 
 }
