@@ -30,7 +30,7 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 - [x] User can search for any song/album that's on Spotify.
 - [x] User can see the songs on the album chosed 
 - [x] User can choose the song they want to write a fact about.
-- [ ] User can choose a song and see all of the facts that's ever got.
+- [x] User can choose a song and see all of the facts that's ever got.
 - [x] User can publish a fact.
 - [x] User can see different facts about random songs in their home screen.
 - [x] User can refresh their home screen to see if any other fact was published.
@@ -39,7 +39,7 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 - [x] User can update their username
 - [x] User can see the number of posts they have made
 - [x] User can see the posts they have made
-- [ ] User can delete a fact made by them
+- [x] User can delete a fact made by them
 
 **Optional Nice-to-have Stories**
 
@@ -48,8 +48,8 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 - [x] User can signup with a profile picture
 - [x] User can update their profile picture
 - [ ] User can search for any artist and see their albums
-- [ ] User can like a fact
-- [ ] User can see all of the facts liked by them in their profile
+- [x] User can like or dislike a fact
+- [x] User can see all of the facts liked by them in their profile
 - [ ] User can see the song's lyrics.
 - [ ] Facts on the home screen will only be about the top artist of the user.
 
