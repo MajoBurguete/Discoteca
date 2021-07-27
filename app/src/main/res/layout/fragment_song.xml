@@ -61,15 +61,23 @@
             android:textSize="14sp"
             tools:text="Olivia Rodrigo" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSongFacts"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srSongFacts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/fabAdd"
             android:layout_below="@+id/tvNameDetail"
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSongFacts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
