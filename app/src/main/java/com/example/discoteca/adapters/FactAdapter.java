@@ -93,6 +93,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         public void bind(Fact fact) {
             ParseUser user = ParseUser.getCurrentUser();
             List<String> likeFacts= user.getList("factsLiked");
+            String objectID = fact.getObjectId();
+
             if (delete){
                 ibDelete.setVisibility(View.VISIBLE);
             }
