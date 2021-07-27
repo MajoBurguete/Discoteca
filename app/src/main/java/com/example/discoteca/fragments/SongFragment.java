@@ -85,6 +85,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         srSongFacts.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                queryFacts();
+                srSongFacts.setRefreshing(false);
             }
         });
 
