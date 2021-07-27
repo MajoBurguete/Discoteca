@@ -43,6 +43,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     List<Fact> likedFacts;
     TabLayout tabLayout;
     public static final String KEY_PROFILE = "profile";
+    public static final String KEY_LIST = "factsLiked";
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -116,7 +117,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
-        query.whereContainedIn(Fact.KEY_OBJECT_ID, ParseUser.getCurrentUser().getList("factsLiked"));
+        query.whereContainedIn(Fact.KEY_OBJECT_ID, ParseUser.getCurrentUser().getList(KEY_LIST));
         query.setLimit(20);
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<Fact>() {
