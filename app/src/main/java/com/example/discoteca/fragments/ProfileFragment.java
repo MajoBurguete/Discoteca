@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.google.android.material.tabs.TabLayout;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -38,6 +39,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     RecyclerView rvUserFacts;
     FactAdapter adapter;
     List<Fact> userFacts;
+    TabLayout tabLayout;
     public static final String KEY_PROFILE = "profile";
 
     public ProfileFragment() {
@@ -60,6 +62,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         tvNameP = view.findViewById(R.id.tvNameP);
         tvNumber = view.findViewById(R.id.tvNumber);
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
+        tabLayout = view.findViewById(R.id.tabProfile);
 
         ParseUser user = ParseUser.getCurrentUser();
 
@@ -78,6 +81,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         rvUserFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryFacts();
+            @Override
 
     }
 
