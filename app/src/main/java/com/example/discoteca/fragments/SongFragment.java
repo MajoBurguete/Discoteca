@@ -138,4 +138,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     @Override
     public void onDeleteClick(int position) {
     }
+
+    @Override
+    public void onLikeClick(int position) {
+
+    }
 }

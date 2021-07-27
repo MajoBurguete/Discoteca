@@ -183,4 +183,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         });
     }
 
+    @Override
+    public void onLikeClick(int position) {
+
+    }
+
 }
