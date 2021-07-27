@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     FactAdapter adapter;
     List<Fact> songFacts;
     FloatingActionButton fabAdd;
+    SwipeRefreshLayout srSongFacts;
     RelativeLayout rlSong;
     Song song;
 
@@ -78,6 +80,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         rvSongsFacts = view.findViewById(R.id.rvSongFacts);
         fabAdd = view.findViewById(R.id.fabAdd);
         rlSong = view.findViewById(R.id.rlSong);
+        srSongFacts = view.findViewById(R.id.srSongFacts);
+
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
 
