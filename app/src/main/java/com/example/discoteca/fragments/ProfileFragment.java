@@ -81,7 +81,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         likeAdapter = new FactAdapter(getContext(), likedFacts, false, this);
 
         // Assign adapter and layout manager
-        rvUserFacts.setAdapter(adapter);
         rvUserFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -112,6 +111,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     }
 
     private void queryLikedFacts() {
+        rvUserFacts.setAdapter(likeAdapter);
+
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
@@ -125,14 +126,15 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                adapter.clearAll(true);
-                adapter.addAll(facts);
+                likeAdapter.clearAll(true);
+                likeAdapter.addAll(facts);
 
             }
         });
     }
 
     private void queryMyFacts() {
+        rvUserFacts.setAdapter(adapter);
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         query.whereEqualTo(Fact.KEY_USER, ParseUser.getCurrentUser());
