@@ -38,7 +38,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     TextView tvNumber;
     RecyclerView rvUserFacts;
     FactAdapter adapter;
+    FactAdapter likeAdapter;
     List<Fact> userFacts;
+    List<Fact> likedFacts;
     TabLayout tabLayout;
     public static final String KEY_PROFILE = "profile";
 
@@ -72,9 +74,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
         // Array initialized
         userFacts = new ArrayList<>();
+        likedFacts = new ArrayList<>();
 
         // Adapter initialized
         adapter = new FactAdapter(getContext(), userFacts, true, this);
+        likeAdapter = new FactAdapter(getContext(), likedFacts, false, this);
 
         // Assign adapter and layout manager
         rvUserFacts.setAdapter(adapter);
