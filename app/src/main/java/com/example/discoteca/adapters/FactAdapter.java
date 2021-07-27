@@ -95,6 +95,15 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             List<String> likeFacts= user.getList("factsLiked");
             String objectID = fact.getObjectId();
 
+            for (int i = 0; i < likeFacts.size(); i++){
+                if (likeFacts.get(i).equals(objectID)){
+                    ibLike.setImageResource(R.drawable.ic_music_liked);
+                    break;
+                } else if(i == likeFacts.size()-1) {
+                    ibLike.setImageResource(R.drawable.ic_music_disliked);
+                }
+            }
+
             if (delete){
                 ibDelete.setVisibility(View.VISIBLE);
             }
