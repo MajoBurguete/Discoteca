@@ -108,6 +108,13 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
                 }
             });
 
+            ibLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onFactClickListener.onLikeClick(getAdapterPosition());
+                }
+            });
+
         }
 
     }
