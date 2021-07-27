@@ -27,6 +27,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     public interface OnFactClickListener{
         void onDeleteClick(int position);
+        void onLikeClick(int position);
     }
 
 
