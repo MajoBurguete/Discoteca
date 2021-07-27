@@ -75,6 +75,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         TextView tvSearchInfo;
         TextView tvUserFact;
         ImageButton ibDelete;
+        ImageButton ibLike;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,6 +85,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUserFact = itemView.findViewById(R.id.tvUserFact);
             ibDelete = itemView.findViewById(R.id.ibDelete);
+            ibLike = itemView.findViewById(R.id.ibLike);
         }
 
         public void bind(Fact fact) {
