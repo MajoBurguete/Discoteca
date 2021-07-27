@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
@@ -218,6 +219,24 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         if (tabLayout.getSelectedTabPosition() == 1){
             Fact fact = likedFacts.get(position);
             String objectID = fact.getObjectId();
+
+            for (int i = 0; i < likeFacts.size(); i++){
+                if (likeFacts.get(i).equals(objectID)){
+                    Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                    likeFacts.remove(i);
+                    user.put(KEY_LIST, likeFacts);
+                    user.saveInBackground();
+                    queryLikedFacts();
+                    break;
+                } else if (i == likeFacts.size()-1){
+                    Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+                    likeFacts.add(0, fact.getObjectId());
+                    user.put(KEY_LIST, likeFacts);
+                    user.saveInBackground();
+                    queryLikedFacts();
+                    break;
+                }
+            }
         }
     }
 
