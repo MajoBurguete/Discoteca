@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -29,6 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
@@ -38,6 +40,7 @@ import java.util.List;
 public class SongFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
     public static final String TAG = "SongFragment";
+    public static final String KEY_LIST = "factsLiked";
     ImageView ivSongDetail;
     TextView tvNameDetail;
     TextView tvArtistSong;
@@ -141,6 +144,25 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     @Override
     public void onLikeClick(int position) {
+        ParseUser user = ParseUser.getCurrentUser();
+        List<String> likeFacts= user.getList(KEY_LIST);
+        Fact fact = songFacts.get(position);
+        String objectID = fact.getObjectId();
 
+        for (int i = 0; i < likeFacts.size(); i++){
+            if (likeFacts.get(i).equals(objectID)){
+                Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                likeFacts.remove(i);
+                user.put(KEY_LIST, likeFacts);
+                user.saveInBackground();
+                break;
+            } else if (i == likeFacts.size()-1){
+                Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+                likeFacts.add(0, fact.getObjectId());
+                user.put(KEY_LIST, likeFacts);
+                user.saveInBackground();
+                break;
+            }
+        }
     }
 }
