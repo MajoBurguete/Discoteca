@@ -80,8 +80,25 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         rvUserFacts.setAdapter(adapter);
         rvUserFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        queryFacts();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tabLayout.getSelectedTabPosition() == 0){
+                }
+                if (tabLayout.getSelectedTabPosition() == 1){
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
