@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Fact;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -90,6 +91,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         }
 
         public void bind(Fact fact) {
+            ParseUser user = ParseUser.getCurrentUser();
+            List<String> likeFacts= user.getList("factsLiked");
             if (delete){
                 ibDelete.setVisibility(View.VISIBLE);
             }
