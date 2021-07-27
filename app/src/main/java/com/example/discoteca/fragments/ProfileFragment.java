@@ -72,6 +72,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         tabLayout = view.findViewById(R.id.tabProfile);
         srProfile = view.findViewById(R.id.srProfile);
 
+        srProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+            }
+        });
 
         ParseUser user = ParseUser.getCurrentUser();
 
