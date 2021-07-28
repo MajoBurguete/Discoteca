@@ -143,7 +143,15 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     }
 
-    private void queryLikedFacts() {
+    private void loadNextData(int page) {
+        if (tabLayout.getSelectedTabPosition() == 0){
+            queryMyFacts(page, false);
+        }
+        if (tabLayout.getSelectedTabPosition() == 1){
+            queryLikedFacts(page, false);
+        }
+    }
+
         rvUserFacts.setAdapter(likeAdapter);
 
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
