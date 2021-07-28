@@ -100,7 +100,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         // Initialize adapter
         adapter = new FactAdapter(getContext(), songFacts, false, this);
 
-        // Assign adapter and layout manager
+        // Assign adapter, layout manager and scroll listener
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         scrollListener = new EndlessScrolling(linearLayoutManager) {
@@ -110,7 +110,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         };
 
         rvSongsFacts.setAdapter(adapter);
-        rvSongsFacts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvSongsFacts.setLayoutManager(linearLayoutManager);
+        rvSongsFacts.addOnScrollListener(scrollListener);
 
         // Close button
         ibClose.setOnClickListener(new View.OnClickListener() {
