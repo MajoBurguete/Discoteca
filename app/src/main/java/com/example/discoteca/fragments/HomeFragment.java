@@ -84,7 +84,8 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
         // Assign adapter nd layout manager to the recycler view
         rvFacts.setAdapter(adapter);
-        rvFacts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvFacts.setLayoutManager(linearLayoutManager);
+        rvFacts.addOnScrollListener(scrollListener);
 
         // Query facts from database
         queryFacts();
