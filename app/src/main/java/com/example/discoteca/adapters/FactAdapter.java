@@ -116,6 +116,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             tvDescription.setText(fact.getDescription());
             String userSt = "@" + fact.getUser().getUsername();
             tvUserFact.setText(userSt);
+            tvLikes.setText(String.valueOf(fact.getLikes()));
 
             ibDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
