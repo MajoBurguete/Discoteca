@@ -136,19 +136,14 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
             if (likeFacts.get(i).equals(objectID)){
                 Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
                 likeFacts.remove(i);
-                user.put(KEY_LIST, likeFacts);
-                user.saveInBackground(new SaveCallback() {
 
                 // Update number of likes on the fact
                 likes = likes - 1;
                 fact.setLikes(likes);
+                fact.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if (e != null){
-                            Log.e(TAG, "Issue with disliking facts", e);
-                            return;
-                        }
-                        adapter.notifyDataSetChanged();
+                        user.put(KEY_LIST, likeFacts);
                     }
                 });
                 break;
