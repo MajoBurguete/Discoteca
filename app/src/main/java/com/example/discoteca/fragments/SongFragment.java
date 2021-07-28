@@ -106,6 +106,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         scrollListener = new EndlessScrolling(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                page = page * 10;
+                loadNextData(page);
             }
         };
 
