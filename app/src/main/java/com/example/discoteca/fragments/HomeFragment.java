@@ -111,7 +111,9 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                adapter.clearAll(false);
+                if (clear){
+                    adapter.clearAll(false);
+                }
                 adapter.addAll(facts);
 
             }
