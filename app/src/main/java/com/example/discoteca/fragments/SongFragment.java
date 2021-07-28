@@ -161,7 +161,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                adapter.clearAll(true);
+                if (clear) {
+                    adapter.clearAll(true);
+                }
                 adapter.addAll(facts);
 
             }
