@@ -14,6 +14,7 @@ public class Fact  extends ParseObject {
     public static final String KEY_SONG = "song";
     public static final String KEY_ALBUM = "album";
     public static final String KEY_ARTIST = "artist";
+    public static final String KEY_LIKES = "likes";
 
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
@@ -54,4 +55,8 @@ public class Fact  extends ParseObject {
     public String getArtist(){ return getString(KEY_ARTIST); }
 
     public void setArtist(String artist){ put(KEY_ARTIST, artist); }
+
+    public int getLikes(){ return getInt(KEY_LIKES); }
+
+    public void setLikes(int likes){ put(KEY_LIKES, likes); }
 }
