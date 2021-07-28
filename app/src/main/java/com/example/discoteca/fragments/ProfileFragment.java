@@ -159,8 +159,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         query.include(Fact.KEY_USER);
         Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
         query.whereContainedIn(Fact.KEY_OBJECT_ID, ParseUser.getCurrentUser().getList(KEY_LIST));
-        query.setLimit(20);
-        query.orderByDescending("createdAt");
+        query.setLimit(10);
+        query.setSkip(page);
         query.findInBackground(new FindCallback<Fact>() {
             @Override
             public void done(List<Fact> facts, ParseException e) {
@@ -180,7 +180,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         query.whereEqualTo(Fact.KEY_USER, ParseUser.getCurrentUser());
-        query.setLimit(20);
+        query.setLimit(10);
+        query.setSkip(page);
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<Fact>() {
             @Override
