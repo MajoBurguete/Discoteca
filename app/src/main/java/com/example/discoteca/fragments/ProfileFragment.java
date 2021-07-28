@@ -78,11 +78,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             @Override
             public void onRefresh() {
                 if (tabLayout.getSelectedTabPosition() == 0){
-                    queryMyFacts();
+                    queryMyFacts(0, true);
                     srProfile.setRefreshing(false);
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
-                    queryLikedFacts();
+                    queryLikedFacts(0, true);
                     srProfile.setRefreshing(false);
                 }
             }
@@ -120,10 +120,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
-                    queryMyFacts();
+                    queryMyFacts(0,true);
                 }
                 if (tabLayout.getSelectedTabPosition() == 1){
-                    queryLikedFacts();
+                    queryLikedFacts(0, true);
                 }
             }
 
@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         });
 
         // Default tab
-        queryMyFacts();
+        queryMyFacts(0, true);
 
     }
 
@@ -289,14 +289,14 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     likeFacts.remove(i);
                     user.put(KEY_LIST, likeFacts);
                     user.saveInBackground();
-                    queryLikedFacts();
+                    queryLikedFacts(0, true);
                     break;
                 } else if (i == likeFacts.size()-1){
                     Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
                     likeFacts.add(0, fact.getObjectId());
                     user.put(KEY_LIST, likeFacts);
                     user.saveInBackground();
-                    queryLikedFacts();
+                    queryLikedFacts(0,true);
                     break;
                 }
             }
