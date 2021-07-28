@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
@@ -45,6 +46,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     List<Fact> userFacts;
     List<Fact> likedFacts;
     TabLayout tabLayout;
+    EndlessScrolling scrollListener;
     SwipeRefreshLayout srProfile;
     public static final String KEY_PROFILE = "profile";
     public static final String KEY_LIST = "factsLiked";
