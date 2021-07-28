@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.activities.ComposeActivity;
 import com.example.discoteca.adapters.FactAdapter;
@@ -54,6 +55,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     FloatingActionButton fabAdd;
     SwipeRefreshLayout srSongFacts;
     RelativeLayout rlSong;
+    EndlessScrolling scrollListener;
     Song song;
 
     public SongFragment() {
