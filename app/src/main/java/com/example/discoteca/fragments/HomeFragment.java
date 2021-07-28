@@ -166,4 +166,17 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         }
 
     }
+
+    private void saveUser(ParseUser user){
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "Issue with disliking facts", e);
+                    return;
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
 }
