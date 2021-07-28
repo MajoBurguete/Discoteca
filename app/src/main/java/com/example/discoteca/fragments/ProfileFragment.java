@@ -244,6 +244,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         if (tabLayout.getSelectedTabPosition() == 0){
             Fact fact = userFacts.get(position);
             String objectID = fact.getObjectId();
+            int likes = fact.getLikes();
 
             for (int i = 0; i < likeFacts.size(); i++){
                 if (likeFacts.get(i).equals(objectID)){

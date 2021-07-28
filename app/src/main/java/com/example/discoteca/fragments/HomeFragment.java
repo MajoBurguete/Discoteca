@@ -130,6 +130,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         List<String> likeFacts= user.getList(KEY_LIST);
         Fact fact = factsL.get(position);
         String objectID = fact.getObjectId();
+        int likes = fact.getLikes();
 
         for (int i = 0; i < likeFacts.size(); i++){
             if (likeFacts.get(i).equals(objectID)){
