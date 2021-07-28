@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                queryFacts();
+                queryFacts(0, true);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         rvFacts.addOnScrollListener(scrollListener);
 
         // Query facts from database
-        queryFacts();
+        queryFacts(0, true);
 
     }
 
