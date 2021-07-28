@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
@@ -34,6 +35,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     List<Fact> factsL;
     FactAdapter adapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    EndlessScrolling scrollListener;
     public static final String KEY_LIST = "factsLiked";
 
     public HomeFragment() {
