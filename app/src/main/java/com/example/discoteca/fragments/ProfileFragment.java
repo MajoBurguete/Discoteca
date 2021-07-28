@@ -107,6 +107,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         scrollListener = new EndlessScrolling(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                page = page * 10;
+                loadNextData(page);
             }
         };
 
