@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         queryFacts(page,false);
     }
 
+    private void queryFacts(int page, boolean clear) {
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         query.setLimit(20);
