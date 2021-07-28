@@ -152,6 +152,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         }
     }
 
+    private void queryLikedFacts(int page, boolean clear) {
         rvUserFacts.setAdapter(likeAdapter);
 
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
@@ -174,7 +175,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         });
     }
 
-    private void queryMyFacts() {
+    private void queryMyFacts(int page, boolean clear) {
         rvUserFacts.setAdapter(adapter);
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
