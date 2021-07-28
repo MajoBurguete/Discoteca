@@ -103,7 +103,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         likeAdapter = new FactAdapter(getContext(), likedFacts, false, this);
 
         // Assign adapter and layout manager
-        rvUserFacts.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
