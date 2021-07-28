@@ -87,7 +87,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         srSongFacts.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                queryFacts();
+                queryFacts(0, true);
                 srSongFacts.setRefreshing(false);
             }
         });
@@ -139,7 +139,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         tvArtistSong.setText(song.getArtistName());
         tvSongAlbum.setText(song.getAlbumName());
 
-        queryFacts();
+        queryFacts(0, true);
         
     }
 
