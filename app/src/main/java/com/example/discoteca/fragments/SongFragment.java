@@ -203,6 +203,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                 likeFacts.add(0, fact.getObjectId());
                 user.put(KEY_LIST, likeFacts);
                 user.saveInBackground(new SaveCallback() {
+
+                likes =+ 1;
+                fact.setLikes(likes);
                     @Override
                     public void done(ParseException e) {
                         if (e != null){

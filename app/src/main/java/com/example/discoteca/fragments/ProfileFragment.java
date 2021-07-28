@@ -268,6 +268,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     likeFacts.add(0, fact.getObjectId());
                     user.put(KEY_LIST, likeFacts);
                     user.saveInBackground(new SaveCallback() {
+
+                    // Update number of likes on the fact
+                    likes =+ 1;
+                    fact.setLikes(likes);
                         @Override
                         public void done(ParseException e) {
                             if (e != null){
@@ -308,6 +312,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     user.put(KEY_LIST, likeFacts);
                     user.saveInBackground();
                     queryLikedFacts(0,true);
+                    likes =+ 1;
+                    fact.setLikes(likes);
                     break;
                 }
             }
