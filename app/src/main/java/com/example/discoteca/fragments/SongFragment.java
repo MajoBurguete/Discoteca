@@ -201,20 +201,16 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             } else if (i == likeFacts.size()-1){
                 Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
                 likeFacts.add(0, fact.getObjectId());
-                user.put(KEY_LIST, likeFacts);
-                user.saveInBackground(new SaveCallback() {
 
                 likes =+ 1;
                 fact.setLikes(likes);
+                fact.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if (e != null){
-                            Log.e(TAG, "Issue with liking facts", e);
-                            return;
-                        }
-                        adapter.notifyDataSetChanged();
+                        user.put(KEY_LIST, likeFacts);
                     }
                 });
+
                 break;
             }
         }
