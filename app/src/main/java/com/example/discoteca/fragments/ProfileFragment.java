@@ -104,6 +104,12 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
         // Assign adapter and layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        scrollListener = new EndlessScrolling(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
