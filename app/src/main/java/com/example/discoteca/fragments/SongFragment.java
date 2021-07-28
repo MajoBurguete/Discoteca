@@ -102,6 +102,13 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
         // Assign adapter and layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
+        scrollListener = new EndlessScrolling(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
+
         rvSongsFacts.setAdapter(adapter);
         rvSongsFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
