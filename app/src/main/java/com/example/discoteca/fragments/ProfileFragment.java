@@ -258,8 +258,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                         @Override
                         public void done(ParseException e) {
                             user.put(KEY_LIST, likeFacts);
+                            saveUser(user);
                         }
                     });
+
                     break;
                 } else if (i == likeFacts.size()-1){
                     Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
