@@ -168,7 +168,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                likeAdapter.clearAll(true);
+                if (clear){
+                    likeAdapter.clearAll(true);
+                }
                 likeAdapter.addAll(facts);
 
             }
@@ -190,7 +192,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                adapter.clearAll(true);
+                if (clear){
+                    adapter.clearAll(true);
+                }
                 adapter.addAll(facts);
 
                 // Set number of facts
