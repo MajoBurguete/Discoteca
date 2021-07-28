@@ -75,6 +75,13 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         // Infinite scrolling
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext());
 
+        scrollListener = new EndlessScrolling(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
+
+
         // Assign adapter nd layout manager to the recycler view
         rvFacts.setAdapter(adapter);
         rvFacts.setLayoutManager(new LinearLayoutManager(getContext()));
