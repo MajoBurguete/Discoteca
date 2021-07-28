@@ -138,6 +138,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
                 likeFacts.remove(i);
                 user.put(KEY_LIST, likeFacts);
                 user.saveInBackground(new SaveCallback() {
+
+                // Update number of likes on the fact
+                likes = likes - 1;
+                fact.setLikes(likes);
                     @Override
                     public void done(ParseException e) {
                         if (e != null){
