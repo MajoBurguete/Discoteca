@@ -102,14 +102,17 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         adapter = new FactAdapter(getContext(), userFacts, true, this);
         likeAdapter = new FactAdapter(getContext(), likedFacts, false, this);
 
-        // Assign adapter and layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
         scrollListener = new EndlessScrolling(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
             }
         };
 
+        // Assign scroll listener and layout manager
+        rvUserFacts.setLayoutManager(linearLayoutManager);
+        rvUserFacts.addOnScrollListener(scrollListener);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
