@@ -101,6 +101,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         adapter = new FactAdapter(getContext(), songFacts, false, this);
 
         // Assign adapter and layout manager
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rvSongsFacts.setAdapter(adapter);
         rvSongsFacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
