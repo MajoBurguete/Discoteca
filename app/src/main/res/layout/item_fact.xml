@@ -88,7 +88,7 @@
                 android:layout_marginTop="11dp"
                 android:layout_toEndOf="@+id/tvLikes"
                 android:backgroundTint="@android:color/transparent"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:srcCompat="@android:drawable/ic_menu_delete" />
 
             <ImageButton
