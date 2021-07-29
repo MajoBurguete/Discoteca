@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent compose = new Intent(MainActivity.this, ComposeActivity.class);
                     compose.putExtra("token", accessToken);
                     startActivity(compose);
+                    overridePendingTransition(R.anim.up_in, R.anim.up_out);
                 }
                 if (item.getItemId() == R.id.btnSearch){
                     fragment = new SearchFragment();
@@ -63,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.btnProfile){
                     fragment = new ProfileFragment();
                 }
-                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                FragmentTransaction fts =fragmentManager.beginTransaction();
+                fts.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+                fts.replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
