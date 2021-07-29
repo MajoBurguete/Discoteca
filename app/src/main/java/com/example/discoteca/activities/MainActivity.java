@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.btnCompose){
                     Intent compose = new Intent(MainActivity.this, ComposeActivity.class);
-                    compose.putExtra("token", accessToken);
                     startActivity(compose);
                     overridePendingTransition(R.anim.up_in, R.anim.up_out);
                 }
