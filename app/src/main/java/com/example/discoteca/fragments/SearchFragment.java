@@ -287,6 +287,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
         transaction.replace(R.id.flChild, fragment).commit();
         flChild.setVisibility(View.VISIBLE);
 
@@ -303,6 +304,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
         transaction.replace(R.id.flChild, fragment).commit();
         flChild.setVisibility(View.VISIBLE);
     }
