@@ -118,6 +118,7 @@ public class ComposeActivity extends AppCompatActivity {
                 String accessToken = getIntent().getStringExtra("token");
                 pick.putExtra("token", accessToken);
                 startActivityForResult(pick, REQUEST_CODE);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
     }
