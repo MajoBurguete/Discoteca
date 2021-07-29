@@ -34,7 +34,7 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 - [x] User can publish a fact.
 - [x] User can see different facts about random songs in their home screen.
 - [x] User can refresh their home screen to see if any other fact was published.
-- [ ] The app uses animations
+- [x] The app uses animations
 - [x] The user session stays open until the user logs out (even if th app was closed).
 - [x] User can update their username
 - [x] User can see the number of posts they have made
