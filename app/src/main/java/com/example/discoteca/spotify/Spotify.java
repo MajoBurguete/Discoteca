@@ -1,17 +1,23 @@
 package com.example.discoteca.spotify;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
+
 import com.example.discoteca.BuildConfig;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -38,6 +44,9 @@ public class Spotify {
             .setClientId(CLIENT_ID)
             .setClientSecret(CLIENT_SECRET)
             .setRedirectUri(redirectUri)
+            .build();
+
+    private static final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
             .build();
 
     String accessToken;
