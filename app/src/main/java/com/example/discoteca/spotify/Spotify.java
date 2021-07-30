@@ -33,6 +33,13 @@ public class Spotify {
     public static final String CLIENT_SECRET = BuildConfig.CONSUMER_SECRET;
     private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
     private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
+
+    private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
+            .setClientId(CLIENT_ID)
+            .setClientSecret(CLIENT_SECRET)
+            .setRedirectUri(redirectUri)
+            .build();
+
     String accessToken;
     Context context;
 
