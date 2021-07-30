@@ -288,6 +288,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     public void onSongFactClick(int position) {
         Fragment fragment = new SongFragment();
 
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
     }
 
     private void likeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user){
