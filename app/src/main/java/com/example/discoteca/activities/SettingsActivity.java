@@ -73,7 +73,8 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ParseUser currUser = ParseUser.getCurrentUser();
                 String newUsername = etNameEdit.getText().toString();
-                saveUser(newUsername, currUser);
+                String newEmail = etEmailEdit.getText().toString();
+                saveUser(newUsername, currUser, newEmail);
 
             }
         });
@@ -146,8 +147,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    private void saveUser(String newUsername, ParseUser currentUser) {
         currentUser.put(KEY_USERNAME, newUsername);
+    private void saveUser(String newUsername, ParseUser currentUser, String newEmail) {
         currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
