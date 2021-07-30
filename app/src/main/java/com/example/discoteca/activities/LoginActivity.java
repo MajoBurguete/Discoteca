@@ -27,6 +27,9 @@ import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
+import java.net.URI;
+import java.util.concurrent.CompletableFuture;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SIGN = 7;
@@ -87,6 +90,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void authorizeUser(){
+
+        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+
+        // Example Only. Never block in production code.
+        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
+
+        // Set access token for further "spotifyApi" object usage
+        spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+        accessToken = spotifyApi.getAccessToken();
+        storeAccessToken(spotifyApi.getAccessToken());
+        
     }
 
     @Override
