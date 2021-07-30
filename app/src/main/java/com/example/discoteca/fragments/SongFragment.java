@@ -57,6 +57,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     RelativeLayout rlSong;
     EndlessScrolling scrollListener;
     Song song;
+    String fragment;
 
     public SongFragment() {
         // Required empty public constructor
@@ -93,6 +94,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         });
 
         song = Parcels.unwrap(this.getArguments().getParcelable("song"));
+        fragment = this.getArguments().getString("fragment");
 
         // Initialize fact array
         songFacts = new ArrayList<>();
