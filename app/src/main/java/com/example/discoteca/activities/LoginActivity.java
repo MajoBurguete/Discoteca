@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.parse.ParseUser;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.SpotifyHttpManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,12 +36,11 @@ public class LoginActivity extends AppCompatActivity {
     private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
     private String accessToken = "";
 
-    // Set the connection parameters
-    ConnectionParams connectionParams =
-            new ConnectionParams.Builder(CLIENT_ID)
-                    .setRedirectUri(REDIRECT_URI)
-                    .showAuthView(true)
-                    .build();
+    private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
+            .setClientId(CLIENT_ID)
+            .setClientSecret(CLIENT_SECRET)
+            .setRedirectUri(redirectUri)
+            .build();
 
 
     @Override
