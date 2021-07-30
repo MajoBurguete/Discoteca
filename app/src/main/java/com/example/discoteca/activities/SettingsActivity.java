@@ -33,7 +33,6 @@ import java.io.IOException;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public static final String KEY_USERNAME = "username";
     public static final String KEY_PROFILE = "profile";
     public final static int PICK_PHOTO_CODE = 27;
     private ParseFile photoFile;
@@ -147,13 +146,14 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-        currentUser.put(KEY_USERNAME, newUsername);
     private void saveUser(String newUsername, ParseUser currentUser, String newEmail) {
+        currentUser.setUsername(newUsername);
+        currentUser.setEmail(newEmail);
         currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null){
-                    Log.e(TAG, "Error while saving description", e);
+                    Log.e(TAG, "Error while saving new settings", e);
                     Toast.makeText(SettingsActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 if (photoFile != null){
@@ -166,7 +166,7 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     });
                 }
-                Toast.makeText(SettingsActivity.this, "Your username was save successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "Your settings were saved successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
