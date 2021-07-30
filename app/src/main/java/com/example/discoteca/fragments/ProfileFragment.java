@@ -290,6 +290,12 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
         // Pass song data to the detail fragment
         Bundle bundle = new Bundle();
+        if (tabLayout.getSelectedTabPosition() == 0){
+
+        }
+        if (tabLayout.getSelectedTabPosition() == 1){
+
+        }
     }
 
     private void likeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user){
