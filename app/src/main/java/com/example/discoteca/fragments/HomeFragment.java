@@ -187,6 +187,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     }
 
+    @Override
+    public void onSongFactClick(int position) {
+    }
+
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override
