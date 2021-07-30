@@ -2,8 +2,10 @@ package com.example.discoteca.spotify;
 
 import android.content.Context;
 import android.util.Log;
+import com.example.discoteca.BuildConfig;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
+import com.wrapper.spotify.SpotifyHttpManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,10 @@ public class Spotify {
 
     public static final String TAG = "SpotifyClient";
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
+    private static final String CLIENT_ID = BuildConfig.CONSUMER_KEY;
+    public static final String CLIENT_SECRET = BuildConfig.CONSUMER_SECRET;
+    private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
+    private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
     String accessToken;
     Context context;
 
