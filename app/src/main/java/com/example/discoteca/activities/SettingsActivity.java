@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Bind data
         etNameEdit.setText(user.getUsername());
-        tvEmail.setText(user.getEmail());
+        etEmailEdit.setText(user.getEmail());
         Glide.with(context).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPict);
 
         btnSaveProf.setOnClickListener(new View.OnClickListener() {
