@@ -313,6 +313,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             song.setImageUrl(fact.getUrl());
             bundle.putParcelable("song", Parcels.wrap(song));
         }
+
+        bundle.putString("fragment", "profile");
+        fragment.setArguments(bundle);
     }
 
     private void likeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user){
