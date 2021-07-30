@@ -213,6 +213,19 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                 });
 
                 break;
+        if (likeFacts.size() == 0){
+            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+            likeFacts.add(0, fact.getObjectId());
+
+            likes = likes + 1;
+            fact.setLikes(likes);
+            fact.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    user.put(KEY_LIST, likeFacts);
+                    saveUser(user);
+                }
+            });
             }
         }
     }
