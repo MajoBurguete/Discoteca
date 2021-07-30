@@ -202,6 +202,8 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         song.setArtistName(fact.getArtist());
         song.setImageUrl(fact.getUrl());
         bundle.putParcelable("song", Parcels.wrap(song));
+        bundle.putString("fragment", "home");
+        fragment.setArguments(bundle);
     }
 
     private void saveUser(ParseUser user){
