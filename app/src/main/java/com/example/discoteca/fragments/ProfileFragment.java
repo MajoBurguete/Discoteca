@@ -251,20 +251,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
                     break;
                 } else if (i == likeFacts.size()-1){
-                    Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-                    likeFacts.add(0, fact.getObjectId());
-
-                    // Update number of likes on the fact
-                    likes =+ 1;
-                    fact.setLikes(likes);
-                    fact.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            user.put(KEY_LIST, likeFacts);
-                            saveUser(user);
-                        }
-                    });
-
                     break;
         if (likeFacts.size() == 0){
             if (tabLayout.getSelectedTabPosition() == 0){
@@ -284,18 +270,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             for (int i = 0; i < likeFacts.size(); i++){
                     break;
                 } else if (i == likeFacts.size()-1){
-                    Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-                    likeFacts.add(0, fact.getObjectId());
-                    likes =+ 1;
-                    fact.setLikes(likes);
-                    fact.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            user.put(KEY_LIST, likeFacts);
-                            user.saveInBackground();
-                            queryLikedFacts(0,true);
-                        }
-                    });
 
                     break;
                 }
