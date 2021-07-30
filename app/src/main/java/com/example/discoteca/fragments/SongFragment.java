@@ -122,8 +122,6 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         ibClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rlSong.setClickable(false);
-                getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
                 if (fragment == "home"){
                     Fragment fragmentNew = new HomeFragment();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -135,6 +133,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
                     transaction.replace(R.id.flContainer, fragmentNew).commit();
                 }
+                else{
+                    rlSong.setClickable(false);
+                    getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
                 }
             }
         });
