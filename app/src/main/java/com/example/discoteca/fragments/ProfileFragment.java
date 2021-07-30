@@ -295,6 +295,21 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 }
             });
         } else {
+            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+            likeFacts.add(0, fact.getObjectId());
+            likes = likes + 1;
+            fact.setLikes(likes);
+            fact.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    user.put(KEY_LIST, likeFacts);
+                    user.saveInBackground();
+                    queryLikedFacts(0,true);
+                }
+            });
+        }
+    }
+
     private void dislikeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user, int i){
         if (tab1){
             Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
