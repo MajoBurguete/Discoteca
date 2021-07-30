@@ -87,11 +87,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void authorizeUser(){
-        AuthenticationRequest.Builder builder =
-                new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-        builder.setScopes(new String[]{"streaming"});
-        AuthenticationRequest request = builder.build();
-        AuthenticationClient.openLoginActivity(LoginActivity.this, REQUEST_CODE, request);
     }
 
     @Override
