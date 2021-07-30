@@ -50,7 +50,6 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
     RelativeLayout rlAlbum;
     List<Song> songList;
     RecyclerView rvAlbumSongs;
-    String accessToken;
     Album album;
     SongAdapter adapter;
     Spotify client;
@@ -84,8 +83,7 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
         Context context = getActivity();
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
-        accessToken = sharedPref.getString("token",null);
-        client = new Spotify(accessToken);
+        client = new Spotify(context, sharedPref);
 
         // Bind album data
         Glide.with(getContext()).load(album.getImageUrl()).transform(new RoundedCorners(10)).into(ivAlbumDet);

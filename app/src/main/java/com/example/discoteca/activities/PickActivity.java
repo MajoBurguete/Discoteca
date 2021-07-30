@@ -36,7 +36,6 @@ import okhttp3.Response;
 public class PickActivity extends AppCompatActivity implements SongAdapter.OnSongClickListener{
 
     public static final String TAG = "PickActivity";
-    private String accessToken;
     SearchView searchBar;
     ImageButton ibBack;
     ProgressBar progressBar;
@@ -57,8 +56,7 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
         Context context = this;
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
-        accessToken = sharedPref.getString("token",null);
-        client = new Spotify(accessToken);
+        client = new Spotify(context, sharedPref);
 
         // Components references from the pick activity layout
         searchBar = findViewById(R.id.svPickSong);

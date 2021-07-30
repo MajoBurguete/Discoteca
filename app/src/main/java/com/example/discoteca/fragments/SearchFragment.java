@@ -50,7 +50,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     List<Song> songs;
     List<Album> albums;
     SearchView searchBar;
-    private String accessToken;
     TabLayout tabLayout;
     Spotify client;
     private EndlessScrolling scrollListener;
@@ -115,8 +114,7 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         Context context = getActivity();
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
-        accessToken = sharedPref.getString("token",null);
-        client = new Spotify(accessToken);
+        client = new Spotify(context, sharedPref);
 
         //The default tab is the song tab
         songTab();
@@ -283,7 +281,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
         // Pass song data to the detail fragment
         Bundle bundle = new Bundle();
         bundle.putParcelable("album", Parcels.wrap(albums.get(position)));
-        bundle.putString("token", accessToken);
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
