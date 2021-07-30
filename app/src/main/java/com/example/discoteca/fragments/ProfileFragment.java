@@ -290,11 +290,28 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
         // Pass song data to the detail fragment
         Bundle bundle = new Bundle();
-        if (tabLayout.getSelectedTabPosition() == 0){
 
+        if (tabLayout.getSelectedTabPosition() == 0){
+            Fact fact = userFacts.get(position);
+
+            Song song = new Song();
+            song.setSongId(fact.getId());
+            song.setSongName(fact.getSong());
+            song.setAlbumName(fact.getAlbum());
+            song.setArtistName(fact.getArtist());
+            song.setImageUrl(fact.getUrl());
+            bundle.putParcelable("song", Parcels.wrap(song));
         }
         if (tabLayout.getSelectedTabPosition() == 1){
+            Fact fact = likedFacts.get(position);
 
+            Song song = new Song();
+            song.setSongId(fact.getId());
+            song.setSongName(fact.getSong());
+            song.setAlbumName(fact.getAlbum());
+            song.setArtistName(fact.getArtist());
+            song.setImageUrl(fact.getUrl());
+            bundle.putParcelable("song", Parcels.wrap(song));
         }
     }
 
