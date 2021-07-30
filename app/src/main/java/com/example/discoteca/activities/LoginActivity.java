@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         // Set access token for further "spotifyApi" object usage
         spotifyApi.setAccessToken(clientCredentials.getAccessToken());
         accessToken = spotifyApi.getAccessToken();
-        storeAccessToken(spotifyApi.getAccessToken());
+        storeAccessToken(spotifyApi.getAccessToken(), this);
         
     }
 
@@ -119,8 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         return accessToken;
     }
 
-    private void storeAccessToken(String token){
-        Context context = this;
+    public void storeAccessToken(String token, Context context){
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
