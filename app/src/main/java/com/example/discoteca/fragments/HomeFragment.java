@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -19,11 +20,14 @@ import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.example.discoteca.models.Song;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -204,6 +208,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         bundle.putParcelable("song", Parcels.wrap(song));
         bundle.putString("fragment", "home");
         fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+        transaction.replace(R.id.flContainer, fragment).commit();
     }
 
     private void saveUser(ParseUser user){
