@@ -1,5 +1,6 @@
 package com.example.discoteca.spotify;
 
+import android.content.Context;
 import android.util.Log;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
@@ -27,6 +28,12 @@ public class Spotify {
     public static final String TAG = "SpotifyClient";
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
     String accessToken;
+    Context context;
+
+    public Spotify(Context context, SharedPreferences sharedPref) {
+        this.context = context;
+        this.accessToken = sharedPref.getString("token",null);
+    }
 
     public Spotify(String accessToken) {
         this.accessToken = accessToken;
