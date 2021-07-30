@@ -191,6 +191,17 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     public void onSongFactClick(int position) {
         Fragment fragment = new SongFragment();
 
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
+        Fact fact = factsL.get(position);
+
+        Song song = new Song();
+        song.setSongId(fact.getId());
+        song.setSongName(fact.getSong());
+        song.setAlbumName(fact.getAlbum());
+        song.setArtistName(fact.getArtist());
+        song.setImageUrl(fact.getUrl());
+        bundle.putParcelable("song", Parcels.wrap(song));
     }
 
     private void saveUser(ParseUser user){
