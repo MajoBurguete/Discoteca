@@ -29,6 +29,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
     public interface OnFactClickListener{
         void onDeleteClick(int position);
         void onLikeClick(int position);
+        void onSongFactClick(int position);
     }
 
 
@@ -133,6 +134,13 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     onFactClickListener.onLikeClick(getAdapterPosition());
+                }
+            });
+
+            ivAlbum.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onFactClickListener.onSongFactClick(getAdapterPosition());
                 }
             });
 
