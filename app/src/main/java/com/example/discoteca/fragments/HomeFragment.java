@@ -165,6 +165,22 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
                 });
 
                 break;
+        int likeCheck = likeFacts.size();
+        if (likeCheck == 0){
+            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+            likeFacts.add(0, fact.getObjectId());
+
+            // Update number of likes on the fact
+            likes = likes + 1;
+            fact.setLikes(likes);
+            fact.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    user.put(KEY_LIST, likeFacts);
+                    saveUser(user);
+                }
+            });
+        } else{
             }
         }
 
