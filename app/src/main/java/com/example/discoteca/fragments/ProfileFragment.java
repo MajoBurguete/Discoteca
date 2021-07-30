@@ -279,6 +279,13 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     });
 
                     break;
+        if (likeFacts.size() == 0){
+            if (tabLayout.getSelectedTabPosition() == 0){
+                Fact fact = userFacts.get(position);
+                String objectID = fact.getObjectId();
+                int likes = fact.getLikes();
+                likeFact(true, likeFacts, fact, likes, user);
+            }
                 }
             }
         }
