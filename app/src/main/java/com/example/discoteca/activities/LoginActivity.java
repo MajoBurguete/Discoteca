@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 8;
     private static final String CLIENT_ID = BuildConfig.CONSUMER_KEY;
     public static final String CLIENT_SECRET = BuildConfig.CONSUMER_SECRET;
+    private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
+    private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
     private String accessToken = "";
 
     // Set the connection parameters
