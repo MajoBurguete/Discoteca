@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
 import com.spotify.android.appremote.api.ConnectionParams;
 
@@ -26,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SIGN = 7;
     private static final int REQUEST_CODE = 8;
-    private static final String CLIENT_ID = "a3dd6fa3d5af4f029264e77f1d5f629b";
-    private static final String REDIRECT_URI = "intent://";
+    private static final String CLIENT_ID = BuildConfig.CONSUMER_KEY;
+    public static final String CLIENT_SECRET = BuildConfig.CONSUMER_SECRET;
     private String accessToken = "";
 
     // Set the connection parameters
