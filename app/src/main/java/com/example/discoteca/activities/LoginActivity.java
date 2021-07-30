@@ -14,17 +14,18 @@ import android.widget.Toast;
 
 import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
-import com.spotify.android.appremote.api.ConnectionParams;
 
 import com.example.discoteca.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
-import com.spotify.sdk.android.authentication.AuthenticationRequest;
+
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
             .setRedirectUri(redirectUri)
             .build();
 
+    private static final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
+            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
