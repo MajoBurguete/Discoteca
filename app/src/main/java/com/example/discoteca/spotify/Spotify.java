@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.discoteca.BuildConfig;
+import com.example.discoteca.activities.LoginActivity;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.wrapper.spotify.SpotifyApi;
@@ -70,6 +71,8 @@ public class Spotify {
         spotifyApi.setAccessToken(clientCredentials.getAccessToken());
         accessToken = spotifyApi.getAccessToken();
 
+        LoginActivity loginActivity = new LoginActivity();
+        loginActivity.storeAccessToken(spotifyApi.getAccessToken(), context);
     }
 
     // Search Song Request
