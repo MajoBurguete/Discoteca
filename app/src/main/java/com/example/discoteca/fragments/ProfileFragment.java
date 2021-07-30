@@ -286,6 +286,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     @Override
     public void onSongFactClick(int position) {
+        Fragment fragment = new SongFragment();
 
     }
 
