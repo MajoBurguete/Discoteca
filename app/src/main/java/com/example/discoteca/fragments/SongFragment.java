@@ -195,6 +195,39 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     saveUser(user);
                 }
             });
+        } else {
+            for (int i = 0; i < likeFacts.size(); i++){
+                if (likeFacts.get(i).equals(objectID)){
+                    Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                    likeFacts.remove(i);
+
+                    likes = likes - 1;
+                    fact.setLikes(likes);
+                    fact.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            user.put(KEY_LIST, likeFacts);
+                            saveUser(user);
+                        }
+                    });
+
+                    break;
+                } else if (i == likeFacts.size()-1){
+                    Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
+                    likeFacts.add(0, fact.getObjectId());
+                    Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
+                    likes = likes + 1;
+                    fact.setLikes(likes);
+                    fact.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            user.put(KEY_LIST, likeFacts);
+                            saveUser(user);
+                        }
+                    });
+
+                    break;
+                }
             }
         }
     }
