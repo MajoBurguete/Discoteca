@@ -111,20 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
             loginUser(username, password);
         }
-        if (requestCode == REQUEST_CODE ){
-            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode,data);
 
-            switch (response.getType()){
-                case TOKEN:
-                    Log.d("API Call", "Connected! Yay!");
-                    accessToken = response.getAccessToken();
-                    storeAccessToken(accessToken);
-                    break;
-                case ERROR:
-                    Log.e("API call", response.getError());
-                    break;
-            }
-        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
