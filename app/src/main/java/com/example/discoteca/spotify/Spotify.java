@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -57,8 +58,18 @@ public class Spotify {
         this.accessToken = sharedPref.getString("token",null);
     }
 
-    public Spotify(String accessToken) {
-        this.accessToken = accessToken;
+    // Refresh token
+
+    public void refreshToken(){
+        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+
+        // Example Only. Never block in production code.
+        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
+
+        // Set access token for further "spotifyApi" object usage
+        spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+        accessToken = spotifyApi.getAccessToken();
+
     }
 
     // Search Song Request
