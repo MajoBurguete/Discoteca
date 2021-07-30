@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -128,6 +129,12 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
                     transaction.replace(R.id.flContainer, fragmentNew).commit();
+                } else if (fragment == "profile"){
+                    Fragment fragmentNew = new ProfileFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+                    transaction.replace(R.id.flContainer, fragmentNew).commit();
+                }
                 }
             }
         });
