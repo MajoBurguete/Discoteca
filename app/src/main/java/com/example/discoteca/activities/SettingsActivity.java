@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
     private String TAG = "SettingsActivity";
     ImageView ivUserPict;
     EditText etNameEdit;
-    TextView tvEmail;
+    EditText etEmailEdit;
     Button btnSaveProf;
     ImageButton ibClose;
     FloatingActionButton fabEditImage;
@@ -58,7 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Get references
         ivUserPict = findViewById(R.id.ivUserPict);
         etNameEdit = findViewById(R.id.etNameEdit);
-        tvEmail = findViewById(R.id.tvEmail);
+        etEmailEdit = findViewById(R.id.etEmailEdit);
         btnSaveProf = findViewById(R.id.btnSaveProf);
         ibClose = findViewById(R.id.ibClose);
         fabEditImage = findViewById(R.id.fabEditImage);
