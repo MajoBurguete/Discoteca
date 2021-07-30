@@ -241,17 +241,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         ParseUser user = ParseUser.getCurrentUser();
         List<String> likeFacts= user.getList(KEY_LIST);
 
-        if (tabLayout.getSelectedTabPosition() == 0){
-            Fact fact = userFacts.get(position);
-            String objectID = fact.getObjectId();
-            int likes = fact.getLikes();
-
-            for (int i = 0; i < likeFacts.size(); i++){
-                if (likeFacts.get(i).equals(objectID)){
-
-                    break;
-                } else if (i == likeFacts.size()-1){
-                    break;
         if (likeFacts.size() == 0){
             if (tabLayout.getSelectedTabPosition() == 0){
                 Fact fact = userFacts.get(position);
@@ -259,19 +248,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 int likes = fact.getLikes();
                 likeFact(true, likeFacts, fact, likes, user);
             }
+        } else {
                 }
             }
-        }
-        if (tabLayout.getSelectedTabPosition() == 1){
-            Fact fact = likedFacts.get(position);
-            String objectID = fact.getObjectId();
-            int likes = fact.getLikes();
 
-            for (int i = 0; i < likeFacts.size(); i++){
-                    break;
-                } else if (i == likeFacts.size()-1){
 
-                    break;
                 }
             }
         }
