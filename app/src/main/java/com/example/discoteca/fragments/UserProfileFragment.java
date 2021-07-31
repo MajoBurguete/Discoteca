@@ -71,6 +71,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         //Linear layout manager created and initialized
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
+        // Recycler view
+        rvUserFacts.setAdapter(factAdapter);
+        rvUserFacts.setLayoutManager(linearLayoutManager);
+
     @Override
     public void onDeleteClick(int position) {
 
