@@ -134,6 +134,7 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
 
     @Override
     public void onUserClick(int position) {
+        Fragment fragment = new UserProfileFragment();
 
     }
 }
