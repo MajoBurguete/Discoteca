@@ -9,12 +9,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.UserAdapter;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +33,9 @@ public class SearchUserFragment extends Fragment {
     RecyclerView rvUsers;
     List<ParseUser> userList;
     UserAdapter adapter;
+    EndlessScrolling endlessScrolling;
+
+
     public SearchUserFragment() {
         // Required empty public constructor
     }
@@ -51,6 +61,14 @@ public class SearchUserFragment extends Fragment {
 
         // Layout manager is created
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
+        // Infinite scrolling
+        endlessScrolling = new EndlessScrolling(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
+
         // Recycler view
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(linearLayoutManager);
