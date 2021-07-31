@@ -25,6 +25,8 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
+public class UserProfileFragment extends Fragment implements FactAdapter.OnFactClickListener {
+
     private static final String TAG = "UserProfileFragment";
     TextView tvUserName;
     ImageView ivOtherUserPict;
@@ -62,5 +64,18 @@ import java.util.List;
 
         // Array for the adapter is initialized
         userFacts = new ArrayList<>();
+    @Override
+    public void onDeleteClick(int position) {
+
+    }
+
+    @Override
+    public void onLikeClick(int position) {
+
+    }
+
+    @Override
+    public void onSongFactClick(int position) {
+
     }
 }
