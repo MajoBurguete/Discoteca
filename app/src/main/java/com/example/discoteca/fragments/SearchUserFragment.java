@@ -57,6 +57,7 @@ public class SearchUserFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                queryUsers(query, true);
                 return true;
             }
 
@@ -67,5 +68,28 @@ public class SearchUserFragment extends Fragment {
         });
 
     }
+
+    private void queryUsers(String search, boolean clear){
+        if (search.isEmpty()){
+            return;
+        }
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        query.whereContains("username", search);
+        query.setLimit(10);
+        query.orderByDescending("username");
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> users, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+                if (clear){
+                    adapter.clearAll(false);
+                }
+                adapter.addAll(users);
+
+            }
+        });
     }
 }
