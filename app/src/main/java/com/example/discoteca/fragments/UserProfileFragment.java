@@ -21,6 +21,8 @@ import com.parse.ParseUser;
 
 public class UserProfileFragment extends Fragment {
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 import java.util.List;
 
     private static final String TAG = "UserProfileFragment";
@@ -57,5 +59,8 @@ import java.util.List;
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
+
+        // Array for the adapter is initialized
+        userFacts = new ArrayList<>();
     }
 }
