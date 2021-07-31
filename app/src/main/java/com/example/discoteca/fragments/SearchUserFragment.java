@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -142,6 +143,11 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
         Bundle bundle = new Bundle();
         bundle.putParcelable("user", Parcels.wrap(userList.get(position)));
         fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+        transaction.replace(R.id.flUserChild, fragment).commit();
+        flUserChild.setVisibility(View.VISIBLE);
 
     }
 }
