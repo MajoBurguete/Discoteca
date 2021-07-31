@@ -87,6 +87,12 @@ public class SearchUserFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if (newText.isEmpty()){
+                    adapter.clearAll(true);
+                } else {
+                    searchQuery = newText;
+                    queryUsers(newText, true,0);
+                }
                 return true;
             }
         });
