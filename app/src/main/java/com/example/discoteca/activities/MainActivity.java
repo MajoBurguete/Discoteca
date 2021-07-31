@@ -15,6 +15,7 @@ import com.example.discoteca.R;
 import com.example.discoteca.fragments.HomeFragment;
 import com.example.discoteca.fragments.ProfileFragment;
 import com.example.discoteca.fragments.SearchFragment;
+import com.example.discoteca.fragments.SearchUserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.btnProfile){
                     fragment = new ProfileFragment();
+                }
+                if (item.getItemId() == R.id.btnUser){
+                    fragment = new SearchUserFragment();
                 }
                 FragmentTransaction fts =fragmentManager.beginTransaction();
                 fts.setCustomAnimations(R.anim.right_in, R.anim.left_out);
