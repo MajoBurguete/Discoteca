@@ -21,8 +21,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context context;
     List<ParseUser> rvUsers;
+    OnUserListener onUserListener;
 
-    public UserAdapter(Context context, List<ParseUser> rvUsers) {
+    public interface OnUserListener{
+        void onUserClick(int position);
+    }
+
+    public UserAdapter(Context context, List<ParseUser> rvUsers, OnUserListener onUserListener) {
+        this.onUserListener = onUserListener;
         this.context = context;
         this.rvUsers = rvUsers;
     }
