@@ -79,6 +79,11 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         tvUserName.setText(user.getUsername());
         Glide.with(getContext()).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivOtherUserPict);
 
+        queryFacts(true);
+    private void queryFacts(boolean clear) {
+
+    }
+
     @Override
     public void onDeleteClick(int position) {
 
