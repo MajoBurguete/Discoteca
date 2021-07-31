@@ -99,7 +99,10 @@ public class SearchUserFragment extends Fragment {
 
     }
 
-    private void queryUsers(String search, boolean clear){
+    private void loadMoreData(int page){
+        queryUsers(searchQuery, false, page);
+    }
+
         if (search.isEmpty()){
             return;
         }
