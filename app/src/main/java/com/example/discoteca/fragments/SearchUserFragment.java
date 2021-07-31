@@ -23,6 +23,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,6 +137,11 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
     @Override
     public void onUserClick(int position) {
         Fragment fragment = new UserProfileFragment();
+
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("user", Parcels.wrap(userList.get(position)));
+        fragment.setArguments(bundle);
 
     }
 }
