@@ -72,6 +72,8 @@ public class SearchUserFragment extends Fragment {
         // Recycler view
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(linearLayoutManager);
+        rvUsers.addOnScrollListener(endlessScrolling);
+
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
