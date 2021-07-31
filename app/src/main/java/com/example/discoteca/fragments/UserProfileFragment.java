@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -19,7 +20,6 @@ import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
 import com.parse.ParseUser;
 
-public class UserProfileFragment extends Fragment {
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
@@ -67,6 +67,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
         //Adapter initialized
         factAdapter = new FactAdapter(getContext(), userFacts, false,this);
+
+        //Linear layout manager created and initialized
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
     @Override
     public void onDeleteClick(int position) {
