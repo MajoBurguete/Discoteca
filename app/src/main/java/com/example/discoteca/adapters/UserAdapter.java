@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.example.discoteca.R;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -66,4 +69,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             ivUserPict = itemView.findViewById(R.id.ivUserProfPict);
             tvOtherUser = itemView.findViewById(R.id.tvOtherUser);
         }
+
+        public void bind(ParseUser user) {
+            tvOtherUser.setText(user.getUsername());
+            Glide.with(context).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivUserPict);
+        }
+    }
 }
