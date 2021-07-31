@@ -126,6 +126,12 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
+                for (int i=0; i<users.size(); i++){
+                    if(users.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                        users.remove(i);
+                        break;
+                    }
+                }
                 if (clear){
                     adapter.clearAll(false);
                 }
