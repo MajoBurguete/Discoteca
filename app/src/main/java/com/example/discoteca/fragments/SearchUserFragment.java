@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -48,5 +49,7 @@ public class SearchUserFragment extends Fragment {
         userList = new ArrayList<>();
         adapter = new UserAdapter(getContext(), userList);
 
+        // Layout manager is created
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
     }
 }
