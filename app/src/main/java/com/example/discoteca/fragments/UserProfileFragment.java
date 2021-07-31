@@ -75,6 +75,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         rvUserFacts.setAdapter(factAdapter);
         rvUserFacts.setLayoutManager(linearLayoutManager);
 
+        // Bind user data into the layout
+        tvUserName.setText(user.getUsername());
+        Glide.with(getContext()).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivOtherUserPict);
+
     @Override
     public void onDeleteClick(int position) {
 
