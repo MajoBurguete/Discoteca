@@ -2,6 +2,12 @@ package com.example.discoteca.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.parse.ParseUser;
@@ -49,7 +55,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        RelativeLayout rlUserSearch;
+        ImageView ivUserPict;
+        TextView tvOtherUser;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            rlUserSearch = itemView.findViewById(R.id.rlUserSearch);
+            ivUserPict = itemView.findViewById(R.id.ivUserProfPict);
+            tvOtherUser = itemView.findViewById(R.id.tvOtherUser);
         }
 }
