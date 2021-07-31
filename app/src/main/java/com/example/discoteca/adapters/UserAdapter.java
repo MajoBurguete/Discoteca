@@ -79,6 +79,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         public void bind(ParseUser user) {
             tvOtherUser.setText(user.getUsername());
             Glide.with(context).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivUserPict);
+
+            rlUserSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onUserListener.onUserClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
