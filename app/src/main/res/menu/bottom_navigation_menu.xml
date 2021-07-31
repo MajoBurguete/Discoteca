@@ -7,6 +7,13 @@
         android:icon="@drawable/ic_feed"
         android:title="Home"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/btnUser"
+        android:icon="@drawable/ic_searchuser"
+        android:title="user"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/btnCompose"
         android:icon="@drawable/ic_add"
