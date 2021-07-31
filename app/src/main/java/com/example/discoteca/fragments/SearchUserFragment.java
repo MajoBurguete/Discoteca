@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
@@ -35,6 +36,7 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
     UserAdapter adapter;
     EndlessScrolling endlessScrolling;
     String searchQuery;
+    FrameLayout flUserChild;
 
 
     public SearchUserFragment() {
@@ -55,6 +57,8 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
         // Layout references
         searchBar = view.findViewById(R.id.svUsers);
         rvUsers = view.findViewById(R.id.rvUsers);
+        flUserChild = view.findViewById(R.id.flUserChild);
+        flUserChild.setVisibility(View.GONE);
 
         // Adapter is created
         userList = new ArrayList<>();
