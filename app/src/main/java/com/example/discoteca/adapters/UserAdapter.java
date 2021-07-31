@@ -1,5 +1,7 @@
 package com.example.discoteca.adapters;
+
 import android.content.Context;
+import android.view.LayoutInflater;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.parse.ParseUser;
@@ -19,6 +21,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_user, parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
