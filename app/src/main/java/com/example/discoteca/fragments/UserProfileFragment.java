@@ -85,6 +85,18 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         Glide.with(getContext()).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivOtherUserPict);
 
         queryFacts(true);
+
+        //Swipe refresher
+        srUserProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryFacts(true);
+                srUserProfile.setRefreshing(false);
+            }
+        });
+
+    }
+
     private void queryFacts(boolean clear) {
 
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
