@@ -64,6 +64,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
         // Array for the adapter is initialized
         userFacts = new ArrayList<>();
+
+        //Adapter initialized
+        factAdapter = new FactAdapter(getContext(), userFacts, false,this);
+
     @Override
     public void onDeleteClick(int position) {
 
