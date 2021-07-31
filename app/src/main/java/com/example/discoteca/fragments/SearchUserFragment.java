@@ -34,6 +34,7 @@ public class SearchUserFragment extends Fragment {
     List<ParseUser> userList;
     UserAdapter adapter;
     EndlessScrolling endlessScrolling;
+    String searchQuery;
 
 
     public SearchUserFragment() {
@@ -79,7 +80,8 @@ public class SearchUserFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                queryUsers(query, true);
+                searchQuery = query;
+                queryUsers(query, true,0);
                 return true;
             }
 
