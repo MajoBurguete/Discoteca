@@ -27,6 +27,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
+        ParseUser user = rvUsers.get(position);
+        holder.bind(user);
+    }
+
     public void clearAll(boolean notify){
     }
 
