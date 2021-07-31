@@ -32,9 +32,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public void clearAll(boolean notify){
+        rvUsers.clear();
+        if (notify){
+            notifyDataSetChanged();
+        }
     }
 
     public void addAll(List<ParseUser> users){
+        rvUsers.addAll(users);
+        notifyDataSetChanged();
     }
 
     @Override
