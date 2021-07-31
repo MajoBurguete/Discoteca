@@ -9,15 +9,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.parceler.Parcels;
@@ -82,6 +87,29 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         queryFacts(true);
     private void queryFacts(boolean clear) {
 
+        ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
+        query.include(Fact.KEY_USER);
+        query.whereEqualTo(Fact.KEY_USER, user);
+        query.setLimit(10);
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<Fact>() {
+            @Override
+            public void done(List<Fact> facts, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+                if (clear){
+                   factAdapter.clearAll(true);
+                }
+                factAdapter.addAll(facts);
+
+                // Set number of facts
+                int value  = factAdapter.getItemCount();
+                tvUserNumber.setText(String.valueOf(value));
+
+            }
+        });
     }
 
     @Override
