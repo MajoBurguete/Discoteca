@@ -66,6 +66,8 @@ public class SearchUserFragment extends Fragment {
         endlessScrolling = new EndlessScrolling(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                page = page * 10;
+                loadMoreData(page);
             }
         };
 
