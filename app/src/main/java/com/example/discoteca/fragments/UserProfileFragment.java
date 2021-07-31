@@ -20,6 +20,7 @@ import com.example.discoteca.models.Fact;
 import com.parse.ParseUser;
 
 public class UserProfileFragment extends Fragment {
+import org.parceler.Parcels;
 import java.util.List;
 
     private static final String TAG = "UserProfileFragment";
@@ -53,5 +54,8 @@ import java.util.List;
         srUserProfile = view.findViewById(R.id.srUserProfile);
         rvUserFacts = view.findViewById(R.id.rvOtherUserFacts);
         tvUserNumber = view.findViewById(R.id.tvUserNumber);
+
+        // user gotten from arguments
+        user = Parcels.unwrap(this.getArguments().getParcelable("user"));
     }
 }
