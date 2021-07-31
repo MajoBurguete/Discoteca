@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchUserFragment extends Fragment {
+public class SearchUserFragment extends Fragment implements UserAdapter.OnUserListener {
 
     private static final String TAG = "SearchUserFragment";
     SearchView searchBar;
@@ -58,7 +58,7 @@ public class SearchUserFragment extends Fragment {
 
         // Adapter is created
         userList = new ArrayList<>();
-        adapter = new UserAdapter(getContext(), userList);
+        adapter = new UserAdapter(getContext(), userList, this);
 
         // Layout manager is created
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -126,5 +126,10 @@ public class SearchUserFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onUserClick(int position) {
+
     }
 }
