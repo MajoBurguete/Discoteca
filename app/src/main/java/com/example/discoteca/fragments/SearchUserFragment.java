@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.discoteca.R;
+import com.example.discoteca.adapters.UserAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SearchUserFragment extends Fragment {
@@ -20,6 +23,8 @@ public class SearchUserFragment extends Fragment {
     private static final String TAG = "SearchUserFragment";
     SearchView searchBar;
     RecyclerView rvUsers;
+    List<ParseUser> userList;
+    UserAdapter adapter;
     public SearchUserFragment() {
         // Required empty public constructor
     }
@@ -38,5 +43,10 @@ public class SearchUserFragment extends Fragment {
         // Layout references
         searchBar = view.findViewById(R.id.svUsers);
         rvUsers = view.findViewById(R.id.rvUsers);
+
+        // Adapter is created
+        userList = new ArrayList<>();
+        adapter = new UserAdapter(getContext(), userList);
+
     }
 }
