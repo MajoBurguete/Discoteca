@@ -103,12 +103,14 @@ public class SearchUserFragment extends Fragment {
         queryUsers(searchQuery, false, page);
     }
 
+    private void queryUsers(String search, boolean clear, int page){
         if (search.isEmpty()){
             return;
         }
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
         query.whereContains("username", search);
         query.setLimit(10);
+        query.setSkip(page);
         query.orderByDescending("username");
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
