@@ -208,6 +208,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         bundle.putString("fragment", "userP");
         fragment.setArguments(bundle);
 
+        //Pass the user
+        bundle.putParcelable("user", Parcels.wrap(user));
+
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override
