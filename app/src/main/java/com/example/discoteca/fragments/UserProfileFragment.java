@@ -138,6 +138,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         String objectID = fact.getObjectId();
         int likes = fact.getLikes();
         int likeCheck = likeFacts.size();
+        if (likeCheck == 0){
+        } else{
+        }
     }
 
     @Override
