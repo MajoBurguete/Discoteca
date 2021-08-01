@@ -266,6 +266,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     @Override
     public void onUserClick(int position) {
+        Fragment fragment = new UserProfileFragment();
+
     }
 
     private void saveUser(ParseUser user){
