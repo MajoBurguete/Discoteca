@@ -205,6 +205,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         song.setArtistName(fact.getArtist());
         song.setImageUrl(fact.getUrl());
         bundle.putParcelable("song", Parcels.wrap(song));
+        bundle.putString("fragment", "userP");
+        fragment.setArguments(bundle);
+
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override
