@@ -132,6 +132,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
                     transaction.replace(R.id.flContainer, fragmentNew).commit();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+                    transaction.replace(R.id.flContainer, fragmentNew).commit();
                 }
                 else{
                     rlSong.setClickable(false);
