@@ -87,6 +87,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         // Bind user data into the layout
         tvUserName.setText(user.getUsername());
         Glide.with(getContext()).load(user.getParseFile("profile").getUrl()).circleCrop().into(ivOtherUserPict);
+        // Set number of facts
+        long value  = user.getLong("factNumber");
+        tvUserNumber.setText(String.valueOf(value));
 
         queryFacts(true);
 
@@ -119,10 +122,6 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                    factAdapter.clearAll(true);
                 }
                 factAdapter.addAll(facts);
-
-                // Set number of facts
-                int value  = factAdapter.getItemCount();
-                tvUserNumber.setText(String.valueOf(value));
 
             }
         });
