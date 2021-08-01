@@ -194,6 +194,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     public void onSongFactClick(int position) {
         Fragment fragment = new SongFragment();
 
+        // Pass song data to the detail fragment
+        Bundle bundle = new Bundle();
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override
