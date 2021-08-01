@@ -153,6 +153,22 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             });
         } else{
             for (int i = 0; i < likeFacts.size(); i++){
+                if (likeFacts.get(i).equals(objectID)){
+                    Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                    likeFacts.remove(i);
+
+                    // Update number of likes on the fact
+                    likes = likes - 1;
+                    fact.setLikes(likes);
+                    fact.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            user.put(KEY_LIST, likeFacts);
+                            saveUser(user);
+                        }
+                    });
+
+                    break;
             }
         }
     }
