@@ -33,6 +33,7 @@ import java.util.List;
 public class UserProfileFragment extends Fragment implements FactAdapter.OnFactClickListener {
 
     private static final String TAG = "UserProfileFragment";
+    public static final String KEY_LIST = "factsLiked";
     TextView tvUserName;
     ImageView ivOtherUserPict;
     SwipeRefreshLayout srUserProfile;
@@ -131,7 +132,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
     @Override
     public void onLikeClick(int position) {
-
+        ParseUser user = ParseUser.getCurrentUser();
+        List<String> likeFacts= user.getList(KEY_LIST);
     }
 
     @Override
