@@ -220,6 +220,8 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
         //Check the fact was not made by the current user
         Fact fact = factsL.get(position);
+        if (!fact.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+        }
     }
 
     private void saveUser(ParseUser user){
