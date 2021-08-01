@@ -239,6 +239,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                         user.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
+                                tvNumber.setText(String.valueOf(user.getLong("factNumber")));
                             }
                         });
                     }
