@@ -232,6 +232,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                         userFacts.remove(position);
                         adapter.notifyDataSetChanged();
                         rvUserFacts.smoothScrollToPosition(0);
+                        ParseUser user = ParseUser.getCurrentUser();
+                        long number = user.getLong("factNumber");
+                        number = number - 1;
+                        user.put("factNumber", number);
                     }
                 });
             }
