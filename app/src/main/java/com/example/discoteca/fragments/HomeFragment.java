@@ -214,6 +214,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         transaction.replace(R.id.flContainer, fragment).commit();
     }
 
+    @Override
+    public void onUserClick(int position) {
+    }
+
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override

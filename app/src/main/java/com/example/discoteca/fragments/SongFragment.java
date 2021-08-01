@@ -264,6 +264,10 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     }
 
+    @Override
+    public void onUserClick(int position) {
+    }
+
     private void saveUser(ParseUser user){
         user.saveInBackground(new SaveCallback() {
             @Override
