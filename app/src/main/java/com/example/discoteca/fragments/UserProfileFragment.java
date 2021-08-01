@@ -148,6 +148,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                 @Override
                 public void done(ParseException e) {
                     user.put(KEY_LIST, likeFacts);
+                    saveUser(user);
                 }
             });
         } else{
@@ -157,5 +158,16 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     @Override
     public void onSongFactClick(int position) {
 
+    private void saveUser(ParseUser user){
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "Issue with disliking facts", e);
+                    return;
+                }
+                factAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }
