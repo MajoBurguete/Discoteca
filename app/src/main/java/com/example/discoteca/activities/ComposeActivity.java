@@ -92,7 +92,6 @@ public class ComposeActivity extends AppCompatActivity {
                             Toast.makeText(ComposeActivity.this, "There was an issue posting the fact, try again!", Toast.LENGTH_LONG).show();
                             return;
                         }
-                        finish();
                         ParseUser user = ParseUser.getCurrentUser();
                         long number = user.getLong("factNumber");
                         number = number + 1;
@@ -100,6 +99,7 @@ public class ComposeActivity extends AppCompatActivity {
                         user.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
+                                finish();
                             }
                         });
 
