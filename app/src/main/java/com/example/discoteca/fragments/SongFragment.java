@@ -135,6 +135,11 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                 } else if (fragment == "userP"){
                     Fragment fragmentNew = new UserProfileFragment();
 
+                    ParseUser user = Parcels.unwrap(SongFragment.this.getArguments().getParcelable("user"));
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("user", Parcels.wrap(user));
+                    fragmentNew.setArguments(bundle);
+
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
                     transaction.replace(R.id.flContainer, fragmentNew).commit();
