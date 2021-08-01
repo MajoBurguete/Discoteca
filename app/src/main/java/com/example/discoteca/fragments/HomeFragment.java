@@ -228,6 +228,9 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
             fragment.setArguments(bundle);
 
         }
+        else {
+            fragment = new ProfileFragment();
+        }
     }
 
     private void saveUser(ParseUser user){

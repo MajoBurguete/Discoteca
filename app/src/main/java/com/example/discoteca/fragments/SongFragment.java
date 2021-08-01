@@ -278,6 +278,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             fragment.setArguments(bundle);
 
         }
+        else {
+            fragment = new ProfileFragment();
         }
     }
 
