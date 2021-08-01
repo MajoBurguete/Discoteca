@@ -271,6 +271,13 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         //Check the fact was not made by the current user
         Fact fact = songFacts.get(position);
         if (!fact.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+            
+            // Pass user
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
+            fragment.setArguments(bundle);
+
+        }
         }
     }
 
