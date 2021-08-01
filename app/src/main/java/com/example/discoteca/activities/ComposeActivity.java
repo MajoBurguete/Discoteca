@@ -93,6 +93,10 @@ public class ComposeActivity extends AppCompatActivity {
                             return;
                         }
                         finish();
+                        ParseUser user = ParseUser.getCurrentUser();
+                        long number = user.getLong("factNumber");
+                        number = number + 1;
+                        user.put("factNumber", number);
 
                     }
                 });
