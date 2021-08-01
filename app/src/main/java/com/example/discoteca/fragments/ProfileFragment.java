@@ -334,6 +334,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         transaction.replace(R.id.flContainer, fragment).commit();
     }
 
+    @Override
+    public void onUserClick(int position) {
+
+    }
+
     private void likeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user){
         Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
         if (tab1){
