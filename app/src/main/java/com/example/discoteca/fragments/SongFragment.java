@@ -268,6 +268,8 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     public void onUserClick(int position) {
         Fragment fragment = new UserProfileFragment();
 
+        //Check the fact was not made by the current user
+        Fact fact = songFacts.get(position);
     }
 
     private void saveUser(ParseUser user){

@@ -218,6 +218,8 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     public void onUserClick(int position) {
         Fragment fragment = new UserProfileFragment();
 
+        //Check the fact was not made by the current user
+        Fact fact = factsL.get(position);
     }
 
     private void saveUser(ParseUser user){
