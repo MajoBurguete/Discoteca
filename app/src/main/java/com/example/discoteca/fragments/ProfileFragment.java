@@ -97,6 +97,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         // Bind data
         Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfPict);
         tvNameP.setText(user.getUsername());
+        long number = user.getLong("factNumber");
+        tvNumber.setText(String.valueOf(number));
 
         // Array initialized
         userFacts = new ArrayList<>();
@@ -200,10 +202,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                     adapter.clearAll(true);
                 }
                 adapter.addAll(facts);
-
-                // Set number of facts
-                int value  = adapter.getItemCount();
-                tvNumber.setText(String.valueOf(value));
 
             }
         });
