@@ -281,6 +281,10 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         else {
             fragment = new ProfileFragment();
         }
+
+        FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+        transaction.replace(R.id.flChild, fragment).commit();
     }
 
     private void saveUser(ParseUser user){

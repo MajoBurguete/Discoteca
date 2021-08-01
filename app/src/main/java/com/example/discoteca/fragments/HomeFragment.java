@@ -231,6 +231,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         else {
             fragment = new ProfileFragment();
         }
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+        transaction.replace(R.id.flContainer, fragment).commit();
     }
 
     private void saveUser(ParseUser user){
