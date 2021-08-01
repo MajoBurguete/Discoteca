@@ -152,6 +152,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                 }
             });
         } else{
+            for (int i = 0; i < likeFacts.size(); i++){
+            }
         }
     }
 
