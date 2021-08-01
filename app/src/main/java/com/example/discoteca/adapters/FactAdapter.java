@@ -30,6 +30,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         void onDeleteClick(int position);
         void onLikeClick(int position);
         void onSongFactClick(int position);
+        void onUserClick(int position);
     }
 
 
@@ -141,6 +142,13 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     onFactClickListener.onSongFactClick(getAdapterPosition());
+                }
+            });
+
+            tvUserFact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onFactClickListener.onUserClick(getAdapterPosition());
                 }
             });
 
