@@ -236,6 +236,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                         long number = user.getLong("factNumber");
                         number = number - 1;
                         user.put("factNumber", number);
+                        user.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                            }
+                        });
                     }
                 });
             }
