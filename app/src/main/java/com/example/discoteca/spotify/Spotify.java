@@ -68,6 +68,7 @@ public class Spotify {
 
     public void refreshToken(){
         final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+        int expired = sharedPref.getInt("expires", 0);
 
         // Example Only. Never block in production code.
         final ClientCredentials clientCredentials = clientCredentialsFuture.join();
