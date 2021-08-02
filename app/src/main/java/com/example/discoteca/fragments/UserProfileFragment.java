@@ -261,6 +261,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             Long number = currentUser.getLong(FRIEND_NUM_KEY);
             number = number - 1;
 
+            currentUser.put(FRIENDS_LIST_KEY, friends);
+            currentUser.put(FRIEND_NUM_KEY, number);
+
         }
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
