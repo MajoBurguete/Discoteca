@@ -352,6 +352,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
                 fragment.setArguments(bundle);
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+                transaction.replace(R.id.flContainer, fragment).commit();
+
             }
             else {
                 return;
