@@ -122,6 +122,12 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
         queryFacts(true);
 
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         //Swipe refresher
         srUserProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
