@@ -101,6 +101,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addFriend();
             }
         });
 
@@ -247,5 +248,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                 factAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    public void addFriend(){
+
     }
 }
