@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     ImageView ivProfPict;
     TextView tvNameP;
     TextView tvNumber;
+    TextView tvFriends;
     RecyclerView rvUserFacts;
     FactAdapter adapter;
     FactAdapter likeAdapter;
@@ -74,6 +75,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         ivProfPict = view.findViewById(R.id.ivProfPict);
         tvNameP = view.findViewById(R.id.tvNameP);
         tvNumber = view.findViewById(R.id.tvNumber);
+        tvFriends = view.findViewById(R.id.tvFriends);
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
         tabLayout = view.findViewById(R.id.tabProfile);
         srProfile = view.findViewById(R.id.srProfile);

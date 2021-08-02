@@ -44,6 +44,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     List<Fact> userFacts;
     FactAdapter factAdapter;
     TextView tvUserNumber;
+    TextView tvFriendsNumber;
     ParseUser user;
 
     public UserProfileFragment() {
@@ -67,6 +68,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         srUserProfile = view.findViewById(R.id.srUserProfile);
         rvUserFacts = view.findViewById(R.id.rvOtherUserFacts);
         tvUserNumber = view.findViewById(R.id.tvUserNumber);
+        tvFriendsNumber = view.findViewById(R.id.tvFriendsNumber);
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
