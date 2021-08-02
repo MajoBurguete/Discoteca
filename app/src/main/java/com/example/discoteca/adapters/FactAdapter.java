@@ -103,7 +103,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
                 ibLike.setImageResource(R.drawable.ic_music_disliked);
             } else {
                 for (int i = 0; i < likeFacts.size(); i++){
-                    if (likeFacts.get(i).equals(objectID)){
+                    if (likeFacts.get(i).getObjectId().equals(objectID)){
                         ibLike.setImageResource(R.drawable.ic_music_liked);
                         break;
                     } else if(i == likeFacts.size()-1) {
