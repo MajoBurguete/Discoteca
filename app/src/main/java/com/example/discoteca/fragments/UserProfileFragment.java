@@ -274,6 +274,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         }
         else{
             friends.add(user);
+
+            Long number = currentUser.getLong(FRIEND_NUM_KEY);
+            number = number + 1;
+
         }
     }
 
