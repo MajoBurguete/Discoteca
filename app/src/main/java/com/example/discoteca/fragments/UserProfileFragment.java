@@ -258,6 +258,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         if (boolFriend){
             friends.remove(removeAt);
 
+            Long number = currentUser.getLong(FRIEND_NUM_KEY);
+            number = number - 1;
+
         }
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
