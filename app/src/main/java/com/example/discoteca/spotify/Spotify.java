@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -66,6 +67,9 @@ public class Spotify {
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         int currentHour  = (hourOfDay * 60) + minute;
+
+        if (currentHour >= expired){
+            return true;
         }
     }
 
