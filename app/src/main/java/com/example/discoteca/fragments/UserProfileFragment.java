@@ -262,6 +262,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             return false;
         }
         else {
+            for (int i = 0; i < friends.size(); i++){
+            }
         }
 
     }
