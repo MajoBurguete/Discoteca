@@ -61,17 +61,16 @@ public class Spotify {
         refreshToken();
     }
 
+    private boolean isExpired (int expired){
         }
     }
 
     // Refresh token
 
     public void refreshToken(){
-        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
         int expired = sharedPref.getInt("expires", 0);
 
-        // Example Only. Never block in production code.
-        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
+        if (isExpired(expired)){
 
         // Set access token for further "spotifyApi" object usage
         spotifyApi.setAccessToken(clientCredentials.getAccessToken());
@@ -79,6 +78,7 @@ public class Spotify {
 
         LoginActivity loginActivity = new LoginActivity();
         loginActivity.storeAccessToken(spotifyApi.getAccessToken(), context);
+        }
     }
 
     // Search Song Request
