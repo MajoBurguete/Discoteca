@@ -256,6 +256,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         boolean boolFriend = checkIfFriend();
 
         if (boolFriend){
+            friends.remove(removeAt);
+
         }
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
