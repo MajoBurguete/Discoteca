@@ -85,12 +85,14 @@ public class Spotify {
             // Example Only. Never block in production code.
             final ClientCredentials clientCredentials = clientCredentialsFuture.join();
 
-        LoginActivity loginActivity = new LoginActivity();
-        loginActivity.storeAccessToken(spotifyApi.getAccessToken(), context);
             // Set access token for further "spotifyApi" object usage
             spotifyApi.setAccessToken(clientCredentials.getAccessToken());
             accessToken = spotifyApi.getAccessToken();
 
+            //Store access token on shared preferences
+            LoginActivity loginActivity = new LoginActivity();
+            loginActivity.storeAccessToken(accessToken, sharedPref);
+        }
         }
     }
 
