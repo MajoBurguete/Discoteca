@@ -273,4 +273,32 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             }
         });
     }
+
+    private void returnTo() {
+        if (fragment == "home"){
+            Fragment fragmentNew = new HomeFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
+        } else if (fragment == "profile"){
+            Fragment fragmentNew = new ProfileFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
+        } else if (fragment == "userP"){
+            Fragment fragmentNew = new UserProfileFragment();
+
+            ParseUser user = Parcels.unwrap(SongFragment.this.getArguments().getParcelable("user"));
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("user", Parcels.wrap(user));
+            fragmentNew.setArguments(bundle);
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
+        }
+        else{
+            getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
+        }
+    }
 }
