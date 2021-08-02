@@ -258,5 +258,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         ParseUser currentUser = ParseUser.getCurrentUser();
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
 
+        if (friends.size() == 0){
+            return false;
+        }
     }
 }
