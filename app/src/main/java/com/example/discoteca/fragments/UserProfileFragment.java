@@ -199,7 +199,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         int likes = fact.getLikes();
         int likeCheck = likeFacts.size();
         if (likeCheck == 0){
-            likeFacts.add(0, fact.getObjectId());
+            likeFacts.add(0, fact);
 
             // Update number of likes on the fact
             likes = likes + 1;
@@ -231,7 +231,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                     break;
                 } else if (i == likeFacts.size()-1){
                     Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-                    likeFacts.add(0, fact.getObjectId());
+                    likeFacts.add(0, fact);
 
                     // Update number of likes on the fact
                     likes = likes + 1;
