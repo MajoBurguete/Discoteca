@@ -169,6 +169,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         query.include(Fact.KEY_USER);
         Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
         query.whereContainedIn(Fact.KEY_OBJECT_ID, toObjectId());
+        query.orderByDescending(Fact.KEY_LIKES);
         query.setLimit(10);
         query.setSkip(page);
         query.findInBackground(new FindCallback<Fact>() {
