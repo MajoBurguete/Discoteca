@@ -96,6 +96,18 @@
             android:text="Friends"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btnFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/factsTextUser"
+            android:layout_marginStart="127dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/ivOtherUserPict"
+            android:text="Follow"
+            android:textSize="12sp"
+            app:cornerRadius="13dp" />
+
     </RelativeLayout>
 
 </FrameLayout>
