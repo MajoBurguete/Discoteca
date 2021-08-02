@@ -37,6 +37,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
     private static final String TAG = "UserProfileFragment";
     public static final String KEY_LIST = "factsLiked";
+    private static final String FRIEND_NUM_KEY = "friendsNumber";
     TextView tvUserName;
     ImageView ivOtherUserPict;
     SwipeRefreshLayout srUserProfile;
@@ -92,6 +93,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         // Set number of facts
         long value  = user.getLong("factNumber");
         tvUserNumber.setText(String.valueOf(value));
+        tvFriendsNumber.setText(String.valueOf(user.getLong(FRIEND_NUM_KEY)));
 
         queryFacts(true);
 

@@ -40,6 +40,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment implements FactAdapter.OnFactClickListener{
 
+    private static final String FRIEND_NUM_KEY ="friendsNumber";
     private String TAG = "ProfileFragment";
     ImageView ivProfPict;
     TextView tvNameP;
@@ -101,6 +102,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         tvNameP.setText(user.getUsername());
         long number = user.getLong("factNumber");
         tvNumber.setText(String.valueOf(number));
+        tvFriends.setText(String.valueOf(user.getLong(FRIEND_NUM_KEY)));
 
         // Array initialized
         userFacts = new ArrayList<>();
