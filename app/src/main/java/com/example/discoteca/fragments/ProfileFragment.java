@@ -168,7 +168,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
         Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
-        query.whereContainedIn(Fact.KEY_OBJECT_ID, ParseUser.getCurrentUser().getList(KEY_LIST));
+        query.whereContainedIn(Fact.KEY_OBJECT_ID, toObjectId());
         query.setLimit(10);
         query.setSkip(page);
         query.findInBackground(new FindCallback<Fact>() {
@@ -185,6 +185,15 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
             }
         });
+    }
+
+    private List<String> toObjectId(){
+        List<Fact> factList = ParseUser.getCurrentUser().getList(KEY_LIST);
+        List<String> objectIds = new ArrayList<>();
+        for (int i = 0; i < factList.size(); i++){
+            objectIds.add(factList.get(i).getObjectId());
+        }
+        return objectIds;
     }
 
     private void queryMyFacts(int page, boolean clear) {
