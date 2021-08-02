@@ -263,6 +263,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         }
         else {
             for (int i = 0; i < friends.size(); i++){
+                if (friends.get(i).getObjectId().equals(user.getObjectId())){
+                    removeAt = i;
+                    return true;
             }
         }
 
