@@ -151,6 +151,12 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.replace(R.id.flContainer, fragmentNew).commit();
+        } else if (returnTo == "songFrag"){
+
+            FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.remove(UserProfileFragment.this).commit();
+        }
     }
 
     private void queryFacts(boolean clear) {
