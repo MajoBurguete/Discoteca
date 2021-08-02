@@ -98,6 +98,12 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         tvUserNumber.setText(String.valueOf(value));
         tvFriendsNumber.setText(String.valueOf(user.getLong(FRIEND_NUM_KEY)));
 
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         queryFacts(true);
 
         //Swipe refresher
