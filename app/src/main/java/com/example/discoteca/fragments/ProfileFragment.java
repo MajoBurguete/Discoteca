@@ -347,6 +347,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             Fact fact = likedFacts.get(position);
 
             if (!fact.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+
+                // Pass user
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
+                fragment.setArguments(bundle);
             }
             else {
                 return;
