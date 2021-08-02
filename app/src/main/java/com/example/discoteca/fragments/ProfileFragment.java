@@ -340,6 +340,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     @Override
     public void onUserClick(int position) {
+        if (tabLayout.getSelectedTabPosition() == 1){
+        }
 
     }
 
