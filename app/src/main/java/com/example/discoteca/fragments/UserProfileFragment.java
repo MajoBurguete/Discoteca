@@ -125,6 +125,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                returnToW();
             }
         });
 
@@ -137,6 +138,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             }
         });
 
+    }
+
+    private void returnToW() {
     }
 
     private void queryFacts(boolean clear) {
