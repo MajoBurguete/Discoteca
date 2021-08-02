@@ -273,6 +273,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
         }
         else{
+            friends.add(user);
         }
     }
 
