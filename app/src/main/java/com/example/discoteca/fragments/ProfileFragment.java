@@ -343,6 +343,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         if (tabLayout.getSelectedTabPosition() == 1){
             Fragment fragment = new UserProfileFragment();
 
+            //Check the fact was not made by the current user
+            Fact fact = likedFacts.get(position);
+
         }
 
     }
