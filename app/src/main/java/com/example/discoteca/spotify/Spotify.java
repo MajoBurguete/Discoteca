@@ -62,6 +62,10 @@ public class Spotify {
     }
 
     private boolean isExpired (int expired){
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int currentHour  = (hourOfDay * 60) + minute;
         }
     }
 
