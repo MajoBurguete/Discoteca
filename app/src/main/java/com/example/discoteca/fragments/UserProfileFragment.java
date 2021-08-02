@@ -272,7 +272,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             });
 
         }
+        else{
         }
+    }
+
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
