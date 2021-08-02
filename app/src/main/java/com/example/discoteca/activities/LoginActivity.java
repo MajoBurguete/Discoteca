@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         int currentHour  = (hourOfDay * 60) + minute + 60;
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("token", token);
+        editor.putInt("expires", currentHour);
         editor.apply();
 
     }
