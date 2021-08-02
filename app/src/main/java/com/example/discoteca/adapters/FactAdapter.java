@@ -96,7 +96,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
         public void bind(Fact fact) {
             ParseUser user = ParseUser.getCurrentUser();
-            List<String> likeFacts= user.getList("factsLiked");
+            List<Fact> likeFacts= user.getList("factsLiked");
             String objectID = fact.getObjectId();
 
             if (likeFacts.size() == 0){
