@@ -51,7 +51,10 @@ Discoteca is an app that allows you to add facts about a song or about the artis
 - [x] User can like or dislike a fact
 - [x] User can see all of the facts liked by them in their profile
 - [ ] User can see the song's lyrics.
-- [ ] Facts on the home screen will only be about the top artist of the user.
+- [x] User can search for other users
+- [x] User can follow other users.
+- [x] User can see the number of friends on their profile
+- [x] Facts on the home screen will be the ones published by the user or the user friends.
 
 ### 2. Screen Archetypes
 
