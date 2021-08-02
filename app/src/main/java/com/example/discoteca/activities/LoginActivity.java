@@ -28,6 +28,7 @@ import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
 import java.net.URI;
+import java.util.Calendar;
 import java.util.concurrent.CompletableFuture;
 
 public class LoginActivity extends AppCompatActivity {
@@ -119,9 +120,12 @@ public class LoginActivity extends AppCompatActivity {
         return accessToken;
     }
 
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
     public void storeAccessToken(String token, SharedPreferences sharedPref){
+
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int currentHour  = (hourOfDay * 60) + minute + 60;
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("token", token);
         editor.apply();
