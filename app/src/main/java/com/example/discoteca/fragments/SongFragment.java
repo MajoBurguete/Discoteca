@@ -197,7 +197,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             });
         } else {
             for (int i = 0; i < likeFacts.size(); i++){
-                if (likeFacts.get(i).equals(objectID)){
+                if (likeFacts.get(i).getObjectId().equals(objectID)){
                     Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
                     likeFacts.remove(i);
 
