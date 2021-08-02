@@ -107,6 +107,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         query.include(Fact.KEY_USER);
         List<ParseUser> usersF = ParseUser.getCurrentUser().getList("friends");
         usersF.add(ParseUser.getCurrentUser());
+        query.whereContainedIn(Fact.KEY_USER, usersF);
         query.setLimit(10);
         query.setSkip(page);
         query.orderByDescending("createdAt");
