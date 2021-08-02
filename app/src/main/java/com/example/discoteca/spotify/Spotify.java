@@ -71,6 +71,7 @@ public class Spotify {
         if (currentHour >= expired){
             return true;
         }
+        return false;
     }
 
     // Refresh token
