@@ -225,6 +225,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
             // Pass user
             Bundle bundle = new Bundle();
             bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
+            bundle.putString("fragment", "home");
             fragment.setArguments(bundle);
 
         }
