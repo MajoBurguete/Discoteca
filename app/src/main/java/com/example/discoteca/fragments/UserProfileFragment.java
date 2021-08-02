@@ -79,6 +79,12 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
 
+        // Check if the current user follows this user
+        boolean check = checkIfFriend();
+        if (check){
+            btnFollow.setText("Unfollow");
+        }
+
         // Array for the adapter is initialized
         userFacts = new ArrayList<>();
 
