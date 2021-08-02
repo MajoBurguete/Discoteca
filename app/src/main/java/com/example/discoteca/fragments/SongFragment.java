@@ -275,6 +275,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             // Pass user
             Bundle bundle = new Bundle();
             bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
+            bundle.putString("fragment", "songFrag");
             fragment.setArguments(bundle);
 
         }
