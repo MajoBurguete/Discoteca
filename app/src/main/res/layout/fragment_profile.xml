@@ -51,8 +51,8 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="155dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="23dp"
             android:layout_toEndOf="@+id/ivProfPict"
             android:textAlignment="center"
             android:textSize="18sp"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvNumber"
-            android:layout_marginStart="157dp"
+            android:layout_marginStart="104dp"
             android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/ivProfPict"
             android:text="Facts"
@@ -94,6 +94,33 @@
                 android:text="LIKES" />
 
         </com.google.android.material.tabs.TabLayout>
+
+        <TextView
+            android:id="@+id/tvFriends"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="23dp"
+            android:layout_toEndOf="@+id/tvNumber"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/friendsTextV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvFriends"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="70dp"
+            android:layout_toEndOf="@+id/postsText"
+            android:text="Friends"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -52,7 +53,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="155dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="22dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:textAlignment="center"
@@ -61,14 +62,38 @@
             tools:text="145" />
 
         <TextView
-            android:id="@+id/postsTextUser"
+            android:id="@+id/factsTextUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvUserNumber"
-            android:layout_marginStart="157dp"
+            android:layout_marginStart="104dp"
             android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:text="Facts"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvFriendsNumber"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="22dp"
+            android:layout_toEndOf="@+id/tvUserNumber"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/friendsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvFriendsNumber"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="-1dp"
+            android:layout_toEndOf="@+id/factsTextUser"
+            android:text="Friends"
             android:textSize="18sp" />
 
     </RelativeLayout>
