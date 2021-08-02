@@ -264,6 +264,13 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             currentUser.put(FRIENDS_LIST_KEY, friends);
             currentUser.put(FRIEND_NUM_KEY, number);
 
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                }
+            });
+
+        }
         }
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
