@@ -139,7 +139,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         int likeCheck = likeFacts.size();
         if (likeCheck == 0){
             Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-            likeFacts.add(0, fact.getObjectId());
+            likeFacts.add(0, fact);
 
             // Update number of likes on the fact
             likes = likes + 1;
@@ -171,7 +171,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
                     break;
                 } else if (i == likeFacts.size()-1){
                     Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-                    likeFacts.add(0, fact.getObjectId());
+                    likeFacts.add(0, fact);
 
                     // Update number of likes on the fact
                     likes = likes + 1;
