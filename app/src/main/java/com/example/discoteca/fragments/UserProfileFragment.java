@@ -39,6 +39,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     private static final String TAG = "UserProfileFragment";
     public static final String KEY_LIST = "factsLiked";
     private static final String FRIEND_NUM_KEY = "friendsNumber";
+    private static final String FRIENDS_LIST_KEY = "friends";
     TextView tvUserName;
     ImageView ivOtherUserPict;
     SwipeRefreshLayout srUserProfile;
@@ -49,6 +50,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     TextView tvFriendsNumber;
     Button btnFollow;
     ParseUser user;
+    int removeAt;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -281,6 +283,11 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             currentUser.put(FRIENDS_LIST_KEY, friends);
             currentUser.put(FRIEND_NUM_KEY, number);
 
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                }
+            });
         }
     }
 
