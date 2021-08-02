@@ -119,9 +119,9 @@ public class LoginActivity extends AppCompatActivity {
         return accessToken;
     }
 
-    public void storeAccessToken(String token, Context context){
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+    public void storeAccessToken(String token, SharedPreferences sharedPref){
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("token", token);
         editor.apply();
