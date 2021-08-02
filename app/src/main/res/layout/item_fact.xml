@@ -77,7 +77,8 @@
                 android:layout_below="@id/svDescription"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:textSize="12sp"
+                android:clickable="true"
+                android:textSize="15sp"
                 tools:text="majoB" />
 
             <ImageButton
