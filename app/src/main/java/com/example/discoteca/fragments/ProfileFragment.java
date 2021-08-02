@@ -370,7 +370,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
         if (tab1){
             Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-            likeFacts.add(0, fact.getObjectId());
+            likeFacts.add(0, fact);
 
             // Update number of likes on the fact
             likes = likes + 1;
@@ -385,7 +385,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             });
         } else {
             Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-            likeFacts.add(0, fact.getObjectId());
+            likeFacts.add(0, fact);
             likes = likes + 1;
             fact.setLikes(likes);
             fact.saveInBackground(new SaveCallback() {
