@@ -141,6 +141,11 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     }
 
     private void returnToW() {
+        if (returnTo == "home"){
+            Fragment fragmentNew = new HomeFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
     }
 
     private void queryFacts(boolean clear) {
