@@ -53,6 +53,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     Button btnFollow;
     ParseUser user;
     int removeAt;
+    String returnTo;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -81,6 +82,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
+
+        //String gotten from arguments
+        returnTo = this.getArguments().getString("fragment");
 
         // Check if the current user follows this user
         boolean check = checkIfFriend();
