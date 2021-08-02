@@ -53,10 +53,15 @@ public class Spotify {
 
     String accessToken;
     Context context;
+    SharedPreferences sharedPref;
 
     public Spotify(Context context, SharedPreferences sharedPref) {
         this.context = context;
-        this.accessToken = sharedPref.getString("token",null);
+        this.sharedPref = sharedPref;
+        refreshToken();
+    }
+
+        }
     }
 
     // Refresh token
