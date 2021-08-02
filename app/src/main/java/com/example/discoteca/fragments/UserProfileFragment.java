@@ -286,6 +286,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             currentUser.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
+                    btnFollow.setText("Unfollow");
                 }
             });
         }
