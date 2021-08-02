@@ -177,7 +177,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     @Override
     public void onLikeClick(int position) {
         ParseUser user = ParseUser.getCurrentUser();
-        List<String> likeFacts= user.getList(KEY_LIST);
+        List<Fact> likeFacts= user.getList(KEY_LIST);
         Fact fact = songFacts.get(position);
         String objectID = fact.getObjectId();
         int likes = fact.getLikes();
