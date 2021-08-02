@@ -254,6 +254,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         ParseUser currentUser = ParseUser.getCurrentUser();
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
         boolean boolFriend = checkIfFriend();
+
+        if (boolFriend){
+        }
     private boolean checkIfFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
