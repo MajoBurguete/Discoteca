@@ -351,6 +351,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 // Pass user
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
+                bundle.putString("fragment", "profile");
                 fragment.setArguments(bundle);
 
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
