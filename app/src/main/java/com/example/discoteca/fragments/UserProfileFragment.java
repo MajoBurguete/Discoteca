@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     FactAdapter factAdapter;
     TextView tvUserNumber;
     TextView tvFriendsNumber;
+    Button btnFollow;
     ParseUser user;
 
     public UserProfileFragment() {
@@ -70,6 +72,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         rvUserFacts = view.findViewById(R.id.rvOtherUserFacts);
         tvUserNumber = view.findViewById(R.id.tvUserNumber);
         tvFriendsNumber = view.findViewById(R.id.tvFriendsNumber);
+        btnFollow = view.findViewById(R.id.btnFollow);
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
