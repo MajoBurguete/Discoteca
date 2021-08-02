@@ -157,6 +157,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.remove(UserProfileFragment.this).commit();
         }
+        else{
+            getParentFragment().getChildFragmentManager().beginTransaction().remove(UserProfileFragment.this).commit();
+        }
     }
 
     private void queryFacts(boolean clear) {
