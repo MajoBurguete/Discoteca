@@ -55,7 +55,6 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
     List<Fact> songFacts;
     FloatingActionButton fabAdd;
     SwipeRefreshLayout srSongFacts;
-    RelativeLayout rlSong;
     EndlessScrolling scrollListener;
     Song song;
     String fragment;
@@ -83,7 +82,6 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
         ibClose = view.findViewById(R.id.ibCloseSong);
         rvSongsFacts = view.findViewById(R.id.rvSongFacts);
         fabAdd = view.findViewById(R.id.fabAdd);
-        rlSong = view.findViewById(R.id.rlSong);
         srSongFacts = view.findViewById(R.id.srSongFacts);
 
         srSongFacts.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
