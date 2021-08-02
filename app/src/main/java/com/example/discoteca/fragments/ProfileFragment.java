@@ -346,6 +346,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
             //Check the fact was not made by the current user
             Fact fact = likedFacts.get(position);
 
+            if (!fact.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+            }
+            else {
+                return;
+            }
         }
 
     }
