@@ -272,5 +272,6 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             }
         }
 
+        return false;
     }
 }
