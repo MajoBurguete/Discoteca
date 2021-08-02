@@ -184,7 +184,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
         if (likeFacts.size() == 0){
             Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-            likeFacts.add(0, fact.getObjectId());
+            likeFacts.add(0, fact);
 
             likes = likes + 1;
             fact.setLikes(likes);
@@ -214,7 +214,7 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
                     break;
                 } else if (i == likeFacts.size()-1){
                     Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
-                    likeFacts.add(0, fact.getObjectId());
+                    likeFacts.add(0, fact);
                     Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
                     likes = likes + 1;
                     fact.setLikes(likes);
