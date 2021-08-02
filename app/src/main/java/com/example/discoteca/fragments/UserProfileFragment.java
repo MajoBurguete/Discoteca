@@ -213,8 +213,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             });
         } else{
             for (int i = 0; i < likeFacts.size(); i++){
-                if (likeFacts.get(i).equals(objectID)){
                     Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
+                if (likeFacts.get(i).getObjectId().equals(objectID)){
                     likeFacts.remove(i);
 
                     // Update number of likes on the fact
