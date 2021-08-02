@@ -93,6 +93,8 @@ public class Spotify {
             LoginActivity loginActivity = new LoginActivity();
             loginActivity.storeAccessToken(accessToken, sharedPref);
         }
+        else {
+            this.accessToken = sharedPref.getString("token",null);
         }
     }
 
