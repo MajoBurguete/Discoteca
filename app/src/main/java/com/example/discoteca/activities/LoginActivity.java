@@ -100,7 +100,10 @@ public class LoginActivity extends AppCompatActivity {
         // Set access token for further "spotifyApi" object usage
         spotifyApi.setAccessToken(clientCredentials.getAccessToken());
         accessToken = spotifyApi.getAccessToken();
-        storeAccessToken(spotifyApi.getAccessToken(), this);
+        Context context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        storeAccessToken(spotifyApi.getAccessToken(), sharedPref);
         
     }
 
