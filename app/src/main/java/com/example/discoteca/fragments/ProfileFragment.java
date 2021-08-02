@@ -271,7 +271,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 int likes = fact.getLikes();
 
                 for (int i = 0; i < likeFacts.size(); i++){
-                    if (likeFacts.get(i).equals(objectID)){
+                    if (likeFacts.get(i).getObjectId().equals(objectID)){
                         dislikeFact(true, likeFacts,fact,likes,user,i);
 
                         break;
@@ -287,7 +287,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 int likes = fact.getLikes();
 
                 for (int i = 0; i < likeFacts.size(); i++){
-                    if (likeFacts.get(i).equals(objectID)){
+                    if (likeFacts.get(i).getObjectId().equals(objectID)){
                         dislikeFact(false, likeFacts, fact, likes, user, i);
                         break;
                     } else if (i == likeFacts.size()-1){
