@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     private static final String FRIENDS_LIST_KEY = "friends";
     TextView tvUserName;
     ImageView ivOtherUserPict;
+    ImageButton btnReturn;
     SwipeRefreshLayout srUserProfile;
     RecyclerView rvUserFacts;
     List<Fact> userFacts;
@@ -75,6 +77,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         tvUserNumber = view.findViewById(R.id.tvUserNumber);
         tvFriendsNumber = view.findViewById(R.id.tvFriendsNumber);
         btnFollow = view.findViewById(R.id.btnFollow);
+        btnReturn = view.findViewById(R.id.btnBackFromP);
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
