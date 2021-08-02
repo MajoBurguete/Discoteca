@@ -146,6 +146,11 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.replace(R.id.flContainer, fragmentNew).commit();
+        } else if (returnTo == "profile"){
+            Fragment fragmentNew = new ProfileFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
     }
 
     private void queryFacts(boolean clear) {
