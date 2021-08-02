@@ -28,9 +28,9 @@
             android:id="@+id/ivOtherUserPict"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/btnBackFromP"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="10dp"
             tools:src="@tools:sample/avatars" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -52,9 +52,9 @@
             android:id="@+id/tvUserNumber"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/btnBackFromP"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:textAlignment="center"
             android:textSize="18sp"
@@ -76,9 +76,9 @@
             android:id="@+id/tvFriendsNumber"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/btnBackFromP"
             android:layout_marginStart="53dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/tvUserNumber"
             android:textAlignment="center"
             android:textSize="18sp"
@@ -107,6 +107,17 @@
             android:text="Follow"
             android:textSize="12sp"
             app:cornerRadius="13dp" />
+
+        <ImageButton
+            android:id="@+id/btnBackFromP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_revert" />
 
     </RelativeLayout>
 
