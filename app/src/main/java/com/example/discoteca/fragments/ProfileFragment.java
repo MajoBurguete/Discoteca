@@ -255,7 +255,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     @Override
     public void onLikeClick(int position) {
         ParseUser user = ParseUser.getCurrentUser();
-        List<String> likeFacts= user.getList(KEY_LIST);
+        List<Fact> likeFacts= user.getList(KEY_LIST);
 
         if (likeFacts.size() == 0){
             if (tabLayout.getSelectedTabPosition() == 0){
@@ -366,7 +366,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     }
 
-    private void likeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user){
+    private void likeFact(boolean tab1, List<Fact> likeFacts, Fact fact, int likes, ParseUser user){
         Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
         if (tab1){
             Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
@@ -399,7 +399,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         }
     }
 
-    private void dislikeFact(boolean tab1, List<String> likeFacts, Fact fact, int likes, ParseUser user, int i){
+    private void dislikeFact(boolean tab1, List<Fact> likeFacts, Fact fact, int likes, ParseUser user, int i){
         if (tab1){
             Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
             likeFacts.remove(i);
