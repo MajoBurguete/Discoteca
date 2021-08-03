@@ -117,6 +117,14 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
             Bundle bundle = new Bundle();
             bundle.putParcelable("user", Parcels.wrap(userProf));
             String returnTo = FriendsFragment.this.getArguments().getString("return");
+
+            if (returnTo == "profile"){
+                bundle.putString("fragment", "profile");
+                fragmentNew.setArguments(bundle);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+                transaction.replace(R.id.flContainer, fragmentNew).commit();
+            }
         }
     }
 
