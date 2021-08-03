@@ -160,6 +160,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             rlItemFact.setOnTouchListener(new OnDoubleTapListener(context) {
                 @Override
                 public void onDoubleTap(MotionEvent e) {
+                    onFactClickListener.onLikeClick(getAdapterPosition());
                 }
             });
 
