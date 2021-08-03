@@ -89,6 +89,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             if (friends.size() == 0){
                 fabFollow.setImageResource(R.drawable.ic_follow);
             }
+            else {
+                for (int i = 0; i < friends.size(); i++){
+                }
+            }
+
             rlUserSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
