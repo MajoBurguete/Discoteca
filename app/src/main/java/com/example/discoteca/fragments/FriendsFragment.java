@@ -126,6 +126,16 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
         boolean boolFriend = checkIfFriend();
 
+        if (boolFriend){
+            friends.remove(removeAt);
+
+            Long number = currentUser.getLong(FRIEND_NUM_KEY);
+            number = number - 1;
+
+            currentUser.put(FRIENDS_LIST_KEY, friends);
+            currentUser.put(FRIEND_NUM_KEY, number);
+
+        }
             }
         });
     }
