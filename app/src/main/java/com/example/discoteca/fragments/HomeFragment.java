@@ -138,10 +138,8 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         Fact fact = factsL.get(position);
         String objectID = fact.getObjectId();
         int likes = fact.getLikes();
-        Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
         int likeCheck = likeFacts.size();
         if (likeCheck == 0){
-            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
             likeFacts.add(0, fact);
 
             // Update number of likes on the fact
@@ -157,7 +155,6 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         } else{
             for (int i = 0; i < likeFacts.size(); i++){
                 if (likeFacts.get(i).getObjectId().equals(objectID)){
-                    Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
                     likeFacts.remove(i);
 
                     // Update number of likes on the fact
@@ -173,7 +170,6 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
                     break;
                 } else if (i == likeFacts.size()-1){
-                    Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
                     likeFacts.add(0, fact);
 
                     // Update number of likes on the fact
