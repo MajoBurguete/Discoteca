@@ -95,6 +95,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         fabFollow.setImageResource(R.drawable.ic_check);
                         break;
                     }
+                    else if (i == friends.size()-1){
+                        fabFollow.setImageResource(R.drawable.ic_follow);
+                    }
                 }
             }
 
