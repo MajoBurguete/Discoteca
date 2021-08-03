@@ -106,6 +106,12 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         tvNumber.setText(String.valueOf(number));
         tvFriends.setText(String.valueOf(user.getLong(FRIEND_NUM_KEY)));
 
+        friendText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         // Array initialized
         userFacts = new ArrayList<>();
         likedFacts = new ArrayList<>();
