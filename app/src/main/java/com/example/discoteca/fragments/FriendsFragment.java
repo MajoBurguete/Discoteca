@@ -30,6 +30,8 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     List<ParseUser> userList;
     UserAdapter adapter;
     ImageButton ibReturn;
+    int removeAt;
+    ParseUser user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -141,5 +143,6 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
             }
         }
 
+        return false;
     }
 }
