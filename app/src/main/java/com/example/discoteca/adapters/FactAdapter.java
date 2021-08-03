@@ -2,6 +2,7 @@ package com.example.discoteca.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.discoteca.OnDoubleTapListener;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Fact;
 import com.parse.ParseUser;
@@ -152,6 +154,12 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     onFactClickListener.onUserClick(getAdapterPosition());
+                }
+            });
+
+            rlItemFact.setOnTouchListener(new OnDoubleTapListener(context) {
+                @Override
+                public void onDoubleTap(MotionEvent e) {
                 }
             });
 
