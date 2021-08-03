@@ -86,6 +86,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             ParseUser currentUser = ParseUser.getCurrentUser();
             List<ParseUser> friends = currentUser.getList("friends");
 
+            if (friends.size() == 0){
+                fabFollow.setImageResource(R.drawable.ic_follow);
+            }
             rlUserSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
