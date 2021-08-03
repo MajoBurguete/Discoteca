@@ -156,4 +156,9 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
         flUserChild.setVisibility(View.VISIBLE);
 
     }
+
+    @Override
+    public void onFollowClick(int position) {
+    }
+
 }
