@@ -29,5 +29,8 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         rvUsers = view.findViewById(R.id.rvFriends);
         ibReturn = view.findViewById(R.id.ibReturnProfile);
 
+        // Get boolean from arguments
+        currentProfile = this.getArguments().getBoolean("friends");
+
     }
 }
