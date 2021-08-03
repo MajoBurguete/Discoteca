@@ -147,6 +147,10 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
         }
 
+        currentUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                adapter.notifyDataSetChanged();
             }
         });
     }
