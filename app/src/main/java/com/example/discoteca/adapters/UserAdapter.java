@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.discoteca.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -68,12 +69,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         RelativeLayout rlUserSearch;
         ImageView ivUserPict;
         TextView tvOtherUser;
+        FloatingActionButton fabFollow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             rlUserSearch = itemView.findViewById(R.id.rlUserSearch);
             ivUserPict = itemView.findViewById(R.id.ivUserProfPict);
             tvOtherUser = itemView.findViewById(R.id.tvOtherUser);
+            fabFollow = itemView.findViewById(R.id.fabFollow);
         }
 
         public void bind(ParseUser user) {
