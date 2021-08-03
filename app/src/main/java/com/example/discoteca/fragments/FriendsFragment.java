@@ -146,6 +146,18 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         List<ParseUser> friends = userProf.getList(FRIENDS_LIST_KEY);
         return friends;
     }
+
+    private List<ParseUser> getCurrentFriends() {
+        List<ParseUser> friends = userProf.getList(FRIENDS_LIST_KEY);
+        for (int i=0; i<friends.size(); i++){
+            if(friends.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                friends.remove(i);
+                break;
+            }
+        }
+        return friends;
+    }
+
     private List<String> toObjectId(List<ParseUser> friends){
         List<String> usersN = new ArrayList<>();
         for (ParseUser user: friends){
