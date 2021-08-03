@@ -152,6 +152,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     private void openFriendsActivity() {
         Fragment fragment = new FriendsFragment();
 
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("friends", false);
+        bundle.putParcelable("user", Parcels.wrap(user));
     }
 
     private void returnToW() {
