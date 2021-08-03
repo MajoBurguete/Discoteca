@@ -155,6 +155,14 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         Bundle bundle = new Bundle();
         bundle.putBoolean("friends", false);
         bundle.putParcelable("user", Parcels.wrap(user));
+
+        if (returnTo == "profile"){
+            bundle.putString("return", "profile");
+            fragment.setArguments(bundle);
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+            transaction.replace(R.id.flContainer, fragment).commit();
+        }
     }
 
     private void returnToW() {
