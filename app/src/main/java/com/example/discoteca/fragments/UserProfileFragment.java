@@ -163,6 +163,13 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
             transaction.replace(R.id.flContainer, fragment).commit();
         }
+        else if (returnTo == "home"){
+            bundle.putString("return", "home");
+            fragment.setArguments(bundle);
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+            transaction.replace(R.id.flContainer, fragment).commit();
+        }
     }
 
     private void returnToW() {
