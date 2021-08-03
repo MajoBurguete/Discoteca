@@ -168,6 +168,10 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         Bundle bundle = new Bundle();
         bundle.putBoolean("friends", true);
         fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+        transaction.replace(R.id.flContainer, fragment).commit();
     }
 
     private void loadNextData(int page) {
