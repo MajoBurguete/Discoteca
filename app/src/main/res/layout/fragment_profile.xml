@@ -119,6 +119,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/postsText"
+            android:clickable="true"
             android:text="Friends"
             android:textSize="18sp" />
 
