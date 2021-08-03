@@ -51,5 +51,13 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         // Recycler view
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(linearLayoutManager);
+        ibReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+            }
+        });
+
     }
 }
