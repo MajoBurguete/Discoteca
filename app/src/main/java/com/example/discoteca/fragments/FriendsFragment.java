@@ -74,6 +74,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         endlessScrolling = new EndlessScrolling(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                page = page * 10;
             }
         };
 
