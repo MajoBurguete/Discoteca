@@ -112,6 +112,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         }
         return usersN;
     }
+
+    @Override
+    public void onUserClick(int position) {}
+
+    @Override
+    public void onFollowClick(int position) {
             }
         });
 
