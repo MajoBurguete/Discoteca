@@ -47,5 +47,9 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         // Layout manager is created
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
+
+        // Recycler view
+        rvUsers.setAdapter(adapter);
+        rvUsers.setLayoutManager(linearLayoutManager);
     }
 }
