@@ -104,6 +104,13 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     }
 
     private void returnTo(){
+        if (currentProfile){
+            Fragment fragmentNew = new ProfileFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.replace(R.id.flContainer, fragmentNew).commit();
+        } else{
+        }
     }
 
     private void loadMoreData(int page){
