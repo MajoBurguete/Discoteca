@@ -207,10 +207,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         });
     }
 
-    private boolean checkIfFriend(){
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
-
+    private boolean checkIfFriend(List<ParseUser> friends){
         for (int i = 0; i < friends.size(); i++){
             if (friends.get(i).getObjectId().equals(user.getObjectId())){
                 removeAt = i;
