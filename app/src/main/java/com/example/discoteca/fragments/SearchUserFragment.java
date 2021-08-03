@@ -23,6 +23,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.parceler.Parcels;
 
@@ -33,6 +34,8 @@ import java.util.List;
 public class SearchUserFragment extends Fragment implements UserAdapter.OnUserListener {
 
     private static final String TAG = "SearchUserFragment";
+    private static final String FRIENDS_LIST_KEY = "friends";
+    private static final String FRIEND_NUM_KEY = "friendsNumber";
     SearchView searchBar;
     RecyclerView rvUsers;
     List<ParseUser> userList;
@@ -40,6 +43,8 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
     EndlessScrolling endlessScrolling;
     String searchQuery;
     FrameLayout flUserChild;
+    int removeAt;
+    ParseUser user;
 
 
     public SearchUserFragment() {
@@ -181,6 +186,22 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
                 }
             });
 
+        }
+        else{
+            friends.add(user);
+
+            Long number = currentUser.getLong(FRIEND_NUM_KEY);
+            number = number + 1;
+
+            currentUser.put(FRIENDS_LIST_KEY, friends);
+            currentUser.put(FRIEND_NUM_KEY, number);
+
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    adapter.notifyDataSetChanged();
+                }
+            });
         }
     }
 
