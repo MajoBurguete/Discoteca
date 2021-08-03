@@ -108,6 +108,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     onUserListener.onUserClick(getAdapterPosition());
                 }
             });
+
+            fabFollow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onUserListener.onFollowClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
