@@ -167,5 +167,23 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
     }
 
     private boolean checkIfFriend(){
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+
+        if (friends.size() == 0){
+            return false;
+        }
+        else {
+            for (int i = 0; i < friends.size(); i++){
+                if (friends.get(i).getObjectId().equals(user.getObjectId())){
+                    removeAt = i;
+                    return true;
+                } else if (i == friends.size()-1){
+                    return false;
+                }
+            }
+        }
+
+        return false;
     }
 }
