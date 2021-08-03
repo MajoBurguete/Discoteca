@@ -109,6 +109,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         friendText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openFriendsActivity();
             }
         });
 
@@ -159,6 +160,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         // Default tab
         queryMyFacts(0, true);
 
+    }
+
+    private void openFriendsActivity() {
     }
 
     private void loadNextData(int page) {
