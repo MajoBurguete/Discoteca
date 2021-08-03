@@ -132,6 +132,14 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         ParseUser currentUser = ParseUser.getCurrentUser();
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
 
+        for (int i = 0; i < friends.size(); i++){
+            if (friends.get(i).getObjectId().equals(user.getObjectId())){
+                removeAt = i;
+                return true;
+            } else if (i == friends.size()-1){
+                return false;
+            }
+        }
 
     }
 }
