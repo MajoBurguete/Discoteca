@@ -80,6 +80,8 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         // Recycler view
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(linearLayoutManager);
+        rvUsers.addOnScrollListener(endlessScrolling);
+
         ibReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
