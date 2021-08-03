@@ -91,6 +91,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             }
             else {
                 for (int i = 0; i < friends.size(); i++){
+                    if (friends.get(i).getObjectId().equals(user.getObjectId())){
+                        fabFollow.setImageResource(R.drawable.ic_check);
+                        break;
+                    }
                 }
             }
 
