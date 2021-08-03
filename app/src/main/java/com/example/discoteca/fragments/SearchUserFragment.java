@@ -163,6 +163,9 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
         List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
         user = userList.get(position);
 
+        boolean boolFriend = checkIfFriend();
     }
 
+    private boolean checkIfFriend(){
+    }
 }
