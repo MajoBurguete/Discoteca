@@ -165,6 +165,9 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     private void openFriendsActivity() {
         Fragment fragment = new FriendsFragment();
 
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("friends", true);
+        fragment.setArguments(bundle);
     }
 
     private void loadNextData(int page) {
