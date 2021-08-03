@@ -54,6 +54,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         ibReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (currentProfile){
+                    Fragment fragmentNew = new ProfileFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+                    transaction.replace(R.id.flContainer, fragmentNew).commit();
+                }
             }
         });
             }
