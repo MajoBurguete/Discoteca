@@ -188,7 +188,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
         ParseQuery<Fact> query = ParseQuery.getQuery(Fact.class);
         query.include(Fact.KEY_USER);
-        Log.i(TAG, "queryLikedFacts: " + ParseUser.getCurrentUser().getList("factsLiked"));
         query.whereContainedIn(Fact.KEY_OBJECT_ID, toObjectId());
         query.orderByDescending(Fact.KEY_LIKES);
         query.setLimit(10);
@@ -398,14 +397,11 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     }
 
     private void likeFact(boolean tab1, List<Fact> likeFacts, Fact fact, int likes, ParseUser user){
-        Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
         if (tab1){
-            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
             likeFacts.add(0, fact);
 
             // Update number of likes on the fact
             likes = likes + 1;
-            Toast.makeText(getContext(), "Likes " + likes, Toast.LENGTH_SHORT).show();
             fact.setLikes(likes);
             fact.saveInBackground(new SaveCallback() {
                 @Override
@@ -415,7 +411,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 }
             });
         } else {
-            Toast.makeText(getContext(), "Liking ...", Toast.LENGTH_SHORT).show();
             likeFacts.add(0, fact);
             likes = likes + 1;
             fact.setLikes(likes);
@@ -432,7 +427,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
 
     private void dislikeFact(boolean tab1, List<Fact> likeFacts, Fact fact, int likes, ParseUser user, int i){
         if (tab1){
-            Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
             likeFacts.remove(i);
 
             // Update number of likes on the fact
@@ -446,7 +440,6 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
                 }
             });
         } else {
-            Toast.makeText(getContext(), "Liked already", Toast.LENGTH_SHORT).show();
             likeFacts.remove(i);
             // Update number of likes on the fact
             likes = likes - 1;
