@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.discoteca.EndlessScrolling;
 import com.example.discoteca.R;
@@ -129,7 +128,6 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
 
     private void loadNextDataFromApi(int page) {
         if (tabLayout.getSelectedTabPosition() == 0){
-            Toast.makeText(this, "PAGE: "  + page, Toast.LENGTH_SHORT).show();
             client.makeSearchSongRequest(queryS, page).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -150,7 +148,6 @@ public class PickActivity extends AppCompatActivity implements SongAdapter.OnSon
             });
         }
         if (tabLayout.getSelectedTabPosition() == 1){
-            Toast.makeText(this, "PAGE: "  + page, Toast.LENGTH_SHORT).show();
             List<Album> results = new ArrayList<>();
             List<Song> albumSongs = new ArrayList<>();
             client.makeSearchAlbumRequest(queryS, page).enqueue(new Callback() {
