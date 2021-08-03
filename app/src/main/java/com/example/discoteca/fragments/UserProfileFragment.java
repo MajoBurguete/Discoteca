@@ -54,6 +54,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     ParseUser user;
     int removeAt;
     String returnTo;
+    TextView friendsText;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -79,6 +80,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         tvFriendsNumber = view.findViewById(R.id.tvFriendsNumber);
         btnFollow = view.findViewById(R.id.btnFollow);
         btnReturn = view.findViewById(R.id.btnBackFromP);
+        friendsText = view.findViewById(R.id.friendsText);
 
         // user gotten from arguments
         user = Parcels.unwrap(this.getArguments().getParcelable("user"));
