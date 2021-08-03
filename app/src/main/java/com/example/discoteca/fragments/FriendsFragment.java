@@ -126,10 +126,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
                     Log.e(TAG, "Issue with getting facts", e);
                     return;
                 }
-                for (int i=0; i<users.size(); i++){
-                    if(users.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
-                        users.remove(i);
-                        break;
+                if (currentProfile){
+                    for (int i=0; i<users.size(); i++){
+                        if(users.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                            users.remove(i);
+                            break;
+                        }
                     }
                 }
                 if (clear){
