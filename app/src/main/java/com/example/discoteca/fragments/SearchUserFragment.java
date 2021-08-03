@@ -191,13 +191,6 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
             currentUser.put(FRIENDS_LIST_KEY, friends);
             currentUser.put(FRIEND_NUM_KEY, number);
 
-            currentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    adapter.notifyDataSetChanged();
-                }
-            });
-
         }
         else{
             friends.add(user);
@@ -208,13 +201,14 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
             currentUser.put(FRIENDS_LIST_KEY, friends);
             currentUser.put(FRIEND_NUM_KEY, number);
 
-            currentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    adapter.notifyDataSetChanged();
-                }
-            });
         }
+
+        currentUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private boolean checkIfFriend(){
