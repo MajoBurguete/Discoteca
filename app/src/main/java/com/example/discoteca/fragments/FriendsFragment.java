@@ -118,6 +118,9 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
     @Override
     public void onFollowClick(int position) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+        user = userList.get(position);
             }
         });
 
