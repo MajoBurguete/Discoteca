@@ -45,6 +45,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     int removeAt;
     ParseUser user;
     boolean currentProfile;
+    ParseUser userProf;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +64,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
         // Get boolean from arguments
         currentProfile = this.getArguments().getBoolean("friends");
+
+        if (!currentProfile){
+            userProf = Parcels.unwrap(FriendsFragment.this.getArguments().getParcelable("user"));
+        } else{
+            userProf = ParseUser.getCurrentUser();
+        }
 
         // Adapter is created
         userList = new ArrayList<>();
