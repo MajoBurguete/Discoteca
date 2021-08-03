@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import com.example.discoteca.adapters.UserAdapter;
+import java.util.ArrayList;
+import java.util.List;
 public class FriendsFragment extends Fragment implements UserAdapter.OnUserListener{
 
     public FriendsFragment() {
@@ -13,6 +16,8 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
     private static final String TAG = "FriendFragment";
     RecyclerView rvUsers;
+    List<ParseUser> userList;
+    UserAdapter adapter;
     ImageButton ibReturn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +36,10 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
         // Get boolean from arguments
         currentProfile = this.getArguments().getBoolean("friends");
+
+        // Adapter is created
+        userList = new ArrayList<>();
+        adapter = new UserAdapter(getContext(), userList, this);
 
     }
 }
