@@ -115,6 +115,12 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         tvUserNumber.setText(String.valueOf(value));
         tvFriendsNumber.setText(String.valueOf(user.getLong(FRIEND_NUM_KEY)));
 
+        friendsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
