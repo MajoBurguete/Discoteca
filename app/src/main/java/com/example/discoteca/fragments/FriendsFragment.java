@@ -1,4 +1,11 @@
 package com.example.discoteca.fragments;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -6,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.example.discoteca.EndlessScrolling;
+import com.example.discoteca.R;
 import com.example.discoteca.adapters.UserAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -29,9 +39,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     RecyclerView rvUsers;
     List<ParseUser> userList;
     UserAdapter adapter;
+    EndlessScrolling endlessScrolling;
     ImageButton ibReturn;
     int removeAt;
     ParseUser user;
+    boolean currentProfile;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +70,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         // Layout manager is created
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
+        // Infinite scrolling
+        endlessScrolling = new EndlessScrolling(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            }
+        };
 
         // Recycler view
         rvUsers.setAdapter(adapter);
