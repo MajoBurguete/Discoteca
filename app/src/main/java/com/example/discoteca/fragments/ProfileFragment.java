@@ -46,6 +46,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     TextView tvNameP;
     TextView tvNumber;
     TextView tvFriends;
+    TextView friendText;
     RecyclerView rvUserFacts;
     FactAdapter adapter;
     FactAdapter likeAdapter;
@@ -80,6 +81,7 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
         rvUserFacts = view.findViewById(R.id.rvUserFacts);
         tabLayout = view.findViewById(R.id.tabProfile);
         srProfile = view.findViewById(R.id.srProfile);
+        friendText = view.findViewById(R.id.friendsTextV);
 
         srProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
