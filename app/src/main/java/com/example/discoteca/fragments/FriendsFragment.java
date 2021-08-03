@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     }
 
     private void loadMoreData(int page){
+        queryFriends(false, page);
     }
 
     private void queryFriends(boolean clear, int page){
@@ -111,6 +113,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
         query.whereContainedIn("objectId", toObjectId(friends));
         query.setLimit(10);
+        query.setSkip(page);
         query.orderByDescending("username");
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
