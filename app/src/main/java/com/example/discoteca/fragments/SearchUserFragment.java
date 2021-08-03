@@ -212,8 +212,8 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
     }
 
     private boolean checkIfFriend(){
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+
+        List<ParseUser> friends = getFriendsList();
 
         if (friends.size() == 0){
             return false;
