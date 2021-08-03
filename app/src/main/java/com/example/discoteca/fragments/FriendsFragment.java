@@ -1,4 +1,5 @@
 package com.example.discoteca.fragments;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.widget.ImageButton;
 import com.example.discoteca.adapters.UserAdapter;
 import java.util.ArrayList;
 import java.util.List;
+
+
 public class FriendsFragment extends Fragment implements UserAdapter.OnUserListener{
 
     public FriendsFragment() {
@@ -40,6 +43,9 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         // Adapter is created
         userList = new ArrayList<>();
         adapter = new UserAdapter(getContext(), userList, this);
+
+        // Layout manager is created
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
     }
 }
