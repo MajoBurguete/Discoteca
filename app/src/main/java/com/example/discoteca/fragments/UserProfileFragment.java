@@ -353,7 +353,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
 
     public void addFriend(){
         ParseUser currentUser = ParseUser.getCurrentUser();
-        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+        List<ParseUser> friends = getFriendsList();
         boolean boolFriend = checkIfFriend();
 
         if (boolFriend){
@@ -392,8 +392,8 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
     }
 
     private boolean checkIfFriend(){
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+
+        List<ParseUser> friends = getFriendsList();
 
         if (friends.size() == 0){
             return false;
