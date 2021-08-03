@@ -7,6 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.example.discoteca.adapters.UserAdapter;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +24,8 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     }
 
     private static final String TAG = "FriendFragment";
+    private static final String FRIENDS_LIST_KEY = "friends";
+    private static final String FRIEND_NUM_KEY = "friendsNumber";
     RecyclerView rvUsers;
     List<ParseUser> userList;
     UserAdapter adapter;
@@ -73,6 +81,29 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
         query.whereContainedIn("objectId", toObjectId(friends));
+        query.setLimit(10);
+        query.orderByDescending("username");
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> users, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting facts", e);
+                    return;
+                }
+                for (int i=0; i<users.size(); i++){
+                    if(users.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                        users.remove(i);
+                        break;
+                    }
+                }
+                if (clear){
+                    adapter.clearAll(false);
+                }
+                adapter.addAll(users);
+
+            }
+        });
+    }
             }
         });
 
