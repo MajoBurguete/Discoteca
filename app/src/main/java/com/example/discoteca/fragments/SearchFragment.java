@@ -150,7 +150,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
     // Infinite scroll, loads more data into the recycler view
     private void loadNextDataFromApi(int page) {
         if (tabLayout.getSelectedTabPosition() == 0){
-            Toast.makeText(getContext(), "PAGE: "  + page, Toast.LENGTH_SHORT).show();
             client.makeSearchSongRequest(queryS, page).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -171,7 +170,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
             });
         }
         if (tabLayout.getSelectedTabPosition() == 1){
-            Toast.makeText(getContext(), "PAGE: "  + page, Toast.LENGTH_SHORT).show();
             client.makeSearchAlbumRequest(queryS, page).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -275,7 +273,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
 
     @Override
     public void onAlbumClick(int position) {
-        Toast.makeText(getContext(), "ALbum clickedd", Toast.LENGTH_SHORT).show();
         Fragment fragment = new AlbumFragment();
 
         // Pass song data to the detail fragment
@@ -292,7 +289,6 @@ public class SearchFragment extends Fragment implements AlbumAdapter.OnAlbumClic
 
     @Override
     public void onSongClick(int position) {
-        Toast.makeText(getContext(), "Song clickedd", Toast.LENGTH_SHORT).show();
         Fragment fragment = new SongFragment();
 
         // Pass song data to the detail fragment
