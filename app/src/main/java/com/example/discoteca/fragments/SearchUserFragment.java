@@ -162,6 +162,18 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
 
     }
 
+    private List<ParseUser> getFriendsList() {
+        ParseUser userProf = ParseUser.getCurrentUser();
+        List<ParseUser> friends = userProf.getList(FRIENDS_LIST_KEY);
+        for (int i=0; i<friends.size(); i++){
+            if(friends.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                friends.remove(i);
+                break;
+            }
+        }
+        return friends;
+    }
+
     @Override
     public void onFollowClick(int position) {
         ParseUser currentUser = ParseUser.getCurrentUser();
