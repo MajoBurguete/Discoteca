@@ -142,6 +142,10 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         });
     }
 
+    private List<ParseUser> getFriendsList() {
+        List<ParseUser> friends = userProf.getList(FRIENDS_LIST_KEY);
+        return friends;
+    }
     private List<String> toObjectId(List<ParseUser> friends){
         List<String> usersN = new ArrayList<>();
         for (ParseUser user: friends){
