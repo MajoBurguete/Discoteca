@@ -159,6 +159,8 @@ public class SearchUserFragment extends Fragment implements UserAdapter.OnUserLi
 
     @Override
     public void onFollowClick(int position) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
     }
 
 }
