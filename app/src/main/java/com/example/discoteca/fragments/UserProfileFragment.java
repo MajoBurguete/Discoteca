@@ -118,6 +118,7 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         friendsText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openFriendsActivity();
             }
         });
 
@@ -145,6 +146,10 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
                 srUserProfile.setRefreshing(false);
             }
         });
+
+    }
+
+    private void openFriendsActivity() {
 
     }
 
