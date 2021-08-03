@@ -62,6 +62,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
                 }
             }
         });
+
+        queryFriends(true, 0);
+
+    }
+    private void queryFriends(boolean clear, int page){
+
             }
         });
 
