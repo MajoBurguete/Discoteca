@@ -46,11 +46,12 @@
             <ScrollView
                 android:id="@+id/svDescription"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_below="@+id/tvSearchInfo"
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="7dp"
-                android:layout_toEndOf="@+id/ivAlbum">
+                android:layout_toEndOf="@+id/ivAlbum"
+                android:clickable="true">
 
                 <TextView
                     android:id="@+id/tvDescription"
