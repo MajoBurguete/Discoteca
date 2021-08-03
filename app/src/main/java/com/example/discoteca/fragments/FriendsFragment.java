@@ -112,8 +112,7 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
 
     private void queryFriends(boolean clear, int page){
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+        List<ParseUser> friends = getFriendsList();
 
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
         query.whereContainedIn("objectId", toObjectId(friends));
