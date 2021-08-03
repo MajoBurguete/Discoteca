@@ -28,4 +28,16 @@
         android:layout_toEndOf="@+id/ivUserProfPict"
         android:textSize="20sp"
         tools:text="doreB" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="151dp"
+        android:layout_toEndOf="@+id/tvOtherUser"
+        android:clickable="true"
+        android:visibility="visible"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_follow" />
 </RelativeLayout>
