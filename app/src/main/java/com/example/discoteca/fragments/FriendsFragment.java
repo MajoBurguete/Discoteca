@@ -176,12 +176,12 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
         List<ParseUser> friends = getCurrentFriends();
         user = userList.get(position);
 
-        boolean boolFriend = checkIfFriend();
+        boolean boolFriend = checkIfFriend(friends);
 
         if (boolFriend){
             friends.remove(removeAt);
 
-            Long number = currentUser.getLong(FRIEND_NUM_KEY);
+            Long number = currentUs.getLong(FRIEND_NUM_KEY);
             number = number - 1;
 
             currentUser.put(FRIENDS_LIST_KEY, friends);
