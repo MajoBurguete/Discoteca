@@ -125,6 +125,13 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
                 transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
                 transaction.replace(R.id.flContainer, fragmentNew).commit();
             }
+            else if (returnTo == "home"){
+                bundle.putString("fragment", "home");
+                fragmentNew.setArguments(bundle);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+                transaction.replace(R.id.flContainer, fragmentNew).commit();
+            }
         }
     }
 
