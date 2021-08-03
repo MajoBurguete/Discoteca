@@ -24,6 +24,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +112,11 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.replace(R.id.flContainer, fragmentNew).commit();
         } else{
+            Fragment fragmentNew = new UserProfileFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("user", Parcels.wrap(userProf));
+            String returnTo = FriendsFragment.this.getArguments().getString("return");
         }
     }
 
