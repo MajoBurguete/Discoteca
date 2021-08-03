@@ -26,6 +26,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public interface OnUserListener{
         void onUserClick(int position);
+        void onFollowClick(int position);
     }
 
     public UserAdapter(Context context, List<ParseUser> rvUsers, OnUserListener onUserListener) {
