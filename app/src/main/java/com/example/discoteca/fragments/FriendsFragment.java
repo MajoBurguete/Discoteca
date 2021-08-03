@@ -68,6 +68,9 @@ public class FriendsFragment extends Fragment implements UserAdapter.OnUserListe
     }
     private void queryFriends(boolean clear, int page){
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        List<ParseUser> friends = currentUser.getList(FRIENDS_LIST_KEY);
+
             }
         });
 
