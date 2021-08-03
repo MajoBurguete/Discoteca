@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -81,6 +82,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
         ImageButton ibDelete;
         ImageButton ibLike;
         TextView tvLikes;
+        RelativeLayout rlItemFact;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,6 +94,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
             ibDelete = itemView.findViewById(R.id.ibDelete);
             ibLike = itemView.findViewById(R.id.ibLike);
             tvLikes = itemView.findViewById(R.id.tvLikes);
+            rlItemFact = itemView.findViewById(R.id.rlItemFact);
         }
 
         public void bind(Fact fact) {
