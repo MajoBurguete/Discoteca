@@ -198,7 +198,6 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.replace(R.id.flContainer, fragmentNew).commit();
         } else if (returnTo == "songFrag"){
-
             FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.remove(UserProfileFragment.this).commit();
@@ -206,6 +205,18 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
         else{
             getParentFragment().getChildFragmentManager().beginTransaction().remove(UserProfileFragment.this).commit();
         }
+    }
+
+    private List<ParseUser> getFriendsList() {
+        ParseUser userProf = ParseUser.getCurrentUser();
+        List<ParseUser> friends = userProf.getList(FRIENDS_LIST_KEY);
+        for (int i=0; i<friends.size(); i++){
+            if(friends.get(i).getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
+                friends.remove(i);
+                break;
+            }
+        }
+        return friends;
     }
 
     private void queryFacts(boolean clear) {
