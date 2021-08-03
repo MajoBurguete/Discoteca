@@ -163,6 +163,8 @@ public class ProfileFragment extends Fragment implements FactAdapter.OnFactClick
     }
 
     private void openFriendsActivity() {
+        Fragment fragment = new FriendsFragment();
+
     }
 
     private void loadNextData(int page) {
