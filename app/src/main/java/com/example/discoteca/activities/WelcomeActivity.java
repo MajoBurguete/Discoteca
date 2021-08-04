@@ -27,5 +27,22 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+    private void authorizeUser(){
+
+        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+
+        // Example Only. Never block in production code.
+        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
+
+        // Set access token for further "spotifyApi" object usage
+        spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+        accessToken = spotifyApi.getAccessToken();
+        Context context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
+        storeAccessToken(spotifyApi.getAccessToken(), sharedPref);
+
+    }
+
     }
 }
