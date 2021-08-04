@@ -53,6 +53,10 @@ public class WelcomeActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent login = new Intent(WelcomeActivity.this, LoginActivity.class);
+                startActivity(login);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            }
         });
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
