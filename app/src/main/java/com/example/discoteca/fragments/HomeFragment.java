@@ -114,6 +114,9 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         if (currentHour >= 0 && currentHour < 720){
             welcome = "Good morning, ";
         }
+        else if (currentHour >= 720 && currentHour < 1080){
+            welcome = "Good evening, ";
+        }
 
     }
 
