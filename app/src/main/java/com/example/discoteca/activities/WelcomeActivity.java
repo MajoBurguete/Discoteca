@@ -50,6 +50,12 @@ public class WelcomeActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLoginWel);
         btnSignup = findViewById(R.id.btnSignupWel);
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         authorizeUser();
 
     }
