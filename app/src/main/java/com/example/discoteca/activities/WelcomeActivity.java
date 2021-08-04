@@ -71,6 +71,13 @@ public class WelcomeActivity extends AppCompatActivity {
         authorizeUser();
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     private void authorizeUser(){
 
         final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
