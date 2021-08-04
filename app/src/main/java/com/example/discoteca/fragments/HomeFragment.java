@@ -111,6 +111,9 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         int currentHour  = (hourOfDay * 60) + minute;
+        if (currentHour >= 0 && currentHour < 720){
+            welcome = "Good morning, ";
+        }
 
     }
 
