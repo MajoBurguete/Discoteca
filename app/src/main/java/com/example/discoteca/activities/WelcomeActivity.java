@@ -44,5 +44,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    public void storeAccessToken(String token, SharedPreferences sharedPref){
+
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int currentHour  = (hourOfDay * 60) + minute + 60;
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("token", token);
+        editor.putInt("expires", currentHour);
+        editor.apply();
+
     }
 }
