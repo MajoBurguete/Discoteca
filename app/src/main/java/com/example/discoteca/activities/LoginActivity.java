@@ -83,9 +83,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void goMainActivity() {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+    public void goMainActivity(Context context) {
+        Intent i = new Intent(context, MainActivity.class);
+        context.startActivity(i);
         overridePendingTransition(R.anim.left_in, R.anim.right_out);
         finish();
     }
