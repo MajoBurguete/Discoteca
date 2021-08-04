@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/tvUserName"
@@ -93,6 +94,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/factsTextUser"
+            android:clickable="true"
             android:text="Friends"
             android:textSize="18sp" />
 
