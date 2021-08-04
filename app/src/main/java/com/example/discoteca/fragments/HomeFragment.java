@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.discoteca.interactions.EndlessScrolling;
 import com.example.discoteca.R;
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     RecyclerView rvFacts;
     List<Fact> factsL;
     FactAdapter adapter;
+    TextView tvWelcome;
     SwipeRefreshLayout swipeRefreshLayout;
     EndlessScrolling scrollListener;
     public static final String KEY_LIST = "factsLiked";
@@ -59,6 +61,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         // Get references
         rvFacts = view.findViewById(R.id.rvFacts);
         swipeRefreshLayout = view.findViewById(R.id.refreshFeed);
+        tvWelcome = view.findViewById(R.id.tvWelcome);
 
         // Setting the listener for the swipe container
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
