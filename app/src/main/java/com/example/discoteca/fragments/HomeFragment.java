@@ -121,6 +121,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
             welcome = "Goodnight, ";
         }
 
+        return welcome;
     }
 
     private void loadNextData(int page) {
