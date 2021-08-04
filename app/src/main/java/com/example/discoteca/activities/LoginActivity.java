@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (ParseUser.getCurrentUser() != null){
-            goMainActivity();
+            goMainActivity(LoginActivity.this);
         }
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 // Method to login
-                loginUser(username, password);
+                loginUser(username, password, LoginActivity.this);
             }
         });
 
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             String username = data.getStringExtra("username");
             String password = data.getStringExtra("password");
             Toast.makeText(LoginActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
-            loginUser(username, password);
+            loginUser(username, password, LoginActivity.this);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
