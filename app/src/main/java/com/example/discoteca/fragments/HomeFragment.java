@@ -30,6 +30,7 @@ import com.parse.SaveCallback;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements FactAdapter.OnFactClickListener{
@@ -109,6 +110,7 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         Calendar calendar = Calendar.getInstance();
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+        int currentHour  = (hourOfDay * 60) + minute;
 
     }
 
