@@ -170,13 +170,6 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
             transaction.replace(R.id.flContainer, fragment).commit();
         }
-        else if (returnTo == "songFrag"){
-            bundle.putString("return", "songFrag");
-            fragment.setArguments(bundle);
-            FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-            transaction.replace(R.id.flChild, fragment).commit();
-        }
         else{
             bundle.putBoolean("myProfile", false);
             fragment.setArguments(bundle);
@@ -197,10 +190,6 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
             transaction.replace(R.id.flContainer, fragmentNew).commit();
-        } else if (returnTo == "songFrag"){
-            FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
-            transaction.remove(UserProfileFragment.this).commit();
         }
         else{
             FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
