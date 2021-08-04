@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent sign = new Intent(LoginActivity.this, SignupActivity.class);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 startActivityForResult(sign, REQUEST_CODE_SIGN);
             }
         });
