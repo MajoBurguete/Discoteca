@@ -107,12 +107,17 @@
 
     <Button
         android:id="@+id/btnSignup"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
-        android:text="Sign up"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/vibes_regular"
+        android:text="Are you new here? Sign up"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +133,7 @@
         android:text="Log in to your account"
         android:textAlignment="center"
         android:textColor="@color/pinkS"
-        android:textSize="30sp" />
+        android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="65dp" />
 
