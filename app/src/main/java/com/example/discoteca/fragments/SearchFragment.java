@@ -18,9 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.example.discoteca.EndlessScrolling;
+import com.example.discoteca.interactions.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.spotify.Spotify;
 import com.example.discoteca.adapters.AlbumAdapter;

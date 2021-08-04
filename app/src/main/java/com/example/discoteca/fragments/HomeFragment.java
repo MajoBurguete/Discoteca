@@ -14,9 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.discoteca.EndlessScrolling;
+import com.example.discoteca.interactions.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;

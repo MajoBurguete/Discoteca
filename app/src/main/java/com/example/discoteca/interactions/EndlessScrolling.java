@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.interactions;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;

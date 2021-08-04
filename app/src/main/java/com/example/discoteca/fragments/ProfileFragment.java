@@ -16,10 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.discoteca.EndlessScrolling;
+import com.example.discoteca.interactions.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.FactAdapter;
 import com.example.discoteca.models.Fact;

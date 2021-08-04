@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.example.discoteca.EndlessScrolling;
+import com.example.discoteca.interactions.EndlessScrolling;
 import com.example.discoteca.R;
 import com.example.discoteca.adapters.UserAdapter;
 import com.parse.FindCallback;
