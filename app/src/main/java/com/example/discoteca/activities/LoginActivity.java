@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
 
 import com.example.discoteca.databinding.ActivityLoginBinding;
@@ -18,33 +16,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.SpotifyHttpManager;
-import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
-
-import java.net.URI;
-import java.util.Calendar;
-import java.util.concurrent.CompletableFuture;
-
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SIGN = 7;
-    private static final int REQUEST_CODE = 8;
-    private static final String CLIENT_ID = BuildConfig.CONSUMER_KEY;
-    public static final String CLIENT_SECRET = BuildConfig.CONSUMER_SECRET;
-    private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
-    private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
-    private String accessToken = "";
-
-    private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-            .setClientId(CLIENT_ID)
-            .setClientSecret(CLIENT_SECRET)
-            .setRedirectUri(redirectUri)
-            .build();
-
-    private static final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
-            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (accessToken.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Remember to login to your spotify account!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 String username = binding.etUsername.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 if ( username.isEmpty() || password.isEmpty()){
@@ -83,24 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        authorizeUser();
-    }
-
-    private void authorizeUser(){
-
-        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
-
-        // Example Only. Never block in production code.
-        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
-
-        // Set access token for further "spotifyApi" object usage
-        spotifyApi.setAccessToken(clientCredentials.getAccessToken());
-        accessToken = spotifyApi.getAccessToken();
-        Context context = this;
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.share_preferences_file), Context.MODE_PRIVATE);
-        storeAccessToken(spotifyApi.getAccessToken(), sharedPref);
-        
     }
 
     @Override
@@ -113,23 +65,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public String getAccessToken(){
-        return accessToken;
-    }
-
-    public void storeAccessToken(String token, SharedPreferences sharedPref){
-
-        Calendar calendar = Calendar.getInstance();
-        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        int currentHour  = (hourOfDay * 60) + minute + 60;
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("token", token);
-        editor.putInt("expires", currentHour);
-        editor.apply();
-
     }
 
     private void loginUser(String username, String password) {
