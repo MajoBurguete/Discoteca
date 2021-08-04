@@ -173,4 +173,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSignPicture"
         app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="tiUserSign"
+        tools:layout_editor_absoluteX="45dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="tiUserSign"
+        tools:layout_editor_absoluteX="45dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
