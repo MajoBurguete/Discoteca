@@ -1,4 +1,4 @@
-package com.example.discoteca;
+package com.example.discoteca.interactions;
 
 import android.content.Context;
 import android.view.GestureDetector;

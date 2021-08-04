@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.discoteca.OnDoubleTapListener;
+import com.example.discoteca.interactions.OnDoubleTapListener;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Fact;
 import com.parse.ParseUser;
