@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.discoteca.BuildConfig;
-import com.example.discoteca.activities.LoginActivity;
+import com.example.discoteca.activities.WelcomeActivity;
 import com.example.discoteca.models.Album;
 import com.example.discoteca.models.Song;
 import com.wrapper.spotify.SpotifyApi;
@@ -90,8 +90,8 @@ public class Spotify {
             accessToken = spotifyApi.getAccessToken();
 
             //Store access token on shared preferences
-            LoginActivity loginActivity = new LoginActivity();
-            loginActivity.storeAccessToken(accessToken, sharedPref);
+            WelcomeActivity welcomeActivity = new WelcomeActivity();
+            welcomeActivity.storeAccessToken(accessToken, sharedPref);
         }
         else {
             this.accessToken = sharedPref.getString("token",null);
