@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
+import com.parse.ParseUser;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
@@ -52,6 +53,10 @@ public class WelcomeActivity extends AppCompatActivity {
         //Layout reference
         btnLogin = findViewById(R.id.btnLoginWel);
         btnSignup = findViewById(R.id.btnSignupWel);
+
+        if (ParseUser.getCurrentUser() != null){
+            loginActivity.goMainActivity(WelcomeActivity.this);
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
