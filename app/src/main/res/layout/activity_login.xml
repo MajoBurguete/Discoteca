@@ -110,4 +110,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="122dp"
+        android:fontFamily="@font/vibes_regular"
+        android:text="Log in to your account"
+        android:textAlignment="center"
+        android:textColor="@color/pinkS"
+        android:textSize="30sp" />
+
 </RelativeLayout>
