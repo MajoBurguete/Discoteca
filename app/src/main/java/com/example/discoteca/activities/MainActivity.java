@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.btnLogout){
             ParseUser.logOut();
             ParseUser currentUser = ParseUser.getCurrentUser();
-            Intent login = new Intent(MainActivity.this, LoginActivity.class);
+            Intent login = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivity(login);
             finish();
         }
