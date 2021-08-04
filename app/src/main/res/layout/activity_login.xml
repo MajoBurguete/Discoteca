@@ -66,6 +66,23 @@
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/pinkHint">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:fontFamily="@font/rocksalt_regular"
+            android:inputType="textPassword"
+            android:textAlignment="textStart"
+            android:textColor="@color/pinkS"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
