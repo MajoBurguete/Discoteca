@@ -67,18 +67,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void loginUser(String username, String password) {
+    public void loginUser(String username, String password, Context context) {
         // Navigate to the main activity if the user has logged in properly
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e != null){
-                    Toast.makeText(LoginActivity.this, "Failed to login, username or password incorrect", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Failed to login, username or password incorrect", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Go to main activity
-                goMainActivity();
-                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                goMainActivity(context);
+                Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }
