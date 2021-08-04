@@ -11,6 +11,16 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFacts"
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/rocksalt_regular"
+            android:textSize="19sp"
+            tools:text="Good morning, doreB" />
+
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
