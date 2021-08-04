@@ -18,6 +18,8 @@
         android:elevation="10dp"
         android:hint="Username"
         android:textColorHint="@color/pinkHint"
+        app:boxBackgroundColor="@color/morado"
+        app:boxCollapsedPaddingTop="5dp"
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
