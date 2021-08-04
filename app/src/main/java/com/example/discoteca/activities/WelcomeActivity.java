@@ -62,6 +62,9 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent sign = new Intent(WelcomeActivity.this, SignupActivity.class);
+                startActivityForResult(sign, REQUEST_CODE_SIGN);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
