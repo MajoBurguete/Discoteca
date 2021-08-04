@@ -94,7 +94,9 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
             @Override
             public void onClick(View v) {
                 rlAlbum.setClickable(false);
-                getParentFragment().getChildFragmentManager().beginTransaction().remove(AlbumFragment.this).commit();
+                FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+                transaction.remove(AlbumFragment.this).commit();
             }
         });
 

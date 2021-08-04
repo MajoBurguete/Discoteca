@@ -203,7 +203,9 @@ public class UserProfileFragment extends Fragment implements FactAdapter.OnFactC
             transaction.remove(UserProfileFragment.this).commit();
         }
         else{
-            getParentFragment().getChildFragmentManager().beginTransaction().remove(UserProfileFragment.this).commit();
+            FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.remove(UserProfileFragment.this).commit();
         }
     }
 

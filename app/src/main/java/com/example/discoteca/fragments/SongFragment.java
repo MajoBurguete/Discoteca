@@ -294,7 +294,9 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
             transaction.replace(R.id.flContainer, fragmentNew).commit();
         }
         else{
-            getParentFragment().getChildFragmentManager().beginTransaction().remove(SongFragment.this).commit();
+            FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.left_in, R.anim.right_out);
+            transaction.remove(SongFragment.this).commit();
         }
     }
 }
