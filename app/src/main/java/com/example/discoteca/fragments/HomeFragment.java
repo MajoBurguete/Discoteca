@@ -104,6 +104,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     }
 
+    private String getWelcomeAt() {
+
+    }
+
     private void loadNextData(int page) {
         queryFacts(page,false);
     }
