@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
@@ -28,6 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
     private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
     private String accessToken = "";
+    LoginActivity loginActivity = new LoginActivity();
     Button btnLogin;
     Button btnSignup;
 
@@ -74,6 +77,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_SIGN && resultCode == RESULT_OK){
+            String username = data.getStringExtra("username");
+            String password = data.getStringExtra("password");
+            Toast.makeText(WelcomeActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+            loginActivity.loginUser(username, password, WelcomeActivity.this);
+        }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
