@@ -105,6 +105,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
     }
 
     private String getWelcomeAt() {
+        String welcome = "";
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
 
     }
 
