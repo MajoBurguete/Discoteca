@@ -1,10 +1,24 @@
 package com.example.discoteca.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 
+import com.example.discoteca.BuildConfig;
 import com.example.discoteca.R;
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.SpotifyHttpManager;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+
+import java.net.URI;
+import java.util.Calendar;
+import java.util.concurrent.CompletableFuture;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -14,6 +28,9 @@ public class WelcomeActivity extends AppCompatActivity {
     private static final String REDIRECT_URI = "https://example.com/spotify-redirect";
     private static final URI redirectUri = SpotifyHttpManager.makeUri(REDIRECT_URI);
     private String accessToken = "";
+    Button btnLogin;
+    Button btnSignup;
+
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(CLIENT_ID)
             .setClientSecret(CLIENT_SECRET)
@@ -27,6 +44,12 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+
+        //Layout reference
+        btnLogin = findViewById(R.id.btnLoginWel);
+        btnSignup = findViewById(R.id.btnSignupWel);
+
         authorizeUser();
 
     }
