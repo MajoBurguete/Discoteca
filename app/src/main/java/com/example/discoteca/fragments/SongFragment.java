@@ -233,26 +233,6 @@ public class SongFragment extends Fragment implements FactAdapter.OnFactClickLis
 
     @Override
     public void onUserClick(int position) {
-        Fragment fragment = new UserProfileFragment();
-
-        //Check the fact was not made by the current user
-        Fact fact = songFacts.get(position);
-        if (!fact.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId())){
-            
-            // Pass user
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("user", Parcels.wrap(fact.getUser()));
-            bundle.putString("fragment", "songFrag");
-            fragment.setArguments(bundle);
-
-        }
-        else {
-            fragment = new ProfileFragment();
-        }
-
-        FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-        transaction.replace(R.id.flChild, fragment).commit();
     }
 
     private void saveUser(ParseUser user){
