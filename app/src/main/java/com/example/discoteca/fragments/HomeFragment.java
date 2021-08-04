@@ -95,6 +95,10 @@ public class HomeFragment extends Fragment implements FactAdapter.OnFactClickLis
         rvFacts.setLayoutManager(linearLayoutManager);
         rvFacts.addOnScrollListener(scrollListener);
 
+        //  Set welcome message
+        String welcome = getWelcomeAt() + ParseUser.getCurrentUser().getUsername();
+        tvWelcome.setText(welcome);
+
         // Query facts from database
         queryFacts(0, true);
 
