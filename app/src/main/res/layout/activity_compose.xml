@@ -99,6 +99,17 @@
                 app:layout_constraintEnd_toEndOf="@+id/btnPick"
                 app:layout_constraintStart_toStartOf="@+id/ivComposeAlbum"
                 app:layout_constraintTop_toBottomOf="@id/barrier6">
+
+                <EditText
+                    android:id="@+id/etDescriptionFact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="Write your fact here..."
+                    android:inputType="textMultiLine|textPersonName"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
                 android:layout_height="wrap_content"
