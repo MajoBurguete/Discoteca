@@ -65,10 +65,14 @@
 
             <TextView
                 android:id="@+id/tvSongName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dp"
                 android:layout_toEndOf="@+id/ivComposeAlbum"
+                app:layout_constraintEnd_toStartOf="@id/barrier7"
+                app:layout_constraintStart_toEndOf="@+id/ivComposeAlbum"
+                app:layout_constraintTop_toTopOf="@+id/ivComposeAlbum"
                 tools:text="Traitor" />
 
             <Button
