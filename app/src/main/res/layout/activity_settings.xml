@@ -102,5 +102,14 @@
         app:layout_constraintTop_toBottomOf="@+id/ivUserPict"
         app:srcCompat="@drawable/ic_follow" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSaveProf"
+        app:layout_constraintStart_toStartOf="@+id/btnSaveProf"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveProf"
+        app:srcCompat="@drawable/ic_discoteca" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
