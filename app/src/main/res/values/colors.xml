@@ -16,4 +16,8 @@
     <color name="celeste">#78BCF9</color>
     <color name="morado">#35304F</color>
     <color name="pinkHint">#BFEA4CAA</color>
+    <color name="card">#AA93C1</color>
+    <color name="lila">#E6D0FC</color>
+    <color name="description">#35304F</color>
+    <color name="user">#E5D4F5</color>
 </resources>
