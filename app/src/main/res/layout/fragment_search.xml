@@ -22,8 +22,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIconTint="@color/purple_200"
-            app:tabMode="fixed">
+            app:tabIconTint="@color/lila"
+            app:tabIndicatorColor="@color/tabPurple"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/tabPurple"
+            app:tabTextColor="@color/lila">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tiSong"
