@@ -5,33 +5,9 @@
     android:id="@+id/rlSearch"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp"
-    android:background="@color/backgroundW"
-    android:clickable="true"
-    android:paddingStart="10dp"
-    android:paddingTop="10dp"
-    android:paddingEnd="10dp"
-    android:paddingBottom="10dp">
+    android:background="@android:color/transparent"
+    android:clickable="true">
 
-    <ImageView
-        android:id="@+id/ivSearchAlbum"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvSearchTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_toEndOf="@+id/ivSearchAlbum"
-        android:textColor="@color/lila"
-        android:textStyle="bold"
-        tools:text="One Step Forward, Three Steps Back" />
-
-    <TextView
-        android:id="@+id/tvSearchInfo"
-        android:layout_width="wrap_content"
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +19,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ivSearchAlbum"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvSearchTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_toEndOf="@+id/ivSearchAlbum"
+                android:textColor="@color/lila"
+                android:textStyle="bold"
+                tools:text="One Step Forward, Three Steps Back" />
+
+            <TextView
+                android:id="@+id/tvSearchInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSearchTitle"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/ivSearchAlbum"
+                android:textColor="@color/lila"
+                android:textSize="14sp"
+                tools:text="SOUR - Olivia Rodrigo" />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
