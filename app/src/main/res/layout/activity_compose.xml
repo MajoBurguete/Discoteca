@@ -112,15 +112,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier6"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvArtistName"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="0dp"
-                android:layout_toStartOf="@+id/btnPick"
-                android:ems="10"
-                android:hint="Did you know ..."
-                android:inputType="textMultiLine|textPersonName"
-                android:textSize="12sp" />
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="ivComposeAlbum,tvArtistName"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="15dp" />
 
         </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
