@@ -69,6 +69,7 @@ public class Spotify {
         int currentHour  = (hourOfDay * 60) + minute;
 
         if (expired >= 1440){
+            int minutes = expired - 1440;
         }
 
         if (currentHour >= expired){
