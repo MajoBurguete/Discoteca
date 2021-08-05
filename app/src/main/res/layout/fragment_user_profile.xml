@@ -123,12 +123,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@+id/factsTextUser"
-            android:layout_marginStart="127dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
+            android:backgroundTint="@color/user"
             android:text="Follow"
+            android:textColor="@color/backgroundW"
             android:textSize="12sp"
-            app:cornerRadius="13dp" />
+            app:cornerRadius="13dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFriendsNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvUserNumber"
+            app:layout_constraintTop_toBottomOf="@+id/factsTextUser" />
 
         <ImageButton
             android:id="@+id/btnBackFromP"
