@@ -27,6 +27,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/menu"
+        android:elevation="2dp"
+        app:itemHorizontalTranslationEnabled="true"
+        app:itemIconSize="38dp"
+        app:itemIconTint="@color/mtrl_navigation_colored"
+        app:itemTextColor="@color/mtrl_navigation_colored"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
