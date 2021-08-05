@@ -80,11 +80,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvNumber"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/ivProfPict"
             android:text="Facts"
-            android:textSize="18sp" />
+            android:textColor="@color/lila"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvNumber" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabProfile"
