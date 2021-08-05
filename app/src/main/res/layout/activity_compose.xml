@@ -135,15 +135,18 @@
 
     <Button
         android:id="@+id/btnAddFact"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/cardFact"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="5dp"
-        android:text="Add Fact" />
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/user"
+        android:text="Add Fact"
+        android:textColor="@color/backgroundW"
+        app:layout_constraintEnd_toEndOf="@+id/cardFact"
+        app:layout_constraintStart_toStartOf="@+id/cardFact"
+        app:layout_constraintTop_toBottomOf="@+id/cardFact" />
 
     <ImageButton
         android:id="@+id/ibReturn"
