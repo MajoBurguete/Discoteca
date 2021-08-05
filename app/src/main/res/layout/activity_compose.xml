@@ -34,6 +34,9 @@
                 android:id="@+id/ivComposeAlbum"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
