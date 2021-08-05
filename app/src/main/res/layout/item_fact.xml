@@ -71,13 +71,17 @@
 
             <TextView
                 android:id="@+id/tvSearchInfo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSongT"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/ivAlbum"
-                android:textSize="10sp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/vibes_regular"
+                android:textColor="@color/lila"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/ibDelete"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSongT"
+                app:layout_constraintTop_toBottomOf="@+id/tvSongT"
                 tools:text="Sour - Olivia Rodrigo" />
 
             <TextView
