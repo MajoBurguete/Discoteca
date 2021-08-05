@@ -19,11 +19,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivOtherUserPict"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/lila"
             android:textSize="12sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivOtherUserPict"
+            app:layout_constraintStart_toStartOf="@+id/ivOtherUserPict"
+            app:layout_constraintTop_toBottomOf="@+id/ivOtherUserPict"
             tools:text="Dore burguete" />
 
         <ImageView
