@@ -88,11 +88,14 @@
                 android:id="@+id/tvUserFact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/svDescription"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
                 android:clickable="true"
-                android:textSize="15sp"
+                android:fontFamily="@font/rocksalt_regular"
+                android:textColor="@color/user"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
                 tools:text="majoB" />
 
             <ImageButton
