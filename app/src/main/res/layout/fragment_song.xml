@@ -48,15 +48,17 @@
 
         <TextView
             android:id="@+id/tvSongAlbum"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/ivSongDetail"
             android:textAlignment="textStart"
-            android:textSize="20sp"
+            android:textColor="@color/lila"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvNameDetail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvNameDetail"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameDetail"
             tools:text="Sour" />
 
         <TextView
