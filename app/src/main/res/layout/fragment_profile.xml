@@ -127,13 +127,14 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginEnd="50dp"
             android:layout_toEndOf="@+id/tvNumber"
-            android:text="TextView"
             android:textAlignment="center"
+            android:textColor="@color/lila"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tabProfile"
+            app:layout_constraintTop_toTopOf="@+id/tvNumber"
             tools:text="0" />
 
         <TextView
