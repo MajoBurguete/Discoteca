@@ -7,9 +7,10 @@
     android:background="@color/white"
     tools:context=".fragments.UserProfileFragment">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroundW"
         android:clickable="true">
 
         <TextView
@@ -121,6 +122,6 @@
             android:backgroundTint="@android:color/transparent"
             android:src="@android:drawable/ic_menu_revert" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
