@@ -91,6 +91,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                app:boxStrokeColor="@color/description"
+                app:hintTextColor="@color/description"
+                app:layout_constraintEnd_toEndOf="@+id/btnPick"
+                app:layout_constraintStart_toStartOf="@+id/ivComposeAlbum"
+                app:layout_constraintTop_toBottomOf="@id/barrier6">
             </com.google.android.material.textfield.TextInputLayout>
 
                 android:layout_height="wrap_content"
