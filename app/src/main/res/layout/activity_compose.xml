@@ -121,7 +121,15 @@
                 tools:layout_editor_absoluteX="7dp"
                 tools:layout_editor_absoluteY="15dp" />
 
-        </RelativeLayout>
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="start"
+                app:constraint_referenced_ids="btnPick"
+                tools:layout_editor_absoluteX="110dp"
+                tools:layout_editor_absoluteY="15dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
