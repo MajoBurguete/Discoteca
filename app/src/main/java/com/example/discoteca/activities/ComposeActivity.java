@@ -71,7 +71,7 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String description = etDescription.getText().toString();
-                if (description.isEmpty()){
+                if (description.isEmpty() || song == null){
                     Toast.makeText(ComposeActivity.this, "Make sure not to leave anything blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
