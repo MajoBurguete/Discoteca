@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,7 +47,7 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
     TextView tvArtistAlbum;
     TextView tvAlbumYear;
     ImageButton ibClose;
-    RelativeLayout rlAlbum;
+    ConstraintLayout rlAlbum;
     List<Song> songList;
     RecyclerView rvAlbumSongs;
     Album album;
