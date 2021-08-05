@@ -10,7 +10,9 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/Toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/menu"
+        app:navigationIcon="@drawable/ic_discoteca" />
 
     <FrameLayout
         android:id="@+id/flContainer"
