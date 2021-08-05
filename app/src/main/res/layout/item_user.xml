@@ -6,26 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivUserProfPict"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvOtherUser"
-        android:layout_width="wrap_content"
     <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_toEndOf="@+id/ivUserProfPict"
-        android:textSize="20sp"
-        tools:text="doreB" />
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/backgroundW"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabFollow"
