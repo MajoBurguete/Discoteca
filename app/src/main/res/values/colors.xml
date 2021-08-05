@@ -24,6 +24,8 @@
     <color name="bottomIcon">#7A6CB7</color>
     <color name="pinkTi">#99625A86</color>
     <color name="tabPurple">#9780FF</color>
-    <color name="search">#625A86</color>
+    <color name="search">#9A625A86</color>
     <color name="rvBack">#9A514D60</color>
+    <color name="settings">#625A86</color>
+    <color name="rosa">#FEB8E2</color>
 </resources>
