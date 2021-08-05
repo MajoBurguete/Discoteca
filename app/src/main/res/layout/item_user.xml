@@ -31,6 +31,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
+            <TextView
+                android:id="@+id/tvOtherUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/ivUserProfPict"
+                android:textColor="@color/lila"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivUserProfPict"
+                app:layout_constraintEnd_toStartOf="@+id/fabFollow"
+                app:layout_constraintStart_toEndOf="@+id/ivUserProfPict"
+                app:layout_constraintTop_toTopOf="@+id/ivUserProfPict"
+                tools:text="doreB" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
