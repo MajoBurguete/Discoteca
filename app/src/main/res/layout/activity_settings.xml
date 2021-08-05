@@ -93,11 +93,14 @@
         android:id="@+id/fabEditImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/card"
         android:clickable="true"
+        app:borderWidth="0dp"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivUserPict"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_follow" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
