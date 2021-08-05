@@ -65,12 +65,15 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnBackFromP"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:textAlignment="center"
+            android:textColor="@color/lila"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvFriendsNumber"
+            app:layout_constraintTop_toTopOf="@+id/ivOtherUserPict"
             tools:text="145" />
 
         <TextView
