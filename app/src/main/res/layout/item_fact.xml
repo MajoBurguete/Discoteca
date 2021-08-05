@@ -128,9 +128,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ivAlbum"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/ibLike"
+                android:fontFamily="@font/rocksalt_regular"
+                android:textColor="@color/sign"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/ibLike"
+                app:layout_constraintTop_toBottomOf="@+id/ivAlbum"
                 tools:text="10" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
