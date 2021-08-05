@@ -54,7 +54,19 @@
                 tools:text="One Step Forward, Three Steps Back" />
 
             <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:clickable="false"
+                android:fontFamily="@font/vibes_regular"
                 android:scrollbars="vertical"
+                android:textColor="@color/description"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/ibDelete"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSongT"
+                app:layout_constraintTop_toBottomOf="@+id/tvSearchInfo"
                 tools:text="Did you know that Olivia wrote this song for someone who bla bla and also she mentioned once that bla bla" />
 
             <TextView
