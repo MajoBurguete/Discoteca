@@ -116,12 +116,12 @@
                 android:id="@+id/ibLike"
                 android:layout_width="33dp"
                 android:layout_height="41dp"
-                android:layout_below="@+id/ivAlbum"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginStart="4dp"
                 android:backgroundTint="@android:color/transparent"
-                android:src="@drawable/ic_music_disliked" />
+                android:src="@drawable/ic_music_disliked"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivAlbum" />
 
             <TextView
                 android:id="@+id/tvLikes"
