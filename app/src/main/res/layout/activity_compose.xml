@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="false"
+    android:background="@color/menu"
     tools:context=".activities.ComposeActivity">
 
     <com.google.android.material.card.MaterialCardView
