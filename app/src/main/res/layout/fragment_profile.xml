@@ -93,9 +93,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvNameP"
-            android:layout_marginTop="0dp"
-            app:tabIconTint="@color/purple_200"
-            app:tabMode="fixed">
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameP"
+            app:tabIconTint="@color/lila"
+            app:tabIndicatorColor="@color/tabPurple"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/tabPurple"
+            app:tabTextColor="@color/lila">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tiMyFacts"
