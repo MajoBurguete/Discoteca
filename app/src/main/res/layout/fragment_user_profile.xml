@@ -33,8 +33,9 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/btnBackFromP"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="38dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackFromP"
             tools:src="@tools:sample/avatars" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
