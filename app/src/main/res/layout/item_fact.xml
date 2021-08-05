@@ -53,24 +53,9 @@
                 app:layout_constraintTop_toBottomOf="@id/ibDelete"
                 tools:text="One Step Forward, Three Steps Back" />
 
-            <ScrollView
-                android:id="@+id/svDescription"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/tvSearchInfo"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="7dp"
-                android:layout_toEndOf="@+id/ivAlbum"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/tvDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="Did you know that Olivia wrote this song for someone who bla bla and also she mentioned once that bla bla" />
-
-            </ScrollView>
+            <TextView
+                android:scrollbars="vertical"
+                tools:text="Did you know that Olivia wrote this song for someone who bla bla and also she mentioned once that bla bla" />
 
             <TextView
                 android:id="@+id/tvSearchInfo"
