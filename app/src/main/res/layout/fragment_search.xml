@@ -55,7 +55,6 @@
             android:background="@drawable/backgroun_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
             app:searchHintIcon="@drawable/ic_magnifier"
             app:searchIcon="@drawable/ic_magnifier" />
 
