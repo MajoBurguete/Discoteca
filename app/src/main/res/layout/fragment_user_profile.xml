@@ -81,11 +81,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvUserNumber"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:text="Facts"
-            android:textSize="18sp" />
+            android:textColor="@color/lila"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvUserNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvUserNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserNumber" />
 
         <TextView
             android:id="@+id/tvFriendsNumber"
