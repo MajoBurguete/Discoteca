@@ -70,6 +70,7 @@ public class Spotify {
 
         if (expired >= 1440){
             int minutes = expired - 1440;
+            expired = 0 + minutes;
         }
 
         if (currentHour >= expired){
