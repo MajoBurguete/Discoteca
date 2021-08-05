@@ -20,4 +20,6 @@
     <color name="lila">#E6D0FC</color>
     <color name="description">#35304F</color>
     <color name="user">#E5D4F5</color>
+    <color name="menu">#3A3554</color>
+    <color name="bottomIcon">#7A6CB7</color>
 </resources>
