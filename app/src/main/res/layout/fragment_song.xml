@@ -63,13 +63,15 @@
 
         <TextView
             android:id="@+id/tvArtistSong"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvSongAlbum"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_toEndOf="@+id/ivSongDetail"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/lila"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvSongAlbum"
+            app:layout_constraintStart_toStartOf="@+id/tvNameDetail"
+            app:layout_constraintTop_toBottomOf="@+id/tvSongAlbum"
             tools:text="Olivia Rodrigo" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
