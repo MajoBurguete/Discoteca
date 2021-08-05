@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.discoteca.R;
 import com.example.discoteca.models.Fact;
 import com.example.discoteca.models.Song;
@@ -112,7 +113,7 @@ public class ComposeActivity extends AppCompatActivity {
     }
 
     private void updateSong(){
-        Glide.with(this).load(song.getImageUrl()).into(ivComposeAlbum);
+        Glide.with(this).load(song.getImageUrl()).transform(new RoundedCorners(10)).into(ivComposeAlbum);
         tvAlbumName.setText(song.getAlbumName());
         tvArtistName.setText(song.getArtistName());
         tvSongName.setText(song.getSongName());
