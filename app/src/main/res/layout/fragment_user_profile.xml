@@ -94,12 +94,14 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnBackFromP"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginEnd="50dp"
             android:layout_toEndOf="@+id/tvUserNumber"
             android:textAlignment="center"
+            android:textColor="@color/lila"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/srUserProfile"
+            app:layout_constraintTop_toTopOf="@+id/tvUserNumber"
             tools:text="0" />
 
         <TextView
