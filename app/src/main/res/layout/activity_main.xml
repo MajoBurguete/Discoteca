@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/menu"
-        app:navigationIcon="@drawable/ic_discoteca" />
+        app:navigationIcon="@drawable/ic_discoteca"
+        app:titleTextColor="@color/menu" />
 
     <FrameLayout
         android:id="@+id/flContainer"
