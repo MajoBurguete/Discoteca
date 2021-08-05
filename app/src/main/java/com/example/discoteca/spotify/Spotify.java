@@ -68,6 +68,9 @@ public class Spotify {
         int minute = calendar.get(Calendar.MINUTE);
         int currentHour  = (hourOfDay * 60) + minute;
 
+        if (expired >= 1440){
+        }
+
         if (currentHour >= expired){
             return true;
         }
