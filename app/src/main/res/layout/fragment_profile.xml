@@ -142,12 +142,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvFriends"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/postsText"
             android:clickable="true"
             android:text="Friends"
-            android:textSize="18sp" />
+            android:textColor="@color/lila"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFriends"
+            app:layout_constraintStart_toStartOf="@+id/tvFriends"
+            app:layout_constraintTop_toBottomOf="@+id/tvFriends" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
