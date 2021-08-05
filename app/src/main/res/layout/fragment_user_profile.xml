@@ -109,12 +109,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvFriendsNumber"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/factsTextUser"
             android:clickable="true"
             android:text="Friends"
-            android:textSize="18sp" />
+            android:textColor="@color/lila"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFriendsNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvFriendsNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvFriendsNumber" />
 
         <Button
             android:id="@+id/btnFollow"
