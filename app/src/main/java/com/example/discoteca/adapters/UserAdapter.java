@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -70,7 +71,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         RelativeLayout rlUserSearch;
         ImageView ivUserPict;
         TextView tvOtherUser;
-        FloatingActionButton fabFollow;
+        Button fabFollow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,16 +89,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             List<ParseUser> friends = currentUser.getList("friends");
 
             if (friends.size() == 0){
-                fabFollow.setImageResource(R.drawable.ic_follow);
+                fabFollow.setText("Follow");
             }
             else {
                 for (int i = 0; i < friends.size(); i++){
                     if (friends.get(i).getObjectId().equals(user.getObjectId())){
-                        fabFollow.setImageResource(R.drawable.ic_check);
+                        fabFollow.setText("Following");
                         break;
                     }
                     else if (i == friends.size()-1){
-                        fabFollow.setImageResource(R.drawable.ic_follow);
+                        fabFollow.setText("Follow");
                     }
                 }
             }
