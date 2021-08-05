@@ -49,10 +49,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabLayout"
-            android:layout_marginTop="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/backgroun_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+            app:searchHintIcon="@drawable/ic_magnifier"
+            app:searchIcon="@drawable/ic_magnifier" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvResults"
