@@ -4,6 +4,8 @@
     android:id="@+id/rlSearch"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:background="@color/backgroundW"
     android:clickable="true"
     android:paddingStart="10dp"
     android:paddingTop="10dp"
@@ -22,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_toEndOf="@+id/ivSearchAlbum"
+        android:textColor="@color/lila"
         android:textStyle="bold"
         tools:text="One Step Forward, Three Steps Back" />
 
@@ -33,6 +36,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivSearchAlbum"
+        android:textColor="@color/lila"
         android:textSize="14sp"
         tools:text="Sour - Olivia Rodrigo" />
 
