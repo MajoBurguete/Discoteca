@@ -103,12 +103,14 @@
                 android:layout_width="32dp"
                 android:layout_height="35dp"
                 android:layout_below="@+id/ivAlbum"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="11dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@+id/tvLikes"
                 android:backgroundTint="@android:color/transparent"
                 android:visibility="gone"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_trash" />
 
             <ImageButton
                 android:id="@+id/ibLike"
