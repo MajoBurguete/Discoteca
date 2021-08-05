@@ -105,9 +105,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/lila"
             android:clickable="true"
-            android:src="@android:drawable/ic_menu_add" />
+            android:src="@drawable/ic_follow"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/ibCloseSong"
