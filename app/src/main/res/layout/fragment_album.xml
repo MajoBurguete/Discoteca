@@ -49,7 +49,7 @@
 
         <TextView
             android:id="@+id/tvAlbumYear"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvArtistAlbum"
             android:layout_toEndOf="@+id/ivAlbumDet"
@@ -58,6 +58,7 @@
             android:shadowRadius="4"
             android:textColor="@color/lila"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvArtistAlbum"
             app:layout_constraintStart_toStartOf="@+id/tvArtistAlbum"
             app:layout_constraintTop_toBottomOf="@+id/tvArtistAlbum"
             tools:text="2021" />
