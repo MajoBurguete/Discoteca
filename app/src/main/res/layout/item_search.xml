@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@color/backgroundW"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,8 +33,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
                 android:layout_toEndOf="@+id/ivSearchAlbum"
+                android:fontFamily="@font/nunito_smibold"
+                android:shadowColor="@color/lila"
+                android:shadowRadius="4"
+                android:textAlignment="viewStart"
                 android:textColor="@color/lila"
-                android:textStyle="bold"
                 tools:text="One Step Forward, Three Steps Back" />
 
             <TextView
@@ -44,6 +48,9 @@
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/ivSearchAlbum"
+                android:fontFamily="@font/nunito_light"
+                android:shadowColor="@color/lila"
+                android:shadowRadius="4"
                 android:textColor="@color/lila"
                 android:textSize="14sp"
                 tools:text="SOUR - Olivia Rodrigo" />
