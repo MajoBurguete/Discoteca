@@ -116,7 +116,6 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
     }
 
     private void makeRequest() {
-        List<Song> spotifyResp = new ArrayList<>();
         client.makeAlbumRequest(album).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -125,7 +124,9 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                spotifyResp.addAll(client.createAlbumSongs(response, spotifyResp, album));
+                List<Song> spotifyResp = new ArrayList<>();
+                client.createAlbumSongs(response, spotifyResp, album);
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -135,7 +136,6 @@ public class AlbumFragment extends Fragment implements SongAdapter.OnSongClickLi
                 });
             }
         });
-        adapter.addAll(spotifyResp);
     }
 
     @Override
