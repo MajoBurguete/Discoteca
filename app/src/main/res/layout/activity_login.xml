@@ -140,13 +140,16 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:fontFamily="@font/vibes_regular"
+        android:fontFamily="@font/unicaone_regular"
+        android:shadowColor="@color/pinkHint"
+        android:shadowRadius="15"
         android:text="Log in to your account"
         android:textAlignment="center"
         android:textColor="@color/pinkS"
         android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="65dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tiUser"
+        app:layout_constraintStart_toStartOf="@+id/tiUser"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier3"
