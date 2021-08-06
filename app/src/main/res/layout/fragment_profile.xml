@@ -14,16 +14,19 @@
 
         <TextView
             android:id="@+id/tvNameP"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivProfPict"
-            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/nunito_smibold"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="3"
+            android:textAlignment="center"
             android:textColor="@color/lila"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/ivProfPict"
-            app:layout_constraintStart_toStartOf="@+id/ivProfPict"
+            app:layout_constraintEnd_toStartOf="@id/barrier9"
+            app:layout_constraintStart_toStartOf="@id/barrier8"
             app:layout_constraintTop_toBottomOf="@+id/ivProfPict"
             tools:text="Dore burguete" />
 
