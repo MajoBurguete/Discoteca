@@ -103,6 +103,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 }
             }
 
+            if (user.getObjectId().equals(ParseUser.getCurrentUser().getObjectId()))
+            {
+                fabFollow.setVisibility(View.GONE);
+            }
             rlUserSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
