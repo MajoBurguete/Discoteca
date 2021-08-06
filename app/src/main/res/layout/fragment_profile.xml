@@ -168,6 +168,22 @@
             app:layout_constraintStart_toStartOf="@+id/tvFriends"
             app:layout_constraintTop_toBottomOf="@+id/tvFriends" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="tvNameP,ivProfPict"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="tvNumber,postsText"
+            tools:layout_editor_absoluteX="217dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
