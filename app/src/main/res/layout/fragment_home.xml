@@ -16,9 +16,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/rocksalt_regular"
+            android:fontFamily="@font/unicaone_regular"
+            android:shadowColor="@color/card"
+            android:shadowRadius="20"
             android:textColor="@color/lila"
-            android:textSize="19sp"
+            android:textSize="30sp"
             tools:text="Good morning, doreB" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
