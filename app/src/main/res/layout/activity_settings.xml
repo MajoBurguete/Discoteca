@@ -97,7 +97,7 @@
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="@drawable/ic_cancel" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEditImage"
