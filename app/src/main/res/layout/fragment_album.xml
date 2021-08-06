@@ -108,6 +108,14 @@
             android:src="@drawable/ic_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="ivAlbumDet,tvAlbumYear"
+            tools:layout_editor_absoluteY="56dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
