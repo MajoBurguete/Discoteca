@@ -103,14 +103,16 @@
         android:id="@+id/fabEditImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:backgroundTint="@color/card"
         android:clickable="true"
+        android:elevation="5dp"
         app:borderWidth="0dp"
         app:fabSize="mini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserPict"
+        app:layout_constraintStart_toStartOf="@+id/ivUserPict"
         app:layout_constraintTop_toBottomOf="@+id/ivUserPict"
-        app:srcCompat="@drawable/ic_follow" />
+        app:srcCompat="@drawable/ic_add_image" />
 
     <ImageView
         android:id="@+id/imageView2"
