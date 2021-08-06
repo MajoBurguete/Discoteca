@@ -15,16 +15,18 @@
 
         <TextView
             android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivOtherUserPict"
-            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/nunito_smibold"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="7"
+            android:textAlignment="center"
             android:textColor="@color/lila"
             android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/ivOtherUserPict"
-            app:layout_constraintStart_toStartOf="@+id/ivOtherUserPict"
+            app:layout_constraintEnd_toStartOf="@id/barrier11"
+            app:layout_constraintStart_toStartOf="@id/barrier10"
             app:layout_constraintTop_toBottomOf="@+id/ivOtherUserPict"
             tools:text="Dore burguete" />
 
@@ -33,8 +35,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/btnBackFromP"
-            android:layout_marginStart="38dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvUserName"
+            app:layout_constraintStart_toStartOf="@+id/tvUserName"
             app:layout_constraintTop_toBottomOf="@+id/btnBackFromP"
             tools:src="@tools:sample/avatars" />
 
@@ -68,6 +70,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
+            android:fontFamily="@font/nunito_smibold"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="5"
             android:textAlignment="center"
             android:textColor="@color/lila"
             android:textSize="18sp"
@@ -82,6 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvUserNumber"
             android:layout_toEndOf="@+id/ivOtherUserPict"
+            android:fontFamily="@font/nunito_light"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="2"
             android:text="Facts"
             android:textColor="@color/lila"
             android:textSize="18sp"
@@ -96,6 +104,9 @@
             android:layout_below="@+id/btnBackFromP"
             android:layout_marginEnd="50dp"
             android:layout_toEndOf="@+id/tvUserNumber"
+            android:fontFamily="@font/nunito_smibold"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="5"
             android:textAlignment="center"
             android:textColor="@color/lila"
             android:textSize="18sp"
@@ -111,6 +122,9 @@
             android:layout_below="@+id/tvFriendsNumber"
             android:layout_toEndOf="@+id/factsTextUser"
             android:clickable="true"
+            android:fontFamily="@font/nunito_light"
+            android:shadowColor="@color/lila"
+            android:shadowRadius="2"
             android:text="Friends"
             android:textColor="@color/lila"
             android:textSize="18sp"
@@ -126,6 +140,9 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/ivOtherUserPict"
             android:backgroundTint="@color/user"
+            android:fontFamily="@font/nunito_light"
+            android:shadowColor="@color/backgroundW"
+            android:shadowRadius="5"
             android:text="Follow"
             android:textColor="@color/backgroundW"
             android:textSize="12sp"
@@ -143,9 +160,27 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="@android:color/transparent"
+            android:outlineAmbientShadowColor="@color/sign"
+            android:outlineSpotShadowColor="@color/sign"
             android:src="@drawable/ic_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="tvUserName,ivOtherUserPict"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="tvUserNumber,factsTextUser"
+            tools:layout_editor_absoluteX="217dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
