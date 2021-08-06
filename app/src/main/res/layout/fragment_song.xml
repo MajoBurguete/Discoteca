@@ -117,6 +117,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/lila"
             android:clickable="true"
+            android:elevation="3dp"
             android:src="@drawable/ic_follow"
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
